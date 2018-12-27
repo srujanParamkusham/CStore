@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html>
+    <head>
+        @Catalyst.Partial("_Head")       
+
+        <!-- Add local styles, mostly for plugins css file -->
+        @if (IsSectionDefined("Styles"))
+        {
+            @RenderSection("Styles", required: false)
+        } 
+
+    </head>
+    <body class="gray-bg">
+        <!-- Wrapper-->
+        <!-- PageClass give you ability to specify custom style for specific view based on action -->
+        <div id="" class="@Html.PageClass()">
+
+            <!-- Page wraper -->
+            <div id="" class="container gray-bg @ViewBag.SpecialClass">
+
+                <!-- Main view  -->
+                @RenderBody()
+
+            </div>
+            <!-- End page wrapper-->
+
+        </div>
+        <!-- End wrapper-->
+
+        <!-- Handler for local scripts -->
+        @if (IsSectionDefined("Scripts"))
+        {
+            @RenderSection("scripts", required: false)
+        }
+    </body>
+</html>

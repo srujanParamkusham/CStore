@@ -1,0 +1,61 @@
+﻿<!-- Section for main scripts render -->
+@Scripts.Render("~/bundles/scripts/modernizr")
+@Scripts.Render("~/bundles/scripts/jquery")
+@Scripts.Render("~/bundles/scripts/bootstrap")
+@Scripts.Render("~/plugins/scripts/moment")
+@Scripts.Render("~/plugins/scripts/bootstrap-datetimepicker")
+@Scripts.Render("~/plugins/scripts/slimScroll")
+@Scripts.Render("~/bundles/scripts/inspinia")
+@Scripts.Render("~/plugins/scripts/toastr")
+@Scripts.Render("~/bundles/scripts/jqueryui")
+@Scripts.Render("~/bundles/scripts/validate")
+@Scripts.Render("~/plugins/scripts/dataTables")
+@Scripts.Render("~/plugins/scripts/html5-placeholder-shim")
+@Scripts.Render("~/plugins/scripts/jsCookie")
+@Scripts.Render("~/plugins/scripts/jsTimezoneDetect")
+@Scripts.Render("~/plugins/scripts/jsTree")
+@Scripts.Render("~/plugins/scripts/select2")
+@Scripts.Render("~/plugins/scripts/autoNumeric")
+@Scripts.Render("~/plugins/scripts/jquery.maskedinput")
+@Scripts.Render("~/bundles/scripts/catalyst")
+<script src="//cdn.tinymce.com/4/tinymce.min.js"></script>
+
+<!--[if lt IE 9]>
+<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+
+
+@Catalyst.ShowToastMessages()
+@Catalyst.ScriptManager().Render()
+
+<script>
+    $(document).ready(function () {
+        //
+        //Initialize events for menus and navigation
+        //
+        Cat.UI.Menu.initializeTopDropDownMenu();
+        Cat.UI.Menu.initializeStickySideMenu();
+
+        //
+        //Initialize modal dialog support
+        //
+        Cat.UI.Modal.initializeModalWindowSupport();
+
+        //
+        //Determine the users timezone and store in a cookie
+        //
+        Cat.UI.TimeZone.storeUserBrowserTimeZoneInCookie();
+
+        //
+        //Initialize form controls such as date pickers, rich text editors, etc
+        //
+        Cat.wireUpFormControls();
+
+        //
+        //Now show the html element after the whole page loads, to avoid the flash of unstyled content issue (FOUC)
+        //It was hidden in the page header
+        //
+        $("html").css({ visibility: "visible" });
+
+    });
+</script>

@@ -1,0 +1,239 @@
+﻿@using CStore.Domain.Domains.Admin.Models.ViewModels.SecuritySecurableMaintenance
+@model CStore.Domain.Domains.Admin.Models.ViewModels.SecuritySecurableMaintenance.SecuritySecurableMaintenanceListViewModel
+@{
+    ViewBag.Title = "Security Securable Maintenance";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <h5>@ViewBag.Title</h5>
+            <div class="ibox-tools">
+                <a class="collapse-link">
+                    <i class="fa fa-chevron-up"></i>
+                </a>
+            </div>
+        </div>
+        <div class="ibox-content">
+            @Catalyst.Partial("_ValidationSummaryErrors")
+
+            @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "searchParamsForm", @class = "form-horizontal" }))
+            {
+                <div class="row search-criteria-div">
+                    <div class="form-group col-sm-6" style="margin-right: 1em;">
+                        @Catalyst.LabelFor(p => p.Name, new { @class = "control-label" })<br />
+                        @Catalyst.EditorFor(p => p.Name, new { @class = "form-control" })
+                        @Catalyst.ValidationMessageFor(p => p.Name)
+                    </div>
+
+                    <div class="form-group col-sm-6" style="margin-right: 1em;">
+                        @Catalyst.LabelFor(p => p.ParentSecuritySecurableName, new { @class = "control-label" })<br />
+                        @Catalyst.EditorFor(p => p.ParentSecuritySecurableName, new { @class = "form-control" })
+                        @Catalyst.ValidationMessageFor(p => p.ParentSecuritySecurableName)
+                    </div>
+
+                    <div class="col-sm-3 pull-right text-right" style="padding-top: 2em;">
+                        @Catalyst.Button("Search", new { type = "submit", @class = "btn btn-primary m-b btn-fixed-width-sm", id = "SearchButton" })
+                        @Catalyst.Button("Clear", new { type = "reset", @class = "btn m-b btn-fixed-width-sm", id = "ClearButton" })
+                    </div>
+
+                </div>
+            }
+
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="ibox float-e-margins">
+        <div class="ibox-content">
+            <!--table table-striped table-bordered table-hover dataTables-example dataTable dtr-inline-->
+            <table id="mainDataTable" class="table table-striped table-bordered table-hover dataTable dtr-inline datatable-selectable-row">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Parent Securable</th>
+                    </tr>
+                </thead>
+                <tbody> 
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script type="text/javascript">
+        var table = null;
+        $(document).ready(function() {
+            //
+            //Load the state of the search params form that has been serialized to local storage
+            //
+            Cat.UI.FormState.init('#searchParamsForm');
+
+            //
+            //Configure datatables
+            //
+            table = $('#mainDataTable').DataTable({
+                "serverSide": true,
+                "processing": false,
+                "responsive": true,
+                "autoWidth": false,
+                "filter": false,
+                "stateSave": true,
+                "stateDuration": 60 * 60 * 1,  //1 hour
+                "pagingType": "full_numbers",
+                "language": {
+                    "lengthMenu": "View _MENU_"
+                },
+                "lengthMenu": [25, 50, 100, 250],
+                //B=Buttons, l=Length Changing Control, f=filtering element, r=processing display element, t=table itself, i=table information summary, p=pagination control
+                "dom": '<"clear"><"pull-right"B>lfrtip',
+                "select": "multi",
+                //https://www.datatables.net/reference/button/
+                buttons: [
+                    {
+                        text: 'New',
+                        action: function(e, dt, button, config) {
+                            window.location.href = "@Url.Action(MVC.Admin.SecuritySecurableMaintenance.Edit())";
+                        }
+                    },
+                    {
+                        extend: 'selectedSingle',
+                        text: 'Edit',
+                        action: function(e, dt, button, config) {
+                            if (table.rows('.selected').data().length !== 0) {
+                                var id = table.rows('.selected').data()[0].SecuritySecurableId;
+                                var url = "@Url.Action(MVC.Admin.SecuritySecurableMaintenance.Edit())" + "?id=" + id;
+                                window.location.href = url;
+                            }
+                        }
+                    },
+                    {
+                        extend: 'selected',
+                        className: 'marginLeft',
+                        text: 'Delete',
+                        action: function(e, dt, button, config) {
+                            if (table.rows('.selected').data().length !== 0) {
+                                Cat.UI.MsgBoxYesNo.show("Confirm Delete", "Are you sure you want to delete the selected records?", deleteSelectedRows, null);
+                            }
+                        }
+                    },
+                    {
+                        extend: 'selectAll'
+                    },
+                    {
+                        extend: 'selectNone'
+                    }
+                ],
+                "ajax": {
+                    "url": "@Url.Action(MVC.Admin.SecuritySecurableMaintenance.List())",
+                    "type": "POST",
+                    //Append on extra search param values to the submit
+                    "data": function(d) {
+                        //Loop through everything in searchParamsForm and add to the submitted request
+                        var formValues = $('#searchParamsForm').serializeArray();
+                        console.log(formValues);
+                        jQuery.each(formValues, function(i, field) {
+                            if (!d[field.name]) {
+                                d[field.name] = field.value;
+                            }
+                        });
+                    }
+                },
+                "order": [[2, "asc"]],
+                "columns": [
+                    { data: null, defaultContent: '', orderable: false },
+                    {
+                        "data": "SecuritySecurableId",
+                        "name": "ID",
+                        "searchable": true,
+                        "sortable": true,
+                        "render": function(data, type, row, meta) {
+                            var url = "@Url.Action(MVC.Admin.SecuritySecurableMaintenance.Edit())" + "?id=" + row.SecuritySecurableId;
+                            return '<a href=\"' + url + '\" data-callback=\"refreshTable\">' + data + '</a>';
+                        }
+                    },
+                    {
+                        "data": "Name",
+                        "name": "Name",
+                    },
+                    {
+                        "data": "ParentSecuritySecurable.Name",
+                        "name": "Parent Securable",
+                        //Need to specify default content so that an error isnt thrown when ParentSecuritySecurable is null
+                        "defaultContent": ""
+                    }
+                ],
+                "fnStateSaveParams": function(oSettings, oData) {
+                    Cat.UI.FormState.save('#searchParamsForm');
+                },
+                "fnStateLoadParams": function(oSettings, oData) {
+                    Cat.UI.FormState.load('#searchParamsForm');
+                }
+            });
+
+            //
+            //Override the default search parameters form submit to instead force an ajax reload of the table
+            //
+            $("#searchParamsForm").submit(function(e) {
+                e.preventDefault();
+                var form = $(this);
+                var table = $('#mainDataTable').DataTable();
+                table.ajax.reload();
+                return false;
+            });
+
+            //
+            //Delete all the selected items in the datatable, then redraw the table
+            //
+
+            function deleteSelectedRows() {
+                //Get the ids of the selected records
+                var table = $('#mainDataTable').DataTable();
+                var selectedRows = table.rows('.selected').data();
+
+                var selectedIds = new Array();
+                for (var i = 0; i < selectedRows.length; i++) {
+                    var row = selectedRows[i];
+                    selectedIds.push(row.SecuritySecurableId);
+                }
+
+                //Need traditional to be true so the array of values will post properly.
+                jQuery.ajaxSettings.traditional = true;
+
+                $.ajax({
+                    url: "@Url.Action(MVC.Admin.SecuritySecurableMaintenance.Delete())",
+                    type: "POST",
+                    data: {
+                        ids: selectedIds
+                    },
+                    success: function(response, status, request) {
+                        if (response.IsSuccessful) {
+                            table.ajax.reload();
+                            Cat.UI.MsgBox.show("Record Deleted", "The record(s) have been deleted. ");
+                        } else {
+                            Cat.UI.MsgBox.show("Error", "An error occurred deleting the records. " + response.Message);
+                        }
+                        table.ajax.reload();
+                    },
+                    error: function(request, status, error) {
+                    }
+                });
+            }
+        });
+
+        //
+        //Method to refresh the data in the table.
+        //
+
+        function refreshTable(data) {
+            table.ajax.reload();
+        }
+    </script>
+}

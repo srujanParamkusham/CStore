@@ -1,0 +1,35 @@
+﻿@model CStore.Domain.Domains.Admin.Models.ViewModels.AESKeyGenerator.AESKeyGeneratorViewModel
+@{
+    ViewBag.Title = "AES Key Generator";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+                <h5>@ViewBag.Title</h5>
+        </div>
+        <div class="ibox-content">
+            <p>
+                This is a simple utility which will generate a new AES Key that can be used in your application and with
+                the AES Encryption clasess. Put this key in your web.config and/or app.config.
+                <br/><br/>
+                Your key will be a 256 bit AES key that has been base 64 encoded.
+            </p>
+
+            <div id="ajaxFormWrapper" class="col-sm-offset-3 col-sm-6">
+                @Catalyst.Partial("_AESKeyForm")
+            </div>
+
+            <div class="row">&nbsp;</div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+        });
+    </script>
+}

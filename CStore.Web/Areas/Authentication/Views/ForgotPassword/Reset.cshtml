@@ -1,0 +1,47 @@
+﻿@model CStore.Domain.Domains.Authentication.Models.ViewModels.ForgotPassword.ResetForgottenPasswordViewModel
+
+
+@{
+    ViewBag.Title = "Forgot Password";
+    Layout = "~/Views/Shared/_LayoutPublic.cshtml";  
+}
+
+<div class="middle-box text-center loginscreen animated fadeInDown">
+    <div>
+        <h2>Reset Your Password</h2>
+        <p>
+            Enter your new password below.
+        </p>
+
+        @Catalyst.Partial("_ValidationSummaryErrors")
+
+        @using (Html.BeginForm())
+        {
+            @Catalyst.AntiForgeryToken()
+
+            @Catalyst.HiddenFor(p => p.Id)
+            @Catalyst.HiddenFor(p => p.Token)
+            <div class="form-group">
+                @Catalyst.LabelFor(p => p.NewPassword, new { @class = "control-label" })
+                @Catalyst.EditorFor(p => p.NewPassword, new { @class = "form-control", autocomplete="off" })
+                @Catalyst.ValidationMessageFor(p => p.NewPassword)
+            </div>
+            <div class="form-group">
+                @Catalyst.LabelFor(p => p.NewPasswordConfirm, new { @class = "control-label" })
+                @Catalyst.EditorFor(p => p.NewPasswordConfirm, new { @class = "form-control", autocomplete="off" })
+                @Catalyst.ValidationMessageFor(p => p.NewPasswordConfirm)
+            </div>
+            @Catalyst.SubmitButton("Reset My Password", new { @class = "btn btn-primary block full-width m-b", id="ResetPasswordButton" })
+            @Catalyst.ActionLink("Cancel", MVC.Home.Index(), secured: false)
+        }                
+    </div>
+</div>
+
+@section Scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#NewPassword").focus();
+        });
+    </script>
+}

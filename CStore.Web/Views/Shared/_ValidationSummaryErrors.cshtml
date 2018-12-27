@@ -1,0 +1,14 @@
+﻿@{
+    //
+    //Get the model state for the non property errors. If there are non property errors then
+    //we output the div below
+    //This code prevents an empty red div from showing when there are no non-property errors.
+    //
+    ModelState ms;
+    Html.ViewData.ModelState.TryGetValue(Html.ViewData.TemplateInfo.HtmlFieldPrefix, out ms);
+}
+@if (ms != null && !this.ViewData.ModelState.IsValid && this.ViewData.ModelState.Values.SelectMany(v => v.Errors).Any()) {
+    <div class="alert alert-danger validation-summary-div" role="alert">
+        @Catalyst.ValidationSummary(true)
+    </div>
+}

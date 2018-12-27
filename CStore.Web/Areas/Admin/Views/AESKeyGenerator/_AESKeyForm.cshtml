@@ -1,0 +1,13 @@
+﻿@model CStore.Domain.Domains.Admin.Models.ViewModels.AESKeyGenerator.AESKeyGeneratorViewModel
+
+@Catalyst.Partial("_ValidationSummaryErrors")
+@using (Ajax.BeginForm(MVC.Admin.AESKeyGenerator.Index(), new AjaxOptions { UpdateTargetId = "ajaxFormWrapper" }))    
+{
+    <div class="form-group">
+        @Catalyst.LabelFor(p => p.AESKey, new { @class = "control-label" })
+        @Catalyst.TextBoxFor(p => p.AESKey, new { disabled = "disabled", @class = "form-control" })
+        @Catalyst.ValidationMessageFor(p => p.AESKey)
+    </div>
+
+    @Catalyst.SubmitButton("Generate Key", new { @class = "btn btn-primary block full-width m-b", id="SubmitButton" })
+}

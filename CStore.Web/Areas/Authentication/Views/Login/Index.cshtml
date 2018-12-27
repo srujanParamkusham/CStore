@@ -1,0 +1,61 @@
+﻿@model CStore.Domain.Domains.Authentication.Models.ViewModels.Login.LoginViewModel
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_LayoutPublic.cshtml";  
+}
+
+<div class="middle-box text-center loginscreen animated fadeInDown">
+    <div>
+        <div>
+            <h1 class="logo-name">Catalyst</h1>
+        </div>
+        <h3>Welcome to Catalyst</h3>
+        <p>
+            Put some welcome content here
+        </p>
+
+        @Catalyst.Partial("_ValidationSummaryErrors")
+
+        @using (Html.BeginForm(MVC.Authentication.Login.Index(), FormMethod.Post))
+        {
+            @Catalyst.HiddenFor(p => p.ReturnUrl)
+            @Catalyst.HiddenFor(p => p.ScreenWidth)
+            @Catalyst.HiddenFor(p => p.ScreenHeight)
+            <div class="form-group">
+                @Catalyst.LabelFor(p => p.UserName, new { @class = "control-label" })
+                @Catalyst.EditorFor(p => p.UserName, new { @class = "form-control" })
+                @Catalyst.ValidationMessageFor(p => p.UserName)
+            </div>
+            <div class="form-group">
+                @Catalyst.LabelFor(p => p.Password, new { @class = "control-label" })
+                @Catalyst.EditorFor(p => p.Password, new { @class = "form-control" })
+                @Catalyst.ValidationMessageFor(p => p.Password)
+            </div>
+            <div class="form-group">
+                @Catalyst.LabelFor(p => p.RememberMe)
+                @Catalyst.EditorFor(p => p.RememberMe)
+                @Catalyst.ValidationMessageFor(p => p.RememberMe)
+            </div>
+
+            @Catalyst.SubmitButton("Login", new { @class = "btn btn-primary block full-width m-b", id="LoginButton" })
+        }                
+
+        <p class="text-left">    
+            @Catalyst.ActionLink("Forgot your password?", MVC.Authentication.ForgotPassword.Index(), secured: false)<br/>
+            @Catalyst.ActionLink("Need an account?", MVC.Authentication.Registration.Index(), secured: false)<br/>
+        </p>
+
+        <p class="m-t"> <small>Disclaimer copy can go here</small> </p>
+    </div>
+</div>
+@section Scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#UserName").focus();
+            $("#ScreenWidth").val(window.screen.width);
+            $("#ScreenHeight").val(window.screen.height);
+        });
+    </script>
+}

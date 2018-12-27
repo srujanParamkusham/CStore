@@ -1,0 +1,110 @@
+<Dictionary Name="Domain">
+  <Database Name="Template" ConnectionName="DefaultConnection" ConnectionType="SQL Server" ConnectionString="Server=sg-lt-169\SENECA;Database=CStore;Persist Security Info=True;">
+    <Area Name="Admin">
+      <Tables>
+      </Tables>
+      <Views>
+      </Views>
+      <StoredProcedures>
+      </StoredProcedures>
+      <Targets>
+        <CatalystMVC EntityBase="" MappingBase="" RequestBase="" ServiceBase="" ControllerBase="" SelectToControllerBase="" EntityDestination="" MappingDestination="" RequestDestination="" ViewModelNamespace="" ServiceModelLocation="CStore.Domain.Domains.Admin.Models.ServiceModels" ViewModelLocation="CStore.Domain.Domains.Admin.Models.ViewModels" ServicesLocation="CStore.Domain.Domains.Admin.Services" Area="CStore.Web.Areas.Admin" DomainServiceNamespace="" DomainServiceDeleteRequest="" DomainServiceDeleteResponse="" DomainServiceGetRequest="" DomainServiceGetResponse="" DomainServicePagedListRequest="" DomainServicePagedListResponse="" DomainServiceListRequest="" DomainServiceListResponse="" DomainServiceSaveRequest="" DomainServiceSaveResponse="" BaseViewModel="" BaseListViewModel="" BaseSelectToViewModel="">
+        </CatalystMVC>
+      </Targets>
+    </Area>
+    <Area Name="General">
+      <Tables>
+      </Tables>
+      <Views>
+      </Views>
+      <StoredProcedures>
+      </StoredProcedures>
+      <Targets>
+        <CatalystMVC EntityBase="" MappingBase="" RequestBase="" ServiceBase="" ControllerBase="" SelectToControllerBase="" EntityDestination="" MappingDestination="" RequestDestination="" ViewModelNamespace="" ServiceModelLocation="CStore.Domain.Domains.General.Models.ServiceModels" ViewModelLocation="CStore.Domain.Domains.General.Models.ViewModels" ServicesLocation="CStore.Domain.Domains.General.Services" Area="CStore.Web.Areas.General" DomainServiceNamespace="" DomainServiceDeleteRequest="" DomainServiceDeleteResponse="" DomainServiceGetRequest="" DomainServiceGetResponse="" DomainServicePagedListRequest="" DomainServicePagedListResponse="" DomainServiceListRequest="" DomainServiceListResponse="" DomainServiceSaveRequest="" DomainServiceSaveResponse="" BaseViewModel="" BaseListViewModel="" BaseSelectToViewModel="">
+        </CatalystMVC>
+      </Targets>
+    </Area>
+  </Database>
+  <Types>
+    <Type Name="EmailAddress" Notes="">
+      <TypeAnnotations>
+        <TypeAnnotation Annotation="EmailAddress" ParameterValues="">
+        </TypeAnnotation>
+      </TypeAnnotations>
+      <TypeColumns>
+        <TypeColumn ColumnName="EmailAddress">
+        </TypeColumn>
+      </TypeColumns>
+    </Type>
+    <Type Name="Sort" Notes="">
+      <TypeAnnotations>
+        <TypeAnnotation Annotation="Range" ParameterValues="0, int.MaxValue, ErrorMessage = &quot;Please enter a valid number&quot;">
+        </TypeAnnotation>
+      </TypeAnnotations>
+      <TypeColumns>
+        <TypeColumn ColumnName="Sort">
+        </TypeColumn>
+      </TypeColumns>
+    </Type>
+    <Type Name="ModifyDate" Notes="">
+      <TypeAnnotations>
+        <TypeAnnotation Annotation="ModifyDate" ParameterValues="">
+        </TypeAnnotation>
+      </TypeAnnotations>
+      <TypeColumns>
+        <TypeColumn ColumnName="ModifyDate">
+        </TypeColumn>
+      </TypeColumns>
+    </Type>
+    <Type Name="ModifyUser" Notes="">
+      <TypeAnnotations>
+        <TypeAnnotation Annotation="ModifyUser" ParameterValues="">
+        </TypeAnnotation>
+      </TypeAnnotations>
+      <TypeColumns>
+        <TypeColumn ColumnName="ModifyUser">
+        </TypeColumn>
+      </TypeColumns>
+    </Type>
+    <Type Name="CreateDate" Notes="">
+      <TypeAnnotations>
+        <TypeAnnotation Annotation="CreateDate" ParameterValues="">
+        </TypeAnnotation>
+      </TypeAnnotations>
+      <TypeColumns>
+        <TypeColumn ColumnName="CreateDate">
+        </TypeColumn>
+      </TypeColumns>
+    </Type>
+    <Type Name="CreateUser" Notes="">
+      <TypeAnnotations>
+        <TypeAnnotation Annotation="CreateUser" ParameterValues="">
+        </TypeAnnotation>
+      </TypeAnnotations>
+      <TypeColumns>
+        <TypeColumn ColumnName="CreateUser">
+        </TypeColumn>
+      </TypeColumns>
+    </Type>
+  </Types>
+  <Annotations>
+    <Annotation Name="AllowHtml" Usage="Property" Namespace="" ParameterText="" Entity="False" ViewModel="True" Notes="">
+    </Annotation>
+    <Annotation Name="Range" Usage="Property" Namespace="" ParameterText="" Entity="False" ViewModel="True" Notes="">
+    </Annotation>
+    <Annotation Name="EmailAddress" Usage="Property" Namespace="" ParameterText="ErrorMessage = &quot;Invalid Email Address&quot;" Entity="False" ViewModel="True" Notes="">
+    </Annotation>
+    <Annotation Name="CreateDate" Usage="Property" Namespace="" ParameterText="" Entity="True" ViewModel="False" Notes="">
+    </Annotation>
+    <Annotation Name="CreateUser" Usage="Property" Namespace="" ParameterText="" Entity="True" ViewModel="False" Notes="">
+    </Annotation>
+    <Annotation Name="ModifyDate" Usage="Property" Namespace="" ParameterText="" Entity="True" ViewModel="False" Notes="">
+    </Annotation>
+    <Annotation Name="ModifyUser" Usage="Property" Namespace="" ParameterText="" Entity="True" ViewModel="False" Notes="">
+    </Annotation>
+  </Annotations>
+  <Targets>
+    <CatalystMVC EntityBase="DomainEntity" MappingBase="EntityTypeConfiguration" RequestBase="SQLRequest" EntityDestination="CStore.Domain.Entities" MappingDestination="CStore.Domain.Mappings" RequestDestination="CStore.Domain.SQLRequests" ServiceModelLocation="" ViewModelLocation="" ServicesLocation="" Area="" DomainServiceDeleteRequest="DomainServiceDeleteRequest" DomainServiceDeleteResponse="DomainServiceDeleteResponse" DomainServiceGetRequest="DomainServiceGetRequest" DomainServiceGetResponse="DomainServiceGetResponse" DomainServicePagedListRequest="DomainServicePagedListRequest" DomainServicePagedListResponse="DomainServicePagedListResponse" DomainServiceListRequest="DomainServiceListRequest" DomainServiceListResponse="DomainServiceListResponse" DomainServiceSaveRequest="DomainServiceSaveRequest" DomainServiceSaveResponse="DomainServiceSaveResponse" BaseViewModel=" CStore.Domain.Models.ViewModels.DomainViewModel" DomainServiceNamespace="CStore.Domain.Models.ServiceModels" ServiceBase="CStore.Domain.Services.Entity.DomainEntityService" ControllerBase="CStore.Domain.Controllers.DomainEntityController" BaseListViewModel=" CStore.Domain.Models.ViewModels.DomainListViewModel" BaseSelectToViewModel="CStore.Domain.Models.ViewModels.DomainSelectListViewModel" SelectToControllerBase="CStore.Domain.Controllers.DomainSelectListController" ViewModelNamespace="CStore.Domain.Models.ViewModels">
+    </CatalystMVC>
+  </Targets>
+</Dictionary>

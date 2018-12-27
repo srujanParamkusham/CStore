@@ -1,0 +1,99 @@
+﻿@using CStore.Domain.Domains.Admin.Models.ViewModels.SecurityRoleMaintenance
+@model CStore.Domain.Domains.Admin.Models.ViewModels.SecurityRoleMaintenance.SecurityRoleMaintenanceListViewModel
+@{
+    ViewBag.Title = "Security Role Maintenance";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <h5>@ViewBag.Title</h5>
+            <div class="ibox-tools">
+                <a class="collapse-link">
+                    <i class="fa fa-chevron-up"></i>
+                </a>
+            </div>
+        </div>
+        <div class="ibox-content">
+            @Catalyst.Partial("_ValidationSummaryErrors")
+
+            @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "searchParamsForm", @class = "form-horizontal" }))
+            {
+                <div class="row search-criteria-div">
+                    <div class="form-group col-sm-4" style="margin-right: 1em;">
+                        @Catalyst.LabelFor(p => p.Name, new { @class = "control-label" })<br />
+                        @Catalyst.EditorFor(p => p.Name, new { @class = "form-control" })
+                        @Catalyst.ValidationMessageFor(p => p.Name)
+                    </div>
+
+                    <div class="form-group col-sm-4" style="margin-right: 1em;">
+                        @Catalyst.LabelFor(p => p.Description, new { @class = "control-label" })<br />
+                        @Catalyst.EditorFor(p => p.Description, new { @class = "form-control" })
+                        @Catalyst.ValidationMessageFor(p => p.Description)
+                    </div>
+
+                    <div class="form-group col-sm-4" style="margin-right: 1em;">
+                        @Catalyst.LabelFor(p => p.ADGroupName, new { @class = "control-label" })<br />
+                        @Catalyst.EditorFor(p => p.ADGroupName, new { @class = "form-control" })
+                        @Catalyst.ValidationMessageFor(p => p.ADGroupName)
+                    </div>
+
+                    <div class="col-sm-3 pull-right text-right" style="padding-top: 2em;">
+                        @Catalyst.Button("Search", new { type = "submit", @class = "btn btn-primary m-b btn-fixed-width-sm", id = "SearchButton" })
+                        @Catalyst.Button("Clear", new { type = "reset", @class = "btn m-b btn-fixed-width-sm", id = "ClearButton" })
+                    </div>
+
+                </div>                  
+            }
+
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="ibox float-e-margins">
+        <div class="ibox-content">
+            @Catalyst.Grid(new DomainGridConfiguration()
+       {
+           ID = "mainDataTable",
+           AjaxUrl = Url.Action(MVC.Admin.SecurityRoleMaintenance.List()),
+           KeyColumnName = "SecurityRoleId",
+           ParametersFormId = "searchParamsForm",
+           DefaultModalDetails = false,
+           EditAction = Url.Action(MVC.Admin.SecurityRoleMaintenance.Edit()),
+           DeleteAction = Url.Action(MVC.Admin.SecurityRoleMaintenance.Delete())
+       }
+                                .AddColumn("", "", ColumnTypes.Select)
+                                .AddColumn("Name", "Name", ColumnTypes.Link,
+                                    new
+                                    {
+                                        RenderUrlToOpen = Url.Action(MVC.Admin.SecurityRoleMaintenance.Edit()),
+                                        RenderUrlToOpenParameter = "SecurityRoleId",
+                                        DefaultSortPosition = 1,
+                                        DefaultSortDirection = SortDirection.Ascending
+                                    }
+                                )
+                                .AddColumn("Description", "Description", ColumnTypes.ReadOnly,
+                                new
+                                {
+                                    DefaultSortPosition = 2,
+                                    DefaultSortDirection = SortDirection.Ascending
+                                })
+                                .AddColumn("ADGroupName", "AD Group Name")
+                                .AddColumn("Active", "Active", ColumnTypes.ReadOnly,
+                                new
+                                {
+                                    DataFormat = ColumnFormats.YesNo,
+                                    CssClass = "text-center"
+                                })
+                                .AddButton(StandardButtons.New)
+                                .AddButton(StandardButtons.Edit)
+                                .AddButton(StandardButtons.Delete)
+                                .AddButton(StandardButtons.SelectAll)
+                                .AddButton(StandardButtons.DeselectAll)
+                            )            
+        </div>
+    </div>
+</div>
+

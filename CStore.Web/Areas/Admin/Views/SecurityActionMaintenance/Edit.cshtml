@@ -1,0 +1,74 @@
+﻿@model CStore.Domain.Domains.Admin.Models.ViewModels.SecurityActionMaintenance.SecurityActionMaintenanceEditViewModel
+
+@{
+    ViewBag.Title = "Create New Security Action";
+    Layout = (!Model.IsModalDialog) ? "~/Views/Shared/_Layout.cshtml" : null;
+    if (Model.SecurityActionId != null && Model.SecurityActionId > 0)
+    {
+        ViewBag.Title = "Edit Security Action";
+    }
+}
+
+@{
+    //Generate unique IDs for the form and ajax wrapper around the form
+    var ticks = DateTime.Now.Ticks.ToString();
+    var formWrapperId = "formWrapper_" + ticks;
+    var formId = "form_" + ticks;
+    //Give the textarea a unique id so we can have multiple tinymce editors operate properly in a nested modal environment
+    var securityActionDescId = "SecurityActionDesc_" + ticks;
+}    
+
+<div class="ibox float-e-margins ajax-form-wrapper" id="@formWrapperId">
+    @using (
+        (Model.IsModalDialog) 
+            ? Ajax.BeginForm(MVC.Admin.SecurityActionMaintenance.Edit(), 
+                            new AjaxOptions { OnSuccess = "Cat.UI.Modal.onAjaxFormPostSuccess(data, this)", HttpMethod = "POST" }, 
+                            new { id = formId })
+            : Html.BeginForm(MVC.Admin.SecurityActionMaintenance.Edit(), FormMethod.Post, new { id="mainForm" }))
+    {
+        <div class="@(Model.IsModalDialog ? "modal-header" : "ibox-title")">
+            @if (Model.IsModalDialog)
+            {
+                <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+            }
+            <h5>@ViewBag.Title</h5>
+        </div>
+        <div class="ibox-content">
+            <div class="@(Model.IsModalDialog ? "modal-body" : "")">
+                @Catalyst.HiddenFor(p => p.SecurityActionId)
+                @Catalyst.HiddenFor(p => p.IsModalDialog)
+                @Catalyst.HiddenFor(p => p.ReturnUrl)
+                @Catalyst.Partial("_ValidationSummaryErrors")
+
+                <div class="col-sm-8">
+                    <div class="form-group">
+                        @Catalyst.LabelFor(p => p.Name, new { @class = "control-label" })
+                        @Catalyst.EditorFor(p => p.Name, new { @class = "form-control" })
+                        @Catalyst.ValidationMessageFor(p => p.Name)
+                    </div>
+
+                    <div class="form-group">
+                        @Catalyst.LabelFor(p => p.Description, new { @class = "control-label" })
+                        @Catalyst.EditorFor(p => p.Description, new { @class = "form-control", id=@securityActionDescId})
+                        @Catalyst.ValidationMessageFor(p => p.Description)
+                    </div>
+                </div>    
+
+                <div class="row"></div> 
+
+                <div class="@(Model.IsModalDialog ? "modal-footer" : "")">
+                    <div class="row form-action-buttons-div">
+                        <div class="col-sm-8 col-sm-offset-2">
+                            @Catalyst.SubmitButton("Save", new { @class = "btn btn-primary m-b btn-fixed-width-md", id="SaveButton", Name="SubmitAction", Value="Save" }) 
+                            @Catalyst.SubmitButton("Save and Exit", new { @class = "btn m-b btn-fixed-width-md", id="SaveAndExitButton", Name="SubmitAction", Value="SaveAndExit" }) 
+                            @Catalyst.Button("Cancel", new { @class = "btn m-b btn-fixed-width-md cancel", id="CancelButton", Name="SubmitAction", Value="Cancel", formnovalidate="formnovalidate", data_dismiss="modal"})
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row"></div> 
+        </div>
+    }
+</div>
+

@@ -1,0 +1,56 @@
+﻿@using CStore.Domain.Services.State
+<!DOCTYPE html>
+<html>
+    <head>
+        @Catalyst.Partial("_Head")
+
+        <!-- Add local styles, mostly for plugins css file -->
+        @if (IsSectionDefined("Styles"))
+        {
+            @RenderSection("Styles", required: false)
+        }
+    </head>
+    <body class="fixed-sidebar fixed-nav">
+        <!-- Wrapper-->
+        <!-- PageClass give you ability to specify custom style for specific view based on action -->
+        <div id="wrapper" class="@Html.PageClass()">
+
+            <!-- Navigation -->
+            @Catalyst.Partial("_Navigation")
+
+            <!-- Page wraper -->
+            <div id="page-wrapper" class="gray-bg @ViewBag.SpecialClass">
+
+                @if (DomainApplicationService.Instance.DisplayTestSystemMessage)
+                {
+                    <div class="test-system-message">This is the test system!</div>
+                }
+
+                <!-- Top Navbar -->
+                @Catalyst.Partial("_TopNavbar")
+
+                <!-- Main view  -->
+                <div class="wrapper wrapper-content">
+                    @RenderBody()
+
+                    <!--Spacer-->
+                    <div class="row" style="margin: 10px 0;">&nbsp;<br/></div>
+                </div>
+
+
+                <!-- Footer -->
+                @Catalyst.Partial("_Footer")
+
+            </div>
+            <!-- End page wrapper-->
+
+        </div>
+        <!-- End wrapper-->
+
+        <!-- Handler for local scripts -->
+        @if (IsSectionDefined("Scripts"))
+        {
+            @RenderSection("Scripts", required: false)
+        }
+    </body>
+</html>

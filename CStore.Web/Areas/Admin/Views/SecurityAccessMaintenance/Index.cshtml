@@ -1,0 +1,126 @@
+﻿@using CStore.Domain.Domains.Admin.Models.ViewModels.SecurityAccessMaintenance
+@model CStore.Domain.Domains.Admin.Models.ViewModels.SecurityAccessMaintenance.SecurityAccessMaintenanceIndexViewModel
+@{
+    ViewBag.Title = "Security Access Maintenance";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-sm-6">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>Security Access Maintenance</h5>
+                <div class="ibox-tools">
+                    <a class="collapse-link">
+                        <i class="fa fa-chevron-up"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="ibox-content" style="overflow: auto;">
+                <h5>Securables</h5>
+
+                @Catalyst.Partial("_ValidationSummaryErrors")
+
+                <div id="security-access-tree-div"></div>
+                
+                <!--Spacer-->
+                <div class="row">&nbsp;</div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-sm-6">
+        @Catalyst.Partial("_EffectivePermissionsPartial")
+    </div>
+</div>
+
+@section Scripts
+{
+    <script>
+        $(document).ready(function() {
+            //
+            //Initialize the JS Tree control
+            //
+            $('#security-access-tree-div').jstree({
+                    "plugins": ["search", "wholerow"],
+                    'core': {
+                        'multiple': false,
+                        'data': {
+                            'url': function(node) {
+                                var url = "@Url.Action(MVC.Admin.SecurityAccessMaintenance.GetSecurableTree())";
+                                if (node.id != '#') {
+                                    url += "?parentSecuritySecurableId=" + node.id;
+                                }
+
+                                return url;
+
+                            },
+                            'data': function(node) {
+                                return { 'id': node.id };
+                            }
+                        }
+                    }
+                });
+
+            //
+            //Triggered after the root node is loaded for the first time
+            //
+            $('#security-access-tree-div').on('loaded.jstree', function(e, data) {
+                //console.log("JS Tree Loaded!");
+                //if (data) {
+                //    console.log(data);
+                //}
+
+                var securitySecurableId = $("#security-access-tree-div").jstree("get_selected");
+                if (securitySecurableId) {
+                    refreshPermissionPanels(securitySecurableId);    
+                }
+            });
+            
+            //
+            //When a node in the tree is selected, retrieve its data
+            //
+            $('#security-access-tree-div').on('changed.jstree', function (e, data) {
+                //console.log("Selected Node: " + $("#security-access-tree-div").jstree("get_selected"));
+                if (data && data.node) {
+                    //console.log("=> selected node: " + data.node.id);
+                    refreshPermissionPanels(data.node.id);
+                }
+            });
+
+            //
+            //Refresh the panels for the effective permissions and permission editing
+            //
+            function refreshPermissionPanels(securitySecurableId) {
+                //
+                //Select all the roles in the selected roles select list so they can be saved
+                //
+                $('#SelectedRoleIds option').prop('selected', true);
+                
+                //
+                //Get the selected roles and submit to the method to refresh data
+                //
+                var selectedRoleIds = new Array();
+                $('#SelectedRoleIds :selected').each(function (i, selected) {
+                    selectedRoleIds.push($(selected).val());
+                });
+
+                //
+                //Refresh the effective permissions div showing all of the selected roles and their effective permissions
+                //
+                url = "@Url.Action(MVC.Admin.SecurityAccessMaintenance.GetEffectivePermissionsForSecurable())";
+                var data = {
+                    "securitySecurableId": securitySecurableId,
+                    "selectedRoleIds": selectedRoleIds
+                };
+                $("#EffectivePermissionsDiv").load(url, data, function (response, status, xhr) {
+                    if (status == "error") {
+                        alert("Error refreshing the effective permissions. " + xhr.status + " " + xhr.statusText);
+                    } else {
+                        Cat.wireUpFormControls("#EffectivePermissionsDiv");
+                    }
+                });
+            }
+        });
+    </script>
+}

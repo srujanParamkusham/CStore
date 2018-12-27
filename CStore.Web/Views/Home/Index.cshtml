@@ -1,0 +1,114 @@
+﻿@model CStore.Domain.Models.ViewModels.Home.HomeViewModel
+@using NodaTime
+@using CStore.Domain.Services.State
+@{
+    ViewBag.Title = "Home";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <h5>Announcements</h5>
+        </div>
+        <div class="ibox-content">
+            @foreach (var announcement in Model.AppAnnouncements)
+            {
+                <div class="announcement-container-div">
+                    <div class="announcement-title-div">                        
+                        @Html.Raw(String.Format("{0:d}", (announcement.EffectiveDate ?? announcement.CreateDate)))
+                        &nbsp; - &nbsp; 
+                        @Html.Raw(announcement.Subject)
+                    </div>
+                    <div class="announcement-text-div">                                                
+                        @Html.Raw(announcement.AnnouncementText)
+                    </div>
+                </div>
+            }
+            @if (Model.AppAnnouncements.Count() <= 0) {
+                <div class="announcement-container-div">
+                    There are no announcements at this time.
+                </div>                
+            }
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <h5>Home</h5>
+        </div>
+        <div class="ibox-content">
+            <p>
+                Welcome to the home screen for your application. Add whatever content you require on your home screen here.
+                <br/><br/>
+                Some examples of linking to other pages and running a report are below.
+                <ul>
+                    <li>@Catalyst.ActionLink("Example Controller", MVC.Example.Example.Index())</li>
+                    <li>@Catalyst.ActionLink("Run Sample Report", MVC.Reports.SecurityUserLoginHistoryReport.Index()) -
+                        <span style="color:red;">Note: FOR REPORTS TO WORK IN AZURE, YOU HAVE TO BE ON BASIC OR STANDARD HOSTING. FREE AND SHARED WILL NOT RUN REPORTS!</span>
+                    </li>
+                </ul>
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <h5>TimeZone Info</h5>
+        </div>
+        <div class="ibox-content">
+            <p>
+                @if (Request.Cookies.AllKeys.Contains("timezone"))
+                {
+                    String timeZoneName = Request.Cookies["timezone"].Value;
+                    var tzdb = DateTimeZoneProviders.Tzdb;
+                    var timeZone = tzdb[timeZoneName];
+                    var currentTimeUTC = DateTime.UtcNow;
+                    var instant = Instant.FromDateTimeUtc(currentTimeUTC);
+                    <p>Timezone is:
+                        @timeZoneName
+                    </p>
+                    <p>Offset is:
+                        @timeZone.GetUtcOffset(instant)
+                    </p>
+                    <p>UTC Time is:
+                        @currentTimeUTC.ToShortDateString()
+                        @currentTimeUTC.ToShortTimeString()
+                    </p>
+                    <p>Local Time is:
+                        @instant.InZone(timeZone).ToDateTimeUnspecified().ToShortDateString()
+                        @instant.InZone(timeZone).ToDateTimeUnspecified().ToShortTimeString()
+                    </p>            
+                }
+            </p>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <h5>Authentication Info</h5>
+        </div>
+        <div class="ibox-content">
+            <p>
+                @if (Request.IsAuthenticated)
+                {
+                    <p>
+                        HttpContext User is: @HttpContext.Current.User.Identity.Name
+                        <br/>
+                        Domain Session service User is: 
+                        @DomainSessionService.Instance.CurrentUser.FirstName
+                        @DomainSessionService.Instance.CurrentUser.LastName
+                        (@DomainSessionService.Instance.CurrentUser.UserName)
+                    </p>            
+                }
+            </p>
+        </div>
+    </div>
+</div>
+

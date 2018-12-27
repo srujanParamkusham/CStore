@@ -1,0 +1,86 @@
+﻿@model CStore.Domain.Domains.Reports.Models.ViewModels.SecurityUserLoginHistoryReport.SecurityUserLoginHistoryReportParamsViewModel
+
+@{
+    ViewBag.Title = "Login History Report";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="ibox float-e-margins ajax-form-wrapper" id="reportFormWrapper">
+    @using (Html.BeginForm(MVC.Reports.SecurityUserLoginHistoryReport.Index(), FormMethod.Post, new { id = "mainForm" }))
+    {
+        <div class="ibox-title">
+            <h5>@ViewBag.Title</h5>
+        </div>
+        <div class="ibox-content">
+            <div>                
+                @Catalyst.Partial("_ValidationSummaryErrors")
+
+                <div class="col-sm-6 col-sm-offset-3">
+                    <div class="form-group">
+                        @Catalyst.LabelFor(p => p.StartDate, new {@class = "control-label"})
+                        <div class="input-group date datepicker">
+                            @Catalyst.TextBoxFor(p => p.StartDate, new {@class = "form-control"})
+                            <span class="input-group-addon">
+                                <span class="fa fa-calendar">
+                                </span>
+                            </span>
+                        </div>
+                        @Catalyst.ValidationMessageFor(model => model.StartDate)
+                    </div>
+
+                    <div class="form-group">
+                        @Catalyst.LabelFor(p => p.EndDate, new {@class = "control-label"})
+                        <div class="input-group date datepicker">
+                            @Catalyst.TextBoxFor(p => p.EndDate, new {@class = "form-control"})
+                            <span class="input-group-addon">
+                                <span class="fa fa-calendar">
+                                </span>
+                            </span>
+                        </div>
+                        @Catalyst.ValidationMessageFor(model => model.EndDate)
+                    </div>
+
+                    <div class="form-group">
+                        @Catalyst.LabelFor(p => p.SecurityUserId, new {@class = "control-label"})
+                        @Catalyst.SelectListFor(p => p.SecurityUserId, new DomainSelectListConfiguration()
+                        {
+                            PlaceHolder = "Optional - Select a User",
+                            HTMLAttributes = new {@class = "form-control"},
+                            AjaxListUrl = Url.Action(MVC.SelectList.SecurityUserSelectList.List()),
+                            AjaxGetDescriptionForSelectedValueUrl = Url.Action(MVC.SelectList.SecurityUserSelectList.Get())
+                            //MinimumInputLength = 1,
+                            //AjaxPageSize = 15
+                        })
+                        @Catalyst.ValidationMessageFor(p => p.SecurityUserId)
+                    </div>
+
+                    <div class="form-group">
+                        @Catalyst.LabelFor(p => p.OutputFormat, new {@class = "control-label"})
+                        @Catalyst.SelectListFor(p => p.OutputFormat, new DomainSelectListConfiguration()
+                        {
+                            SelectListItems = Model.OutputFormatsSelectList,
+                            HTMLAttributes = new {@class = "form-control"},
+                            HideSearchBox = true,
+                            AllowClear = false
+                        })
+                        @Catalyst.ValidationMessageFor(p => p.OutputFormat)
+                    </div>
+                    <div>
+                        <div class="row form-action-buttons-div">
+                            <div class="col-sm-8 col-sm-offset-2">
+                                @Catalyst.SubmitButton("Run Report", new {@class = "btn btn-primary m-b btn-fixed-width-md", id = "SaveButton", Name = "SubmitAction", Value = "RunReport"})
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row"></div>
+        </div>
+    }
+</div>
+
+<script> 
+    $(document).ready(function () {
+    });
+</script>

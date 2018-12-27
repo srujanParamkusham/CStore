@@ -1,0 +1,31 @@
+﻿@using Catalyst.MVC.Infrastructure.HTMLHelpers.Extensions
+@model CStore.Domain.Domains.Example.Models.ViewModels.Example.ExampleIndexViewModel
+@{
+    ViewBag.Title = "Example Page";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <h5>@ViewBag.Title</h5>
+        </div>
+        <div class="ibox-content">
+            <p>
+                This is an example page. Delete me in an actual implementation.
+                <br/><br/>
+                @Catalyst.ActionLink("Run Sample Report.", MVC.Reports.SecurityUserLoginHistoryReport.Index())
+                <br/>
+                <span style="color:red;">Note: FOR REPORTS TO WORK IN AZURE, YOU HAVE TO BE ON BASIC OR STANDARD HOSTING. FREE AND SHARED WILL NOT RUN REPORTS!</span>
+            </p>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+        });
+    </script>
+}

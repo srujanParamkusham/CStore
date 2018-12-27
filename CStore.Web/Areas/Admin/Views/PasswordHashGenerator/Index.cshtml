@@ -1,0 +1,35 @@
+﻿@model CStore.Domain.Domains.Admin.Models.ViewModels.PasswordHashGenerator.PasswordHashGeneratorViewModel
+@{
+    ViewBag.Title = "Password Hash Generator";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+                <h5>@ViewBag.Title</h5>
+        </div>
+        <div class="ibox-content">
+            <p>
+                This is a simple utility which will take a plaintext password and generate both a salt and a hashed version of that password with 
+                the salt applied.
+                <br/><br/>
+                The password will be hashed using the SHA256 algorithm and then base 64 encoded.
+            </p>
+
+            <div id="ajaxFormWrapper" class="col-sm-offset-3 col-sm-6">
+                @Catalyst.Partial("_PasswordHashForm")
+            </div>
+
+            <div class="row">&nbsp;</div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+        });
+    </script>
+}

@@ -1,0 +1,33 @@
+﻿    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>Catalyst Template | @ViewBag.Title</title>
+    
+    <link rel="icon" href="~/images/favicon.ico">
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&lang=en' rel='stylesheet' type='text/css'>
+
+    <!--Hide the html element until the whole page loads, to avoid the flash of unstyled content issue (FOUC)-->
+    <script>
+        var htmlTag = document.getElementsByTagName("html")[0];
+        htmlTag.style.visibility = "hidden";
+    </script>
+    <!-- Add jQuery Style direct - used for jQGrid plugin -->
+    <link href="@Url.Content("~/Scripts/plugins/jquery-ui/jquery-ui.css")" rel="stylesheet" type="text/css" />
+
+    
+    @Catalyst.Partial("_Scripts")
+
+    <!-- Primary Inspinia style -->     
+    @Styles.Render("~/bundles/css/fonts")  
+    @Styles.Render("~/bundles/css/catalystStyles")
+    @Styles.Render("~/bundles/css/bootstrapInspinia")
+    @Styles.Render("~/bundles/css/main")
+    @Styles.Render("~/bundles/css/jqueryuiStyles")
+    @Styles.Render("~/plugins/css/toastrStyles")
+    @Styles.Render("~/plugins/css/bootstrap-datetimepickerStyles")
+    @Styles.Render("~/plugins/css/dataTablesStyles")
+    @Styles.Render("~/plugins/css/jsTree")
+    @Styles.Render("~/plugins/css/select2")
+    @Styles.Render("~/plugins/css/select2-bootstrap")

@@ -1,0 +1,38 @@
+﻿@using Catalyst.MVC.Domain.HTMLHelpers.Menu
+@using CStore.Domain.Services.State
+
+<nav class="navbar-default navbar-static-side" role="navigation" id="navbar-left">
+    <div class="sidebar-collapse">
+        <ul class="nav metis-side-menu" id="side-menu">
+            @Catalyst.LeftMenu("ROOT", true, "CStore.Web.leftnavigation")
+            <!-- Top Menu  -->
+            <li role="separator" class="divider topMenuSeparator">&nbsp;</li>
+            @Catalyst.TopMenu("TOPMENU", true, "CStore.Web.topnavigation")
+            @if (Request.IsAuthenticated && DomainSessionService.Instance.CurrentUser != null)
+            {
+                <li class="">
+                    <a href="#">
+                        <i class="fa fa-user"></i>
+                        @DomainSessionService.Instance.CurrentUser.FirstName
+                        @DomainSessionService.Instance.CurrentUser.LastName
+                        (@DomainSessionService.Instance.CurrentUser.UserName)
+                        <span class="fa arrow"></span>
+                    </a>
+
+                    <ul class="nav nav-second-level collapse" aria-expanded="false">
+                        <li>
+                            <a href="@Url.Action(MVC.Authentication.Password.Change())">
+                                <i class="fa fa-user-secret"></i> Change Password
+                            </a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action(MVC.Authentication.Logout.Index())">
+                                <i class="fa fa-sign-out"></i> Log out
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            }
+        </ul>
+    </div>
+</nav>

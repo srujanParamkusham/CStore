@@ -1,0 +1,21 @@
+﻿@{
+    ViewBag.Title = "Not Authorized";
+    Layout = "~/Views/Shared/_LayoutPublic.cshtml";
+}
+
+
+<div class="middle-box text-center animated fadeInDown">
+    <h3 class="font-bold">Access Denied</h3>
+
+    <div class="alert alert-danger text-center">
+        <span>You are not allowed to access this page.</span>
+        @if (!string.IsNullOrEmpty(ViewBag.Message))
+        {
+            <br />
+            @Html.Raw(ViewBag.Message)
+        }
+
+        <br /><a href="/" class="">Return Home</a>
+        or <a href="@Url.Action(MVC.Authentication.Logout.Index())">Logout</a>
+    </div>
+</div>

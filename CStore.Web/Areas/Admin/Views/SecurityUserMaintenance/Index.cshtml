@@ -1,0 +1,160 @@
+﻿@model CStore.Domain.Domains.Admin.Models.ViewModels.SecurityUserMaintenance.SecurityUserMaintenanceListViewModel
+@{
+    ViewBag.Title = "User Maintenance";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <h5>User Maintenance</h5>
+            <div class="ibox-tools">
+                <a class="collapse-link">
+                    <i class="fa fa-chevron-up"></i>
+                </a>
+            </div>
+        </div>
+        <div class="ibox-content">
+            @Catalyst.Partial("_ValidationSummaryErrors")
+
+            @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "searchParamsForm", @class = "form-horizontal" }))
+            {
+                <div class="row search-criteria-div">
+                    <div class="form-group col-sm-3" style="margin-right: 1em;">
+                        @Catalyst.LabelFor(u => u.UserName, new {@class = "control-label"})<br/>
+                        @Catalyst.EditorFor(u => u.UserName, new {@class = "form-control"})
+                        @Catalyst.ValidationMessageFor(model => model.UserName)
+                    </div>
+
+                    <div class="form-group col-sm-3" style="margin-right: 1em;">
+                        @Catalyst.LabelFor(u => u.FirstName, new {@class = "control-label"})<br/>
+                        @Catalyst.EditorFor(u => u.FirstName, new {@class = "form-control"})
+                        @Catalyst.ValidationMessageFor(model => model.FirstName)
+                    </div>
+
+                    <div class="form-group col-sm-3" style="margin-right: 1em;">
+                        @Catalyst.LabelFor(u => u.LastName, new {@class = "control-label"})<br/>
+                        @Catalyst.EditorFor(u => u.LastName, new {@class = "form-control"})
+                        @Catalyst.ValidationMessageFor(model => model.LastName)
+                    </div>
+
+                    <div class="form-group col-sm-3" style="margin-right: 1em;">
+                        @Catalyst.LabelFor(u => u.SecurityRoleIds, new {@class = "control-label"})<br/>
+                        @Catalyst.SelectListFor(p => p.SecurityRoleIds, new DomainSelectListConfiguration()
+                        {
+                            HTMLAttributes = new {@class = "form-control"},
+                            AjaxListUrl = Url.Action(MVC.SelectList.SecurityRoleSelectList.List()),
+                            AjaxGetDescriptionForSelectedValueUrl = Url.Action(MVC.SelectList.SecurityRoleSelectList.Get()),
+                            Multiple = true
+                        })
+                        @Catalyst.ValidationMessageFor(model => model.SecurityRoleIds)
+                    </div>
+
+                    <div class="row"></div>
+
+                    <div class="form-group col-sm-6" style="margin-right: 1em;">
+                        @Catalyst.LabelFor(u => u.LastLoginDateStart, new {@class = "control-label"})<br/>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="input-group date datepicker">
+                                    @Catalyst.TextBoxFor(u => u.LastLoginDateStart, new {@class = "form-control ", @placeholder = "Start Date"})
+                                    <span class="input-group-addon">
+                                        <span class="fa fa-calendar">
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="input-group date datepicker">
+                                    @Catalyst.TextBoxFor(u => u.LastLoginDateEnd, new {@class = "form-control", @placeholder = "End Date"})
+                                    <span class="input-group-addon">
+                                        <span class="fa fa-calendar">
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        @Catalyst.ValidationMessageFor(model => model.LastLoginDateStart)
+                    </div>
+
+                    <div class="form-group col-sm-3" style="margin-right: 1em;">
+                        @Catalyst.LabelFor(u => u.SystemAdmin, new {@class = "control-label"})<br/>
+                        @Catalyst.EditorFor(u => u.SystemAdmin, new {@class = "form-control"})
+                        @Catalyst.ValidationMessageFor(model => model.SystemAdmin)
+                    </div>
+
+                    <div class="form-group col-sm-3" style="margin-right: 1em;">
+                        @Catalyst.LabelFor(u => u.Active, new {@class = "control-label"})<br/>
+                        @Catalyst.EditorFor(u => u.Active, new {@class = "form-control"})
+                        @Catalyst.ValidationMessageFor(model => model.Active)
+                    </div>
+
+                    <div class="col-sm-3 pull-right text-right" style="padding-top: 2em;">
+                        @Catalyst.Button("Search", new { type = "submit", @class = "btn btn-primary m-b btn-fixed-width-sm", id = "SearchButton" })
+                        @Catalyst.Button("Clear", new { type = "reset", @class = "btn m-b btn-fixed-width-sm", id = "ClearButton" })
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="ibox float-e-margins">
+        <div class="ibox-content">
+
+            @Catalyst.Grid(new DomainGridConfiguration()
+       {
+           ID = "mainDataTable",
+           AjaxUrl = Url.Action(MVC.Admin.SecurityUserMaintenance.List()),
+           KeyColumnName = "SecurityUserId",
+           ParametersFormId = "searchParamsForm",
+           DefaultModalDetails = false,
+           EditAction = Url.Action(MVC.Admin.SecurityUserMaintenance.Edit()),
+           DeleteAction = Url.Action(MVC.Admin.SecurityUserMaintenance.Delete())
+       }
+                                .AddColumn("", "", ColumnTypes.Select)
+                                .AddColumn("SecurityUserId", "ID", ColumnTypes.Link,
+                                    new
+                                    {
+                                        RenderUrlToOpen = Url.Action(MVC.Admin.SecurityUserMaintenance.Edit()),
+                                        RenderUrlToOpenParameter = "SecurityUserId"
+                                    }
+                                )
+                                .AddColumn("UserName", "User Name", ColumnTypes.ReadOnly,
+                                    new
+                                    {
+                                        DefaultSortPosition = 1,
+                                        DefaultSortDirection = SortDirection.Ascending
+                                    })
+                                .AddColumn("FirstName", "First Name", ColumnTypes.ReadOnly,
+                                    new
+                                    {
+                                        DefaultSortPosition = 2,
+                                        DefaultSortDirection = SortDirection.Ascending
+                                    }
+                                )
+                                .AddColumn("LastName", "Last Name", ColumnTypes.ReadOnly,
+                                    new
+                                    {
+                                        DefaultSortPosition = 3,
+                                        DefaultSortDirection = SortDirection.Ascending
+                                    }
+                                )
+                                .AddColumn("EmailAddress", "Email")
+                                .AddColumn("LastLoginDate", "Last Login", ColumnTypes.ReadOnly,
+                                new
+                                {
+                                    DataFormat = ColumnFormats.DateTime,
+                                    CssClass = "text-center"
+                                })
+                                .AddColumn("AssignedRoles", "Roles")
+                                .AddButton(StandardButtons.New)
+                                .AddButton(StandardButtons.Edit)
+                                .AddButton(StandardButtons.Delete)
+                                .AddButton(StandardButtons.SelectAll)
+                                .AddButton(StandardButtons.DeselectAll)
+                            )
+        </div>
+    </div>
+</div>

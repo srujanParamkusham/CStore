@@ -1,0 +1,39 @@
+﻿@model CStore.Domain.Domains.Authentication.Models.ViewModels.ForgotPassword.ForgotPasswordViewModel
+
+
+@{
+    ViewBag.Title = "Forgot Password";
+    Layout = "~/Views/Shared/_LayoutPublic.cshtml";  
+}
+
+<div class="middle-box text-center loginscreen animated fadeInDown">
+    <div>
+        <h2>Forgot Your Password?</h2>
+        <p>
+            Enter your email address or username below. You will then be sent instructions on how to reset your password.
+        </p>
+
+        @Catalyst.Partial("_ValidationSummaryErrors")
+
+        @using (Html.BeginForm())
+        {
+            @Catalyst.AntiForgeryToken()
+            <div class="form-group">
+                @Catalyst.LabelFor(p => p.UserNameOrEmail, new { @class = "control-label" })
+                @Catalyst.EditorFor(p => p.UserNameOrEmail, new { @class = "form-control" })
+                @Catalyst.ValidationMessageFor(p => p.UserNameOrEmail)
+            </div>
+            @Catalyst.SubmitButton("Reset My Password", new { @class = "btn btn-primary block full-width m-b", id="ResetPasswordButton" })
+            @Catalyst.ActionLink("Cancel", MVC.Home.Index(), secured: false)
+        }                
+    </div>
+</div>
+
+@section Scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#UserNameOrEmail").focus();
+        });
+    </script>
+}

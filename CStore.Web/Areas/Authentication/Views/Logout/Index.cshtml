@@ -1,0 +1,30 @@
+﻿@{
+    ViewBag.Title = "Logout";
+    Layout = "~/Views/Shared/_LayoutPublic.cshtml";    
+}
+
+<div class="middle-box text-center animated fadeInDown">
+
+    <h2>Logout</h2>
+
+    <div class="alert alert-success text-center">
+        You have been successfully logged out of the system.
+    </div>
+
+    <p class="text-center">    
+        @Catalyst.ActionLink("Click here to return to the home page.", MVC.Home.Index(), secured: false)<br/>
+        (You will be automatically redirected in 5 seconds.)
+    </p>
+
+</div>
+@section Scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var redirectUrl = '@Url.Action(MVC.Home.Index())';
+            setTimeout(function () {
+                location.href = redirectUrl;
+            }, 5000);
+        });
+    </script>
+}

@@ -1,0 +1,321 @@
+﻿@model CStore.Domain.Domains.Admin.Models.ViewModels.SecurityUserMaintenance.SecurityUserMaintenanceEditViewModel
+
+@{
+    ViewBag.Title = "User Maintenance - ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    if (Model.SecurityUserId != null && Model.SecurityUserId > 0)
+    {
+        ViewBag.Title += @Model.UserName;
+    }
+    else
+    {
+        ViewBag.Title += "Create New User";
+    }
+}
+
+<div class="row">
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <h5>@ViewBag.Title</h5>
+        </div>
+        <div class="ibox-content">
+            @Catalyst.Partial("_ValidationSummaryErrors")
+       
+            @using (Html.BeginForm(null, null, FormMethod.Post, new {id = "UserMaintenanceForm"}))
+            {
+                @Catalyst.HiddenFor(p => p.SecurityUserId)
+
+                <ul class="nav nav-tabs">
+                    <li class="active"><a data-toggle="tab" href="#Demographics">Demographics</a></li>
+                    <li><a data-toggle="tab" href="#LoginControls">Login Controls and Restrictions</a></li>
+                    <li><a data-toggle="tab" href="#Password">Password</a></li>
+                    <li><a data-toggle="tab" href="#ActiveDirectory">Active Directory</a></li>
+                    <li><a data-toggle="tab" href="#Other">Other</a></li>
+                    <li><a data-toggle="tab" href="#Roles">Roles</a></li>
+                </ul>
+
+                <div class="tab-content" style="padding: 20px 0; border:1px solid #ddd;">
+                    <div id="Demographics" class="tab-pane fade in active">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                @Catalyst.LabelFor(p => p.UserName, new { @class = "control-label" })
+                                @Catalyst.EditorFor(p => p.UserName, new { @class = "form-control" })
+                                @Catalyst.ValidationMessageFor(p => p.UserName)
+                            </div>
+
+                            <div class="form-group">
+                                @Catalyst.LabelFor(p => p.EmailAddress, new { @class = "control-label" })
+                                @Catalyst.EditorFor(p => p.EmailAddress, new { @class = "form-control" })
+                                @Catalyst.ValidationMessageFor(p => p.EmailAddress)
+                            </div>
+
+                            <div class="form-group">
+                                @Catalyst.LabelFor(p => p.FirstName, new { @class = "control-label" })
+                                @Catalyst.EditorFor(p => p.FirstName, new { @class = "form-control" })
+                                @Catalyst.ValidationMessageFor(p => p.FirstName)
+                            </div>
+
+                            <div class="form-group">
+                                @Catalyst.LabelFor(p => p.LastName, new { @class = "control-label" })
+                                @Catalyst.EditorFor(p => p.LastName, new { @class = "form-control"})
+                                @Catalyst.ValidationMessageFor(p => p.LastName)
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                @Catalyst.LabelFor(p => p.UserType, new { @class = "control-label" })
+                                @Catalyst.AppCodeDetailDropDownListFor(p => p.UserType, "SecurityUser.UserType", new { @class = "form-control" }, true)
+                                @Catalyst.ValidationMessageFor(p => p.UserType)
+                            </div>
+
+                            <div class="form-group">
+                                @Catalyst.LabelFor(p => p.ExternalId, new { @class = "control-label" })
+                                @Catalyst.EditorFor(p => p.ExternalId, new { @class = "form-control" })
+                                @Catalyst.ValidationMessageFor(p => p.ExternalId)
+                            </div>
+
+                            <div class="form-group">
+                                @Catalyst.LabelFor(p => p.TimeZone, new { @class = "control-label" })
+                                @Catalyst.AppCodeDetailDropDownListFor(p => p.TimeZone, "TimeZone", new { @class = "form-control" }, true)
+                                @Catalyst.ValidationMessageFor(p => p.TimeZone)
+                            </div>
+
+                            <div class="form-group">
+                                @Catalyst.LabelFor(p => p.Locale, new { @class = "control-label" })
+                                @Catalyst.AppCodeDetailDropDownListFor(p => p.Locale, "Locale", new { @class = "form-control" }, true)
+                                @Catalyst.ValidationMessageFor(p => p.Locale)
+                            </div>                            
+                        </div>
+                    </div>
+
+                    <div id="LoginControls" class="tab-pane fade">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                @Catalyst.EditorFor(p => p.AccountActivated, new { @class = "form-control" })
+                                @Catalyst.LabelFor(p => p.AccountActivated, new { @class = "control-label" })
+                                @Catalyst.ValidationMessageFor(p => p.AccountActivated)
+                            </div>
+
+                            <div class="form-group">
+                                @Catalyst.LabelFor(p => p.AuthenticationMethod, new { @class = "control-label" })
+                                @Catalyst.AppCodeDetailDropDownListFor(p => p.AuthenticationMethod, "SecurityUser.AuthenticationMethod", new { @class = "form-control" }, true)
+                                @Catalyst.ValidationMessageFor(p => p.AuthenticationMethod)
+                            </div>
+
+                            <div class="form-group">
+                                @Catalyst.LabelFor(p => p.AccountExpirationDate, new { @class = "control-label" })
+                                <div class="input-group date datetimepicker">
+                                    @Catalyst.TextBoxFor(p => p.AccountExpirationDate, new { @class = "form-control" })
+                                    <span class="input-group-addon">
+                                        <span class="fa fa-calendar">
+                                        </span>
+                                    </span>
+                                </div>
+                                @Catalyst.ValidationMessageFor(p => p.AccountExpirationDate)
+                            </div>
+
+                            <div class="form-group">
+                                @Catalyst.EditorFor(p => p.SystemAdmin, new { @class = "form-control" })
+                                @Catalyst.LabelFor(p => p.SystemAdmin, new { @class = "control-label" })
+                                @Catalyst.ValidationMessageFor(p => p.SystemAdmin)
+                            </div>
+
+                            <div class="form-group">
+                                @Catalyst.EditorFor(p => p.Active, new { @class = "form-control" })
+                                @Catalyst.LabelFor(p => p.Active, new { @class = "control-label" })
+                                @Catalyst.ValidationMessageFor(p => p.Active)
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                @Catalyst.EditorFor(p => p.AccountLocked, new { @class = "form-control" })
+                                @Catalyst.LabelFor(p => p.AccountLocked, new { @class = "control-label" })
+                                @Catalyst.ValidationMessageFor(p => p.AccountLocked)
+                            </div>
+
+                            <div class="form-group">
+                                @Catalyst.LabelFor(p => p.AccountLockedDate, new { @class = "control-label" })
+                                @Catalyst.TextBoxFor(p => p.AccountLockedDate, new { @class = "form-control", disabled="disabled" })
+                                @Catalyst.ValidationMessageFor(p => p.AccountLockedDate)
+                            </div>
+
+                            <div class="form-group">
+                                @Catalyst.LabelFor(p => p.NumConsecutiveFailedLogins, new { @class = "control-label" })
+                                @Catalyst.TextBoxFor(p => p.NumConsecutiveFailedLogins, new { @class = "form-control", disabled="disabled" })
+                                @Catalyst.ValidationMessageFor(p => p.NumConsecutiveFailedLogins)
+                            </div>                
+                        </div>
+                    </div>
+
+                    <div id="Password" class="tab-pane fade">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                @Catalyst.LabelFor(p => p.PasswordLastChangedDate, new { @class = "control-label" })
+                                @Catalyst.TextBoxFor(p => p.PasswordLastChangedDate, new { @class = "form-control", disabled="disabled" })
+                                @Catalyst.ValidationMessageFor(p => p.PasswordLastChangedDate)
+                            </div>
+
+                            <div class="form-group">
+                                @Catalyst.LabelFor(p => p.PasswordExpirationDate, new { @class = "control-label" })
+                                <div class="input-group date datetimepicker">
+                                    @Catalyst.TextBoxFor(p => p.PasswordExpirationDate, new { @class = "form-control" })
+                                    <span class="input-group-addon">
+                                        <span class="fa fa-calendar">
+                                        </span>
+                                    </span>
+                                </div>
+                                @Catalyst.ValidationMessageFor(p => p.PasswordExpirationDate)
+                            </div>
+
+                            <div class="form-group">
+                                @Catalyst.EditorFor(p => p.PasswordNeverExpires, new { @class = "form-control" })
+                                @Catalyst.LabelFor(p => p.PasswordNeverExpires, new { @class = "control-label" })
+                                @Catalyst.ValidationMessageFor(p => p.PasswordNeverExpires)
+                            </div>
+
+                            <div class="form-group">
+                                @Catalyst.EditorFor(p => p.UserCannotChangePassword, new { @class = "form-control" })
+                                @Catalyst.LabelFor(p => p.UserCannotChangePassword, new { @class = "control-label" })
+                                @Catalyst.ValidationMessageFor(p => p.UserCannotChangePassword)
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                @Catalyst.LabelFor(p => p.NewPassword, new { @class = "control-label" })
+                                @Catalyst.EditorFor(p => p.NewPassword, new { @class = "form-control", autocomplete="off" })
+                                @Catalyst.ValidationMessageFor(p => p.NewPassword)
+                            </div>
+
+                            <div class="form-group">
+                                @Catalyst.LabelFor(p => p.NewPasswordConfirm, new { @class = "control-label" })
+                                @Catalyst.EditorFor(p => p.NewPasswordConfirm, new { @class = "form-control", autocomplete="off" })
+                                @Catalyst.ValidationMessageFor(p => p.NewPasswordConfirm)
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="ActiveDirectory" class="tab-pane fade">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                @Catalyst.LabelFor(p => p.ActiveDirectoryDn, new { @class = "control-label" })
+                                @Catalyst.TextBoxFor(p => p.ActiveDirectoryDn, new { @class = "form-control", disabled="disabled" })
+                                @Catalyst.ValidationMessageFor(p => p.ActiveDirectoryDn)
+                            </div>
+
+                            <div class="form-group">
+                                @Catalyst.LabelFor(p => p.ActiveDirectoryGuid, new { @class = "control-label" })
+                                @Catalyst.TextBoxFor(p => p.ActiveDirectoryGuid, new { @class = "form-control", disabled="disabled" })
+                                @Catalyst.ValidationMessageFor(p => p.ActiveDirectoryGuid)
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="Other" class="tab-pane fade">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                @Catalyst.LabelFor(p => p.LastLoginDate, new { @class = "control-label" })
+                                @Catalyst.TextBoxFor(p => p.LastLoginDate, new { @class = "form-control", disabled="disabled" })
+                                @Catalyst.ValidationMessageFor(p => p.LastLoginDate)
+                            </div>
+
+                            <div class="form-group">
+                                @Catalyst.LabelFor(p => p.CreateDate, new { @class = "control-label" })
+                                @Catalyst.TextBoxFor(p => p.CreateDate, new { @class = "form-control", @disabled="disabled" })
+                                @Catalyst.ValidationMessageFor(p => p.CreateDate)
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="Roles" class="tab-pane fade">
+                        <div class="col-sm-5">
+                            <h5>Available Roles</h5>
+                            @Html.DropDownList("AvailableRoleIds", Model.AvailableRolesSelectList, new { @class = "form-control", multiple = "multiple",  size = 15 })
+                        </div>
+
+                        <div class="col-sm-2" style="padding-top: 50px;">
+                            @Catalyst.Button("Add >", new {@id="RoleAddButton", @class="btn btn-fixed-width-sm"})
+                            <br/>
+                            @Catalyst.Button("< Remove", new {@id="RoleRemoveButton", @class="btn btn-fixed-width-sm"})
+                        </div>
+
+                        <div class="col-sm-5">
+                            <h5>Assigned Roles</h5>
+                            @Catalyst.DropDownListFor(m => m.AssignedRoleIds, Model.AssignedRolesSelectList, new { @class = "form-control", multiple = "multiple",  size = 15 })
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="row form-action-buttons-div" style="padding: 10px 0;">
+                        <div class="col-sm-8 col-sm-offset-2">
+                            @Catalyst.SubmitButton("Save", new { @class = "btn btn-primary m-b btn-fixed-width-md", id="SaveButton", Name="SubmitAction", Value="Save" }) 
+                            @Catalyst.SubmitButton("Save and Exit", new { @class = "btn m-b btn-fixed-width-md", id="SaveAndExitButton", Name="SubmitAction", Value="SaveAndExit" }) 
+                            @Catalyst.Button("Cancel", new { @class = "btn m-b btn-fixed-width-md", id="CancelButton", Name="SubmitAction", Value="Cancel", formnovalidate="formnovalidate"})
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#UserName").focus();
+            
+            //When the user selects a new category to filter by, requery the images
+            $("#AuthenticationMethod").change(function () {
+                setEnabledStateOfPasswordFields();
+            });
+                        
+            //
+            //Disable the password fields when the auth method is active directory
+            //
+            function setEnabledStateOfPasswordFields() {
+                var authMethod = $('#AuthenticationMethod').val();
+                if (authMethod == "ActiveDirectory") {
+                    $("#NewPassword").attr("disabled", "disabled");
+                    $("#NewPasswordConfirm").attr("disabled", "disabled");
+                    $("#PasswordExpirationDate").attr("disabled", "disabled");
+                    $("#PasswordNeverExpires").attr("disabled", "disabled");
+                    $("#UserCannotChangePassword").attr("disabled", "disabled");
+                } else {
+                    $("#NewPassword").removeAttr("disabled");
+                    $("#NewPasswordConfirm").removeAttr("disabled");
+                    $("#PasswordExpirationDate").removeAttr("disabled");
+                    $("#PasswordNeverExpires").removeAttr("disabled");
+                    $("#UserCannotChangePassword").removeAttr("disabled");
+                }
+            }
+            
+            //
+            //Script to move roles between available and assigned
+            //
+            $('#RoleAddButton').click(function () {
+                return !$('#AvailableRoleIds option:selected').remove().appendTo('#AssignedRoleIds');
+            });
+            $('#RoleRemoveButton').click(function () {
+                return !$('#AssignedRoleIds option:selected').remove().appendTo('#AvailableRoleIds');
+            });
+
+            //
+            //Select all of the Assigned Role IDs on submit so that they get submitted and saved.
+            //Otherwise the array of role ids will be empty and will not properly save on the server.
+            //
+            $('#UserMaintenanceForm').on("submit", function (event) {
+                console.log("Form submitted");
+                $('#AssignedRoleIds option').prop('selected', true);
+            });
+        });
+    </script>
+}

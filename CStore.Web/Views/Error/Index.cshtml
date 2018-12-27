@@ -1,0 +1,20 @@
+﻿@{
+    ViewBag.Title = "Error Message";
+    Layout = "~/Views/Shared/_LayoutPublic.cshtml";
+}
+
+
+<div class="middle-box text-center animated fadeInDown">
+    <h3 class="font-bold">Internal Server Error</h3>
+
+    <div class="alert alert-danger text-center">
+        <span>An error occurred while processing your request</span>
+        @if (!string.IsNullOrEmpty(ViewBag.Message))
+        {
+            <br />
+            @Html.Raw(ViewBag.Message)
+        }
+
+        <br /><a href="/" class="">Return Home</a>
+    </div>
+</div>

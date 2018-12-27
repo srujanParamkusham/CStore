@@ -1,0 +1,50 @@
+﻿@model CStore.Domain.Domains.Authentication.Models.ViewModels.Password.ExpiredPasswordViewModel
+
+
+@{
+    ViewBag.Title = "Your Password Has Expired";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <h5>@ViewBag.Title</h5>
+        </div>
+        <div class="ibox-content">
+            <p>
+                Your password has expired and must be changed. Please enter your new password below.
+            </p>
+
+            @Catalyst.Partial("_ValidationSummaryErrors")
+
+            <div class="row">
+                <div class="col-sm-offset-3 col-sm-6">
+                    @using (Html.BeginForm(MVC.Authentication.Password.Expired()))
+                    {
+                        @Catalyst.HiddenFor(p => p.ReturnUrl)
+                        <div class="form-group">
+                            @Catalyst.LabelFor(p => p.NewPassword, new { @class = "control-label" })
+                            @Catalyst.EditorFor(p => p.NewPassword, new { @class = "form-control", autocomplete="off" })
+                            @Catalyst.ValidationMessageFor(p => p.NewPassword)
+                        </div>
+                        <div class="form-group">
+                            @Catalyst.LabelFor(p => p.NewPasswordConfirm, new { @class = "control-label" })
+                            @Catalyst.EditorFor(p => p.NewPasswordConfirm, new { @class = "form-control", autocomplete="off" })
+                            @Catalyst.ValidationMessageFor(p => p.NewPasswordConfirm)
+                        </div>
+                        @Catalyst.SubmitButton("Change My Password", new { @class = "btn btn-primary block full-width m-b", id="ChangePasswordButton" })
+                    }                
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#NewPassword").focus();
+        });
+    </script>
+}

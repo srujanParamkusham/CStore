@@ -1,0 +1,513 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{6A6E6DC6-9D84-47C6-99EB-EB967DC08E6A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CStore.Domain</RootNamespace>
+    <AssemblyName>CStore.Domain</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Test|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Test\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'QA|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\QA\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=4.2.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.4.2.1\lib\net45\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Catalyst.MVC.Domain, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Lib\Catalyst.MVC.Domain.dll</HintPath>
+    </Reference>
+    <Reference Include="Catalyst.MVC.Infrastructure, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Lib\Catalyst.MVC.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Catalyst.Reporting, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Lib\Catalyst.Reporting.dll</HintPath>
+    </Reference>
+    <Reference Include="CsvHelper, Version=2.0.0.0, Culture=neutral, PublicKeyToken=8c4959082be5c823, processorArchitecture=MSIL">
+      <HintPath>..\packages\CsvHelper.2.13.5.0\lib\net40-client\CsvHelper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DocumentFormat.OpenXml, Version=2.5.5631.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\DocumentFormat.OpenXml.2.5\lib\DocumentFormat.OpenXml.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.15.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <HintPath>..\packages\log4net.2.0.5\lib\net45-full\log4net.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=11.1.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Lib\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="NodaTime">
+      <HintPath>..\packages\NodaTime.1.3.1\lib\net35-Client\NodaTime.dll</HintPath>
+    </Reference>
+    <Reference Include="SimpleImpersonation, Version=1.1.0.34390, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\SimpleImpersonation.1.1.0\lib\net40-Client\SimpleImpersonation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="StructureMap, Version=4.1.2.386, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\structuremap.4.1.2.386\lib\net40\StructureMap.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="StructureMap.Net4, Version=4.1.2.386, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\structuremap.4.1.2.386\lib\net40\StructureMap.Net4.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Linq.Dynamic, Version=1.0.5840.25917, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Linq.Dynamic.1.0.6\lib\net40\System.Linq.Dynamic.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.ServiceModel.Web" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Attributes\ActionFilterAttributes\DomainActionFilterAttribute.cs" />
+    <Compile Include="Controllers\DomainApiController.cs" />
+    <Compile Include="Controllers\DomainController.cs" />
+    <Compile Include="Controllers\DomainEntityController.cs" />
+    <Compile Include="Controllers\DomainReportController.cs" />
+    <Compile Include="Controllers\DomainSelectListController.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\AppAnnouncementMaintenance\AppAnnouncementMaintenanceDeleteRequest.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\AppAnnouncementMaintenance\AppAnnouncementMaintenanceDeleteResponse.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\AppAnnouncementMaintenance\AppAnnouncementMaintenanceGetRequest.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\AppAnnouncementMaintenance\AppAnnouncementMaintenanceGetResponse.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\AppAnnouncementMaintenance\AppAnnouncementMaintenanceListRequest.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\AppAnnouncementMaintenance\AppAnnouncementMaintenanceListResponse.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\AppAnnouncementMaintenance\AppAnnouncementMaintenanceSaveRequest.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\AppAnnouncementMaintenance\AppAnnouncementMaintenanceSaveResponse.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\AppCodeDetailMaintenance\AppCodeDetailMaintenanceDeleteRequest.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\AppCodeDetailMaintenance\AppCodeDetailMaintenanceDeleteResponse.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\AppCodeDetailMaintenance\AppCodeDetailMaintenanceGetRequest.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\AppCodeDetailMaintenance\AppCodeDetailMaintenanceGetResponse.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\AppCodeDetailMaintenance\AppCodeDetailMaintenanceListRequest.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\AppCodeDetailMaintenance\AppCodeDetailMaintenanceListResponse.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\AppCodeDetailMaintenance\AppCodeDetailMaintenanceSaveRequest.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\AppCodeDetailMaintenance\AppCodeDetailMaintenanceSaveResponse.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\AppContentMaintenance\AppContentMaintenanceDeleteRequest.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\AppContentMaintenance\AppContentMaintenanceDeleteResponse.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\AppContentMaintenance\AppContentMaintenanceGetRequest.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\AppContentMaintenance\AppContentMaintenanceGetResponse.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\AppContentMaintenance\AppContentMaintenanceListRequest.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\AppContentMaintenance\AppContentMaintenanceListResponse.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\AppContentMaintenance\AppContentMaintenanceSaveRequest.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\AppContentMaintenance\AppContentMaintenanceSaveResponse.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\AppEmailTemplateMaintenance\AppEmailTemplateMaintenanceDeleteRequest.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\AppEmailTemplateMaintenance\AppEmailTemplateMaintenanceDeleteResponse.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\AppEmailTemplateMaintenance\AppEmailTemplateMaintenanceGetRequest.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\AppEmailTemplateMaintenance\AppEmailTemplateMaintenanceGetResponse.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\AppEmailTemplateMaintenance\AppEmailTemplateMaintenanceListRequest.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\AppEmailTemplateMaintenance\AppEmailTemplateMaintenanceListResponse.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\AppEmailTemplateMaintenance\AppEmailTemplateMaintenanceSaveRequest.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\AppEmailTemplateMaintenance\AppEmailTemplateMaintenanceSaveResponse.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\AppMenuItemMaintenance\AppMenuItemMaintenanceDeleteRequest.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\AppMenuItemMaintenance\AppMenuItemMaintenanceDeleteResponse.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\AppMenuItemMaintenance\AppMenuItemMaintenanceGetRequest.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\AppMenuItemMaintenance\AppMenuItemMaintenanceGetResponse.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\AppMenuItemMaintenance\AppMenuItemMaintenanceListRequest.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\AppMenuItemMaintenance\AppMenuItemMaintenanceListResponse.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\AppMenuItemMaintenance\AppMenuItemMaintenanceSaveRequest.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\AppMenuItemMaintenance\AppMenuItemMaintenanceSaveResponse.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\AppMenuItemMaintenance\AppMenuItemMaintenanceGetAllAppMenusRequest.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\AppMenuItemMaintenance\AppMenuItemMaintenanceGetAllAppMenusResponse.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\AppMenuItemMaintenance\AppMenuItemMaintenanceGetAllAppMenuItemsRequest.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\AppMenuItemMaintenance\AppMenuItemMaintenanceGetAllAppMenuItemsResponse.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\AppMenuMaintenance\AppMenuMaintenanceDeleteRequest.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\AppMenuMaintenance\AppMenuMaintenanceDeleteResponse.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\AppMenuMaintenance\AppMenuMaintenanceGetRequest.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\AppMenuMaintenance\AppMenuMaintenanceGetResponse.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\AppMenuMaintenance\AppMenuMaintenanceListRequest.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\AppMenuMaintenance\AppMenuMaintenanceListResponse.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\AppMenuMaintenance\AppMenuMaintenanceSaveRequest.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\AppMenuMaintenance\AppMenuMaintenanceSaveResponse.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\SecurityAccessMaintenance\PermissionToSave.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\SecurityAccessMaintenance\SecurityAccessMaintenanceSavePermissionsRequest.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\SecurityAccessMaintenance\SecurityAccessMaintenanceSavePermissionsResponse.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\SecurityAccessMaintenance\SecurityResultModel.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\SecurityAccessMaintenance\EffectivePermissionModel.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\SecurityAccessMaintenance\EffectivePermissionsForRoleModel.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\SecurityAccessMaintenance\SecurityAccessMaintenanceGetEffectivePermissionsForSecurableRequest.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\SecurityAccessMaintenance\SecurityAccessMaintenanceGetEffectivePermissionsForSecurableResponse.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\SecurityAccessMaintenance\SecuritySecurableTreeStateModel.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\SecurityAccessMaintenance\SecuritySecurableTreeModel.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\SecurityAccessMaintenance\SecurityAccessMaintenanceGetSecurableTreeRequest.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\SecurityAccessMaintenance\SecurityAccessMaintenanceGetSecurableTreeResponse.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\SecurityAccessMaintenance\SecurityAccessMaintenanceGetRolesRequest.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\SecurityAccessMaintenance\SecurityAccessMaintenanceGetRolesResponse.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\SecurityActionMaintenance\SecurityActionMaintenanceDeleteRequest.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\SecurityActionMaintenance\SecurityActionMaintenanceDeleteResponse.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\SecurityActionMaintenance\SecurityActionMaintenanceGetRequest.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\SecurityActionMaintenance\SecurityActionMaintenanceGetResponse.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\SecurityActionMaintenance\SecurityActionMaintenanceListRequest.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\SecurityActionMaintenance\SecurityActionMaintenanceListResponse.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\SecurityActionMaintenance\SecurityActionMaintenanceSaveRequest.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\SecurityActionMaintenance\SecurityActionMaintenanceSaveResponse.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\SecurityQuestionMaintenance\SecurityQuestionMaintenanceDeleteRequest.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\SecurityQuestionMaintenance\SecurityQuestionMaintenanceDeleteResponse.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\SecurityQuestionMaintenance\SecurityQuestionMaintenanceGetRequest.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\SecurityQuestionMaintenance\SecurityQuestionMaintenanceGetResponse.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\SecurityQuestionMaintenance\SecurityQuestionMaintenanceListRequest.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\SecurityQuestionMaintenance\SecurityQuestionMaintenanceListResponse.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\SecurityQuestionMaintenance\SecurityQuestionMaintenanceSaveRequest.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\SecurityQuestionMaintenance\SecurityQuestionMaintenanceSaveResponse.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\SecurityRoleMaintenance\SecurityRoleMaintenanceDeleteRequest.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\SecurityRoleMaintenance\SecurityRoleMaintenanceDeleteResponse.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\SecurityRoleMaintenance\SecurityRoleMaintenanceGetRequest.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\SecurityRoleMaintenance\SecurityRoleMaintenanceGetResponse.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\SecurityRoleMaintenance\SecurityRoleMaintenanceListRequest.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\SecurityRoleMaintenance\SecurityRoleMaintenanceListResponse.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\SecurityRoleMaintenance\SecurityRoleMaintenanceSaveRequest.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\SecurityRoleMaintenance\SecurityRoleMaintenanceSaveResponse.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\AppVariableMaintenance\AppVariableMaintenanceDeleteRequest.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\AppVariableMaintenance\AppVariableMaintenanceDeleteResponse.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\AppVariableMaintenance\AppVariableMaintenanceGetRequest.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\AppVariableMaintenance\AppVariableMaintenanceGetResponse.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\AppVariableMaintenance\AppVariableMaintenanceListRequest.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\AppVariableMaintenance\AppVariableMaintenanceListResponse.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\AppVariableMaintenance\AppVariableMaintenanceSaveRequest.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\AppVariableMaintenance\AppVariableMaintenanceSaveResponse.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\SecuritySecurableMaintenance\SecuritySecurableMaintenanceDeleteRequest.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\SecuritySecurableMaintenance\SecuritySecurableMaintenanceDeleteResponse.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\SecuritySecurableMaintenance\SecuritySecurableMaintenanceGetRequest.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\SecuritySecurableMaintenance\SecuritySecurableMaintenanceGetResponse.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\SecuritySecurableMaintenance\SecuritySecurableMaintenanceListRequest.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\SecuritySecurableMaintenance\SecuritySecurableMaintenanceListResponse.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\SecuritySecurableMaintenance\SecuritySecurableMaintenanceSaveRequest.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\SecuritySecurableMaintenance\SecuritySecurableMaintenanceSaveResponse.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\SecuritySecurableMaintenance\SecuritySecurableMaintenanceGetAllSecurablesRequest.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\SecuritySecurableMaintenance\SecuritySecurableMaintenanceGetAllSecurablesResponse.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\SecurityUserMaintenance\SecurityUserMaintenanceGetRolesForUserRequest.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\SecurityUserMaintenance\SecurityUserMaintenanceGetRolesForUserResponse.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\SecurityUserMaintenance\SecurityUserMaintenanceDeleteResponse.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\SecurityUserMaintenance\SecurityUserMaintenanceSaveResponse.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\SecurityUserMaintenance\SecurityUserMaintenanceGetResponse.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\SecurityUserMaintenance\SecurityUserMaintenanceGetRequest.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\SecurityUserMaintenance\SecurityUserMaintenanceSaveRequest.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\SecurityUserMaintenance\SecurityUserMaintenanceDeleteRequest.cs" />
+    <Compile Include="Domains\Admin\Models\ViewModels\AESKeyGenerator\AESKeyGeneratorViewModel.cs" />
+    <Compile Include="Domains\Admin\Models\ViewModels\AppAnnouncementMaintenance\AppAnnouncementMaintenanceEditViewModel.cs" />
+    <Compile Include="Domains\Admin\Models\ViewModels\AppAnnouncementMaintenance\AppAnnouncementMaintenanceListViewModel.cs" />
+    <Compile Include="Domains\Admin\Models\ViewModels\AppCodeDetailMaintenance\AppCodeDetailMaintenanceEditViewModel.cs" />
+    <Compile Include="Domains\Admin\Models\ViewModels\AppCodeDetailMaintenance\AppCodeDetailMaintenanceListViewModel.cs" />
+    <Compile Include="Domains\Admin\Models\ViewModels\AppContentMaintenance\AppContentEditViewModel.cs" />
+    <Compile Include="Domains\Admin\Models\ViewModels\AppContentMaintenance\AppContentMaintenanceListViewModel.cs" />
+    <Compile Include="Domains\Admin\Models\ViewModels\SecurityAccessMaintenance\GetEffectivePermissionsForSecurableViewModel.cs" />
+    <Compile Include="Domains\Admin\Models\ViewModels\SecurityAccessMaintenance\EditPermissionsForSecurableViewModel.cs" />
+    <Compile Include="Domains\Admin\Models\ViewModels\SecurityAccessMaintenance\SecurityAccessMaintenanceIndexViewModel.cs" />
+    <Compile Include="Domains\Admin\Models\ViewModels\AppMenuItemMaintenance\AppMenuItemMaintenanceEditViewModel.cs" />
+    <Compile Include="Domains\Admin\Models\ViewModels\AppMenuItemMaintenance\AppMenuItemMaintenanceListViewModel.cs" />
+    <Compile Include="Domains\Admin\Models\ViewModels\SecurityQuestionMaintenance\SecurityQuestionMaintenanceEditViewModel.cs" />
+    <Compile Include="Domains\Admin\Models\ViewModels\SecurityQuestionMaintenance\SecurityQuestionMaintenanceListViewModel.cs" />
+    <Compile Include="Domains\Admin\Models\ViewModels\AppVariableMaintenance\AppVariableMaintenanceEditViewModel.cs" />
+    <Compile Include="Domains\Admin\Models\ViewModels\AppVariableMaintenance\AppVariableMaintenanceListViewModel.cs" />
+    <Compile Include="Domains\Admin\Models\ViewModels\SecurityRoleMaintenance\SecurityRoleMaintenanceEditViewModel.cs" />
+    <Compile Include="Domains\Admin\Models\ViewModels\SecurityRoleMaintenance\SecurityRoleMaintenanceListViewModel.cs" />
+    <Compile Include="Domains\Admin\Models\ViewModels\SecuritySecurableMaintenance\SecuritySecurableMaintenanceEditViewModel.cs" />
+    <Compile Include="Domains\Admin\Models\ViewModels\SecuritySecurableMaintenance\SecuritySecurableMaintenanceListViewModel.cs" />
+    <Compile Include="Domains\Admin\Models\ViewModels\AppEmailTemplateMaintenance\AppEmailTemplateMaintenanceEditViewModel.cs" />
+    <Compile Include="Domains\Admin\Models\ViewModels\AppEmailTemplateMaintenance\AppEmailTemplateMaintenanceListViewModel.cs" />
+    <Compile Include="Domains\Admin\Models\ViewModels\SecurityActionMaintenance\SecurityActionMaintenanceEditViewModel.cs" />
+    <Compile Include="Domains\Admin\Models\ViewModels\SecurityActionMaintenance\SecurityActionMaintenanceListViewModel.cs" />
+    <Compile Include="Domains\Admin\Models\ViewModels\AppMenuMaintenance\AppMenuMaintenanceEditViewModel.cs" />
+    <Compile Include="Domains\Admin\Models\ViewModels\AppMenuMaintenance\AppMenuMaintenanceListViewModel.cs" />
+    <Compile Include="Domains\Admin\Models\ViewModels\SecurityUserMaintenance\SecurityUserMaintenanceEditViewModel.cs" />
+    <Compile Include="Domains\Admin\Models\ViewModels\PasswordHashGenerator\PasswordHashGeneratorViewModel.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\SecurityUserMaintenance\SecurityUserMaintenanceListRequest.cs" />
+    <Compile Include="Domains\Admin\Models\ServiceModels\SecurityUserMaintenance\SecurityUserMaintenanceListResponse.cs" />
+    <Compile Include="Domains\Admin\Models\ViewModels\SecurityUserMaintenance\SecurityUserMaintenanceListViewModel.cs" />
+    <Compile Include="Domains\Admin\Services\AppAnnouncementMaintenanceService.cs" />
+    <Compile Include="Domains\Admin\Services\AppCodeDetailMaintenanceService.cs" />
+    <Compile Include="Domains\Admin\Services\AppContentMaintenanceService.cs" />
+    <Compile Include="Domains\Admin\Services\AppEmailTemplateMaintenanceService.cs" />
+    <Compile Include="Domains\Admin\Services\AppMenuItemMaintenanceService.cs" />
+    <Compile Include="Domains\Admin\Services\IAppContentMaintenanceService.cs" />
+    <Compile Include="Domains\Admin\Services\IAppMenuItemMaintenanceService.cs" />
+    <Compile Include="Domains\Admin\Services\ISecurityAccessMaintenanceService.cs" />
+    <Compile Include="Domains\Admin\Services\SecurityAccessMaintenanceService.cs" />
+    <Compile Include="Domains\Admin\Services\SecurityActionMaintenanceService.cs" />
+    <Compile Include="Domains\Admin\Services\SecurityQuestionMaintenanceService.cs" />
+    <Compile Include="Domains\Admin\Services\AppMenuMaintenanceService.cs" />
+    <Compile Include="Domains\Admin\Services\IAppAnnouncementMaintenanceService.cs" />
+    <Compile Include="Domains\Admin\Services\ISecurityQuestionMaintenanceService.cs" />
+    <Compile Include="Domains\Admin\Services\IAppVariableMaintenanceService.cs" />
+    <Compile Include="Domains\Admin\Services\ISecuritySecurableMaintenanceService.cs" />
+    <Compile Include="Domains\Admin\Services\ISecurityActionMaintenanceService.cs" />
+    <Compile Include="Domains\Admin\Services\IAppMenuMaintenanceService.cs" />
+    <Compile Include="Domains\Admin\Services\IAppCodeDetailMaintenanceService.cs" />
+    <Compile Include="Domains\Admin\Services\ISecurityRoleMaintenanceService.cs" />
+    <Compile Include="Domains\Admin\Services\IAppEmailTemplateMaintenanceService.cs" />
+    <Compile Include="Domains\Admin\Services\ISecurityUserMaintenanceService.cs" />
+    <Compile Include="Domains\Admin\Services\AppVariableMaintenanceService.cs" />
+    <Compile Include="Domains\Admin\Services\SecurityRoleMaintenanceService.cs" />
+    <Compile Include="Domains\Admin\Services\SecuritySecurableMaintenanceService.cs" />
+    <Compile Include="Domains\Admin\Services\SecurityUserMaintenanceService.cs" />
+    <Compile Include="Domains\Authentication\Models\ServiceModels\Password\CheckPasswordComplexityRequest.cs" />
+    <Compile Include="Domains\Authentication\Models\ServiceModels\Password\CheckPasswordComplexityResponse.cs" />
+    <Compile Include="Domains\Authentication\Models\ServiceModels\Password\CanUserPasswordBeChangedRequest.cs" />
+    <Compile Include="Domains\Authentication\Models\ServiceModels\Password\CanUserPasswordBeChangedResponse.cs" />
+    <Compile Include="Domains\Authentication\Models\ServiceModels\Password\ChangePasswordRequest.cs" />
+    <Compile Include="Domains\Authentication\Models\ServiceModels\Password\ChangePasswordResponse.cs" />
+    <Compile Include="Domains\Authentication\Models\ServiceModels\Password\CalculatePasswordExpirationDateRequest.cs" />
+    <Compile Include="Domains\Authentication\Models\ServiceModels\Password\CalculatePasswordExpirationDateResponse.cs" />
+    <Compile Include="Domains\Authentication\Models\ViewModels\Login\LoginViewModel.cs" />
+    <Compile Include="Domains\Authentication\Models\ViewModels\Password\ChangePasswordViewModel.cs" />
+    <Compile Include="Domains\Authentication\Models\ViewModels\Password\ExpiredPasswordViewModel.cs" />
+    <Compile Include="Domains\Authentication\Models\ServiceModels\ForgotPassword\SendForgotPasswordEmailRequest.cs" />
+    <Compile Include="Domains\Authentication\Models\ServiceModels\ForgotPassword\SendForgotPasswordEmailResponse.cs" />
+    <Compile Include="Domains\Authentication\Models\ServiceModels\Password\SendPasswordChangedEmailRequest.cs" />
+    <Compile Include="Domains\Authentication\Models\ServiceModels\Password\SendPasswordChangedEmailResponse.cs" />
+    <Compile Include="Domains\Authentication\Models\ServiceModels\ForgotPassword\ResetForgottenPasswordRequest.cs" />
+    <Compile Include="Domains\Authentication\Models\ServiceModels\ForgotPassword\ResetForgottenPasswordResponse.cs" />
+    <Compile Include="Domains\Authentication\Models\ServiceModels\ForgotPassword\ValidateSecurityPasswordResetTokenResponse.cs" />
+    <Compile Include="Domains\Authentication\Models\ServiceModels\ForgotPassword\ValidateSecurityPasswordResetTokenRequest.cs" />
+    <Compile Include="Domains\Authentication\Models\ViewModels\ForgotPassword\ResetForgottenPasswordViewModel.cs" />
+    <Compile Include="Domains\Authentication\Models\ViewModels\ForgotPassword\ForgotPasswordViewModel.cs" />
+    <Compile Include="Domains\Authentication\Models\ServiceModels\ForgotPassword\SendInstructionsToResetPasswordRequest.cs" />
+    <Compile Include="Domains\Authentication\Models\ServiceModels\ForgotPassword\SendInstructionsToResetPasswordResponse.cs" />
+    <Compile Include="Domains\Authentication\Services\IPasswordService.cs" />
+    <Compile Include="Domains\Authentication\Services\PasswordService.cs" />
+    <Compile Include="Domains\Authentication\Services\DomainLogoutService.cs" />
+    <Compile Include="Domains\Authentication\Services\IDomainLoginService.cs" />
+    <Compile Include="Domains\Authentication\Services\IForgotPasswordService.cs" />
+    <Compile Include="Domains\Authentication\Services\IDomainLogoutService.cs" />
+    <Compile Include="Domains\Authentication\Services\IRegistrationService.cs" />
+    <Compile Include="Domains\Authentication\Services\ForgotPasswordService.cs" />
+    <Compile Include="Domains\Authentication\Services\DomainLoginService.cs" />
+    <Compile Include="Domains\Authentication\Services\RegistrationService.cs" />
+    <Compile Include="Domains\Example\Models\ServiceModels\Example\ExampleServiceMethodRequest.cs" />
+    <Compile Include="Domains\Example\Models\ServiceModels\Example\ExampleServiceMethodResponse.cs" />
+    <Compile Include="Domains\Example\Models\ViewModels\Example\ExampleIndexViewModel.cs" />
+    <Compile Include="Domains\Example\Services\IExampleService.cs" />
+    <Compile Include="Domains\General\Models\ServiceModels\AppAnnouncements\GetActiveAnnouncementsRequest.cs" />
+    <Compile Include="Domains\General\Models\ServiceModels\AppAnnouncements\GetActiveAnnouncementsResponse.cs" />
+    <Compile Include="Domains\General\Services\AppAnnouncementsService.cs" />
+    <Compile Include="Domains\General\Services\IAppAnnouncementsService.cs" />
+    <Compile Include="Domains\Reports\Models\ServiceModels\SecurityUserLoginHistoryReport\SecurityUserLoginHistoryReportExcelRecord.cs" />
+    <Compile Include="Domains\Reports\Models\ServiceModels\SecurityUserLoginHistoryReport\SecurityUserLoginHistoryReportCSVRecord.cs" />
+    <Compile Include="Domains\Reports\Models\ServiceModels\SecurityUserLoginHistoryReport\SecurityUserLoginHistoryReportGenerateReportRequest.cs" />
+    <Compile Include="Domains\Reports\Models\ServiceModels\SecurityUserLoginHistoryReport\SecurityUserLoginHistoryReportGenerateReportResponse.cs" />
+    <Compile Include="Domains\Reports\Models\ViewModels\SecurityUserLoginHistoryReport\SecurityUserLoginHistoryReportParamsViewModel.cs" />
+    <Compile Include="Domains\Reports\Services\SecurityUserLoginHistoryReportService.cs" />
+    <Compile Include="Domains\Reports\Services\ISecurityUserLoginHistoryReportService.cs" />
+    <Compile Include="Domains\SelectList\Models\ViewModels\SecurityRoleSelectList\SecurityRoleSelectListViewModel.cs" />
+    <Compile Include="Domains\SelectList\Models\ViewModels\SecurityUserSelectList\SecurityUserSelectListViewModel.cs" />
+    <Compile Include="Entities\ExampleEntity.cs" />
+    <Compile Include="Entities\DomainEntity.cs" />
+    <Compile Include="Entities\USPReportSecurityUserLoginHistory.cs" />
+    <Compile Include="Entities\VWSecurityUser.cs" />
+    <Compile Include="Helpers\HTMLHelperExtensions.cs" />
+    <Compile Include="HTMLHelpers\Extensions\Grid\DataTablesReadonly\DomainExportSettings.cs" />
+    <Compile Include="HTMLHelpers\Extensions\Grid\DataTablesReadonly\DomainGridConfiguration.cs" />
+    <Compile Include="HTMLHelpers\Extensions\Grid\DataTablesReadonly\DomainGridProvider.cs" />
+    <Compile Include="HTMLHelpers\Extensions\Grid\DataTablesReadonly\DomainGridButton.cs" />
+    <Compile Include="HTMLHelpers\Extensions\Grid\DataTablesReadonly\DomainGridColumn.cs" />
+    <Compile Include="HTMLHelpers\Extensions\SelectList\Select2\DomainSelectListConfiguration.cs" />
+    <Compile Include="HTMLHelpers\Extensions\SelectList\Select2\DomainSelectListDependency.cs" />
+    <Compile Include="HTMLHelpers\Extensions\SelectList\Select2\DomainSelectListProvider.cs" />
+    <Compile Include="IOC\ServiceActivator.cs" />
+    <Compile Include="IOC\ClientBootstrapper.cs" />
+    <Compile Include="Mappings\ExampleEntityMapping.cs" />
+    <Compile Include="Mappings\USPReportSecurityUserLoginHistoryMapping.cs" />
+    <Compile Include="Mappings\VWSecurityUserMapping.cs" />
+    <Compile Include="Models\ServiceModels\DomainServiceGenerateReportRequest.cs" />
+    <Compile Include="Models\ServiceModels\DomainServiceGenerateReportResponse.cs" />
+    <Compile Include="Models\ServiceModels\DomainServiceRequest.cs" />
+    <Compile Include="Models\ServiceModels\DomainServiceResponse.cs" />
+    <Compile Include="Models\ServiceModels\DomainServicePagedListRequest.cs" />
+    <Compile Include="Models\ServiceModels\DomainServiceDeleteRequest.cs" />
+    <Compile Include="Models\ServiceModels\DomainServiceDeleteResponse.cs" />
+    <Compile Include="Models\ServiceModels\DomainServiceGetRequest.cs" />
+    <Compile Include="Models\ServiceModels\DomainServiceListRequest.cs" />
+    <Compile Include="Models\ServiceModels\DomainServiceListResponse.cs" />
+    <Compile Include="Models\ServiceModels\DomainServicePagedListResponse.cs" />
+    <Compile Include="Models\ServiceModels\DomainServiceSaveRequest.cs" />
+    <Compile Include="Models\ServiceModels\DomainServiceSaveResponse.cs" />
+    <Compile Include="Models\ServiceModels\DomainServiceGetResponse.cs" />
+    <Compile Include="Models\ViewModels\DomainListViewModel.cs" />
+    <Compile Include="Models\ViewModels\DomainReportParamsViewModel.cs" />
+    <Compile Include="Models\ViewModels\DomainSelectListViewModel.cs" />
+    <Compile Include="Models\ViewModels\DomainViewModel.cs" />
+    <Compile Include="Models\ViewModels\Home\HomeViewModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\DomainService.cs" />
+    <Compile Include="Services\Controller\ErrorControllerService.cs" />
+    <Compile Include="Services\Controller\HomeControllerService.cs" />
+    <Compile Include="Services\Controller\IErrorControllerService.cs" />
+    <Compile Include="Services\Controller\IHomeControllerService.cs" />
+    <Compile Include="Services\Entity\DomainEntityService.cs" />
+    <Compile Include="Services\Report\DomainReportService.cs" />
+    <Compile Include="Services\State\DomainHTTPContextService.cs" />
+    <Compile Include="Services\State\DomainApplicationService.cs" />
+    <Compile Include="Services\State\DomainSessionService.cs" />
+    <Compile Include="Domains\Example\Services\ExampleService.cs" />
+    <Compile Include="Services\WebService\IExampleWCFService.cs" />
+    <Compile Include="SQLRequests\USPReportSecurityUserLoginHistorySQLRequest.cs" />
+    <Compile Include="Standards\Constants.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Attributes\Controllers\" />
+    <Folder Include="Domains\Admin\Enums\" />
+    <Folder Include="Domains\Authentication\Enums\" />
+    <Folder Include="Domains\Example\Enums\" />
+    <Folder Include="Domains\General\Enums\" />
+    <Folder Include="Domains\General\Models\ViewModels\" />
+    <Folder Include="Domains\Reports\Enums\" />
+    <Folder Include="Domains\SelectList\Enums\" />
+    <Folder Include="Domains\SelectList\Models\ServiceModels\" />
+    <Folder Include="Domains\SelectList\Services\" />
+    <Folder Include="Enums\" />
+    <Folder Include="Providers\" />
+    <Folder Include="Services\Cache\" />
+    <Folder Include="Services\Model\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Domain.ddxml" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\DataSources\Catalyst.MVC.Domain.Entities.SecurityUser.datasource" />
+    <None Include="Properties\DataSources\CStore.Domain.Entities.USPReportSecurityUserLoginHistory.datasource" />
+    <None Include="Properties\DataSources\CStore.Domain.Entities.VWSecurityUser.datasource" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Database\CatalystTemplateDbTables-MSSQL.sql" />
+    <Content Include="Database\CatalystTemplateDbTables-Postgres.sql" />
+    <Content Include="Database\ApplicationDbTables-MSSQL.sql" />
+    <Content Include="Database\CatalystTemplateDbStateCodes.sql" />
+    <Content Include="Lib\Catalyst.MVC.Domain.dll" />
+    <Content Include="Lib\Catalyst.MVC.Domain.pdb" />
+    <Content Include="Lib\Catalyst.MVC.Infrastructure.dll" />
+    <Content Include="Lib\Catalyst.MVC.Infrastructure.pdb" />
+    <Content Include="Lib\Catalyst.Reporting.dll" />
+    <Content Include="Lib\Catalyst.Reporting.pdb" />
+    <Content Include="Lib\DocumentFormat.OpenXml.dll" />
+    <Content Include="Lib\Microsoft.ReportViewer.Common.dll" />
+    <Content Include="Lib\Microsoft.ReportViewer.DataVisualization.dll" />
+    <Content Include="Lib\Microsoft.ReportViewer.ProcessingObjectModel.dll" />
+    <Content Include="Lib\Microsoft.ReportViewer.WebForms.dll" />
+    <Content Include="Lib\Microsoft.ReportViewer.WinForms.dll" />
+    <Content Include="Lib\Microsoft.SqlServer.Types.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Domains\Reports\RDLC\SecurityUserLoginHistoryReport.rdlc" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

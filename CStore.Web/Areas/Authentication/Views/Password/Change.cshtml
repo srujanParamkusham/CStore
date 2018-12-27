@@ -1,0 +1,78 @@
+﻿@model CStore.Domain.Domains.Authentication.Models.ViewModels.Password.ChangePasswordViewModel
+
+
+@{
+    ViewBag.Title = "Change Your Password";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <h5>@ViewBag.Title</h5>
+        </div>
+        <div class="ibox-content">
+            <p>
+                Please enter your new password below.
+            </p>
+
+            @Catalyst.Partial("_ValidationSummaryErrors")
+
+            <div class="row">
+                <div class="col-sm-offset-3 col-sm-6">
+                    @using (Html.BeginForm(MVC.Authentication.Password.Change()))
+                    {
+                        @Catalyst.HiddenFor(p => p.ReturnUrl)
+
+                        <div class="form-group">
+                            @Catalyst.LabelFor(u => u.UserName, new { @class = "control-label" })<br />
+                            @Catalyst.DisplayFor(u => u.UserName, new { @class = "form-control" })
+                            @Catalyst.ValidationMessageFor(model => model.UserName)
+                        </div>
+
+                        <div class="form-group">
+                            @Catalyst.LabelFor(u => u.CurrentPassword, new {@class = "control-label"})
+                            @Catalyst.EditorFor(u => u.CurrentPassword, new {@class = "form-control", autocomplete = "off"})
+                            @Catalyst.ValidationMessageFor(model => model.CurrentPassword)
+                        </div>
+
+                        <div class="form-group">
+                            @Catalyst.LabelFor(p => p.NewPassword, new {@class = "control-label"})
+                            @Catalyst.EditorFor(p => p.NewPassword, new {@class = "form-control", autocomplete = "off"})
+                            @Catalyst.ValidationMessageFor(p => p.NewPassword)
+                        </div>
+
+                        <div class="form-group">
+                            @Catalyst.LabelFor(p => p.NewPasswordConfirm, new { @class = "control-label" })
+                            @Catalyst.EditorFor(p => p.NewPasswordConfirm, new { @class = "form-control", autocomplete="off" })
+                            @Catalyst.ValidationMessageFor(p => p.NewPasswordConfirm)
+                        </div>
+
+                        <div class="form-action-buttons-div">
+                            @Catalyst.SubmitButton("Change Password", new { @class = "btn btn-primary m-b btn-fixed-width-md", id="ChangePasswordButton" }) 
+                            @Catalyst.Button("Cancel", new { @class = "btn m-b btn-fixed-width-md", id="CancelButton" }) 
+                        </div>
+                    }                
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#NewPassword").focus();
+            
+            //
+            //When the cancel button is pressed on the form
+            //
+            $("#CancelButton").click(function (event) {
+                event.preventDefault();
+                var url = "@Url.Action(MVC.Home.Index())";
+                location.href=url; 
+            });
+        });        
+    </script>
+}

@@ -1,0 +1,505 @@
+﻿/*
+ *
+ *  Application specific styles go in here
+ *  TODO, add your custom styles
+ *
+*/
+body {
+}
+
+/*----------------------------------------------------------------------------------
+    Top Navigation Styling
+----------------------------------------------------------------------------------*/
+.navbar-fixed-top {
+    border-bottom: 1px solid #F4911E!important;
+}
+
+.navbar-brand-title {
+	background: url(/Images/header-logo.png) top left no-repeat;
+}
+
+
+@media (max-width: 767px) {
+     /*Make the logo smaller on smaller screens*/
+    .navbar-brand-title {
+	    width: 200px;
+	    height: 50px;
+        background-size: 85%!important;
+	    margin-top: 3px;
+	    text-indent: -4000px;
+    }
+
+    .navbar-top-links {
+        display: none;
+    }
+}
+
+@media (min-width: 768px) {
+    .navbar-brand-title {
+	    width: 250px;
+	    height: 50px;
+	    margin-top: -5px;
+	    text-indent: -4000px;
+    }
+}
+
+.navbar-right {
+    float: right;
+}
+
+.navbar-fixed-top .btn-primary,
+.navbar-fixed-top .btn-primary:hover,
+.navbar-fixed-top .btn-primary:focus,
+.navbar-fixed-top .btn-primary:active,
+.navbar-fixed-top .btn-primary.active {
+    /*Make the primary buttons background color SWC orange*/
+    color: #ffffff;
+    background-color: #F4911E;
+    border-color: #F4911E;
+}
+
+
+/*----------------------------------------------------------------------------------
+    Top Navigation Drop Down Menu Styling
+----------------------------------------------------------------------------------*/
+.dropdown-menu {
+    width: 250px;
+}
+
+.dropdown-submenu {
+    position:relative;
+}
+
+.dropdown-submenu>.dropdown-menu {
+    top:0;
+    left:100%;
+    margin-top:-6px;
+    margin-left:-1px;
+    -webkit-border-radius:0 6px 6px 6px;
+    -moz-border-radius:0 6px 6px 6px;
+    border-radius:0 6px 6px 6px;
+}
+
+.dropdown-submenu>a:after {
+    display:block;
+    content:" ";
+    float:right;
+    width:0;
+    height:0;
+    border-color:transparent;
+    border-style:solid;
+    border-width:5px 0 5px 5px;
+    border-left-color:#cccccc;
+    margin-top:5px;
+    margin-right:-10px;
+}
+
+.dropdown-submenu:hover>a:after {
+    border-left-color:#ffffff;
+}
+
+.dropdown-submenu.pull-left {
+    float:none;
+}
+
+.dropdown-submenu.pull-left>.dropdown-menu {
+    left:-100%;
+    margin-left:10px;
+    -webkit-border-radius:6px 0 6px 6px;
+    -moz-border-radius:6px 0 6px 6px;
+    border-radius:6px 0 6px 6px;
+}
+
+
+/*----------------------------------------------------------------------------------
+    Left Navigation Styling
+----------------------------------------------------------------------------------*/
+/*
+.nav-sidebar {
+  	margin-right: -21px; /* 20px padding + 1px border */
+  	/*margin-bottom: 20px;
+  	margin-left: -20px;*/
+  	/*margin-top: 5px; /* Accomodate Logo */
+/*}
+*/
+
+/* Don't show top Menu in Left Nav until below
+    768px
+*/
+@media only screen and (min-width: 768px){
+    #side-menu li.topMenuSeparator ~ li {
+        display:none;
+    }
+}
+
+table.dataTable.dtr-inline > tbody > tr > td:first-child,
+table.dataTable.dtr-inline > tbody > tr > th:first-child {
+    text-align:center;
+}
+
+/* Centers the "+" sign in selectable boxes*/
+table.dataTable.dtr-inline.collapsed > tbody > tr > td:first-child:before,
+table.dataTable.dtr-inline.collapsed > tbody > tr > th:first-child:before{
+    text-indent:0 !important;
+}
+
+/* Center the First td and th when collapsed */
+table.dataTable.dtr-inline.collapsed > tbody > tr > td:first-child,
+table.dataTable.dtr-inline.collapsed > tbody > tr > th:first-child{
+    padding-left:8px !important;
+    width:16px !important;
+}
+
+
+/*----------------------------------------------------------------------------------
+    MVC Field Validation Styles
+----------------------------------------------------------------------------------*/
+.validation-summary-div ul {
+    margin-bottom: 0;
+    list-style: none;
+    padding: 0;
+}
+
+.field-validation-error {
+    color: #FF0000;
+}
+
+.input-validation-error {
+    border: 1px solid #FF0000;
+}
+
+/*----------------------------------------------------------------------------------
+    Inspinia Theme Overrides
+----------------------------------------------------------------------------------*/
+.wrapper-content {
+    padding: 10px 10px;
+}
+.ibox-content {
+    padding: 10px 5px;
+}
+@media (max-width: 767px) {
+    #page-wrapper {
+        padding: 5px;
+    }
+
+    .wrapper-content {
+        padding: 0px 10px;
+    }
+}
+
+/*----------------------------------------------------------------------------------
+    jQuery UI Overrides
+----------------------------------------------------------------------------------*/
+/* Make the jquery ui modal dialog have a higher z-index so it'll show on top of bootstrap modal windows*/
+.ui-dialog {
+     z-index: 9999 !important;
+}
+
+/*----------------------------------------------------------------------------------
+    Bootstrap Overrides
+----------------------------------------------------------------------------------*/
+/* The text in a select list with class input-sm is not aligned perfectly in the middle, so this corrects it.*/
+select.input-sm {
+  padding-top: .15em;
+}
+
+select.form-control {
+    padding-left: 6px;
+    padding-right: 6px;
+}
+
+.btn-primary,
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active {
+    color: #ffffff;
+    background-color: #F4911E;
+    border-color: #F4911E;
+}
+
+/*----------------------------------------------------------------------------------
+    Select 2 Select List Overrides
+----------------------------------------------------------------------------------*/
+/*Make select2 responsive so when screen is resized the select list also resizes*/
+.select2-container {
+    width:100%!important;
+}
+
+.select2-container .select2-search input[type="text"] {
+    padding:2px 4%!important;
+    width:90%!important;
+    margin:5px 2%;
+}
+
+.select2-container .select2-drop {
+    width: 100%!important;
+}    
+
+/* Make the select2 selection elements have a higher z-index so it'll show on top of bootstrap modal windows*/
+.select2-container--open {
+    z-index: 10050;
+}
+
+/*Special class needed to hide the search box initially when it is first loading its results through ajax.*/
+.catalyst-select2-hide-search .select2-search {
+    display: none;
+} 
+
+/*----------------------------------------------------------------------------------
+    General Styles
+----------------------------------------------------------------------------------*/
+/* The fixed width buttons provide 3 different sizes to ensure buttons render with the same size.*/
+.btn-fixed-width-sm {
+    width: 100px;
+}
+
+.btn-fixed-width-md {
+    width: 150px;
+}
+
+.btn-fixed-width-lg {
+    width: 170px;
+}
+
+.test-system-message {
+    background-color: yellow;
+    text-align: center;
+    font-weight: bold;
+}
+
+/*----------------------------------------------------------------------------------
+    Modal Windows
+----------------------------------------------------------------------------------*/
+@media (max-width: 767px) {
+    .modal-content {
+        width: 98% !important;
+        margin: 5px auto !important;
+    }
+    .modal-body {
+        padding: 10px 5px;
+    }
+}
+@media (min-width: 768px) {
+    .modal-content {
+        width: 90% !important;
+        margin: 20px auto !important;
+    }
+    .modal-body {
+        padding: 10px 5px;
+    }
+}
+.modal-content {
+    border-bottom: 2px solid #000;
+    border-right: 2px solid #000;
+    border-top: 2px solid #999;
+    border-left: 2px solid #999;
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+/*----------------------------------------------------------------------------------
+    Datatable Style Overrides
+    Make the disabled pagination buttons look disabled
+----------------------------------------------------------------------------------*/
+/*Taken out after upgrade from Inspinia 2.2 to 2.4. No longer needed as it now makes the buttons look worse.
+    I left the styles in here though to leave a reference for how to override the datatables buttons colors.
+.dt-buttons a.btn {
+    background-color: #888;
+}
+
+.dt-buttons a.disabled {
+    background-color: #ccc;
+}
+*/
+
+.table-hover > tbody > tr:hover {
+    background-color: #ddd;
+}
+
+.pagination > .disabled > a,
+.pagination > .disabled > a:hover {
+    color: #ccc;
+}
+
+/* Used for the row selection by DataTables TableTools. This will use font awesome
+    to render checked and unchecked boxes.*/
+.datatable-selectable-row tr td:not(.dataTables_empty):first-child:before {
+    content: "\f096"; /* fa-square-o */
+    font-family: FontAwesome;
+}
+
+.datatable-selectable-row tr.selected td:not(.dataTables_empty):first-child:before {
+    content: "\f046"; /* fa-check-square-o */
+}
+
+/*----------------------------------------------------------------------------------
+    Maintenance Forms
+----------------------------------------------------------------------------------*/
+/* Wraps forms that are updated through ajax. */
+.ajax-form-wrapper {
+
+}
+
+/* This div surrounds the search criteria fields on a search form */
+.search-criteria-div {
+    padding-top: 5px;
+    margin: 5px 0 5px 0;
+}
+
+/* This div surrounds the maintenance forms action buttons, such as save and cancel */
+.form-action-buttons-div {
+    text-align: center;
+}
+
+.form-action-buttons-div button {
+    margin: 5px;
+}
+
+.form-action-buttons-div a {
+    margin: 5px;
+}
+
+
+/*----------------------------------------------------------------------------------
+    Announcements on the homepage
+----------------------------------------------------------------------------------*/
+.announcement-container-div {
+    margin: 0 0 20px 0;
+}
+
+.announcement-title-div {
+    font-size: 1.1em;
+    font-weight: bold;
+}
+.announcement-text-div {
+
+}
+
+/*----------------------------------------------------------------------------------
+    Toast Overrides to prevent double icons
+----------------------------------------------------------------------------------*/
+#toast-container > .toast-warning:before {
+    content: "";
+}
+
+#toast-container > .toast-error:before {
+    content: "";
+}
+
+#toast-container > .toast-info:before {
+    content: "";
+}
+
+#toast-container > .toast-success:before {
+    content: "";
+}
+
+
+
+/*----------------------------------------------------------------------------------
+    Margin classes
+----------------------------------------------------------------------------------*/
+.margin-bottom-xs {
+    margin-bottom: 5px !important;
+}
+
+.margin-bottom-sm {
+    margin-bottom: 10px !important;
+}
+
+.margin-bottom-md {
+    margin-bottom: 20px !important;
+}
+
+.margin-bottom-lg {
+    margin-bottom: 40px !important;
+}
+
+.margin-top-xs {
+    margin-top:  5px !important;
+}
+
+.margin-top-sm {
+    margin-top: 10px !important;
+}
+
+.margin-top-md {
+    margin-top: 20px !important;
+}
+
+.margin-top-lg {
+    margin-top: 40px !important;
+}
+
+.margin-left-xs {
+    margin-left: 5px !important;
+}
+
+.margin-left-sm {
+    margin-left: 10px !important;
+}
+
+.margin-left-md {
+    margin-left: 20px !important;
+}
+
+.margin-left-lg {
+    margin-left: 40px !important;
+}
+
+.margin-right-xs {
+    margin-right: 5px !important;
+}
+
+.margin-right-sm {
+    margin-right: 10px !important;
+}
+
+.margin-right-md {
+    margin-right: 20px !important;
+}
+
+.margin-right-lg {
+    margin-right: 40px !important;
+}
+.padding-bottom-xs {
+    padding-bottom: 5px !important;
+}
+
+/*----------------------------------------------------------------------------------
+    Class for handling buttoms in the lower left corner
+----------------------------------------------------------------------------------*/
+@media (min-width: 992px) {
+    .bottom-right {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+    }
+}
+
+/*----------------------------------------------------------------------------------
+    left navigation styling
+----------------------------------------------------------------------------------*/
+.navbar-default .nav > li > a:hover,
+.navbar-default .nav > li > a:focus {
+    background-color: #073B60;
+    color: white;
+}
+
+.navbar-default .nav > li.active {
+    border-left: 4px solid #f6fafe;
+    background: #073B60;
+}
+
+.canvas-menu.mini-navbar .nav-second-level {
+    background: #073B60;
+}
+
+
+body {
+    font-family: "open sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    background-color: #063150;
+    font-size: 13px;
+    color: #676a6c;
+    overflow-x: hidden;
+}

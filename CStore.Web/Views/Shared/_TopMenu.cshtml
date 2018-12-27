@@ -1,0 +1,36 @@
+﻿@using CStore.Domain.Services.State
+@using Catalyst.MVC.Domain.HTMLHelpers.Menu
+
+<ul class="nav navbar-top-links navbar-right">
+    @Catalyst.TopMenu("TOPMENU", true, "CStore.Web.topnavigation")
+
+    @if (Request.IsAuthenticated && DomainSessionService.Instance.CurrentUser != null)
+    {
+        <li class="dropdown menu-item">
+            <a aria-expanded="false" role="button" href="#" class="dropdown-toggle" data-toggle="dropdown">
+                <i class="fa fa-user"></i>
+                @DomainSessionService.Instance.CurrentUser.FirstName
+                @DomainSessionService.Instance.CurrentUser.LastName
+                (@DomainSessionService.Instance.CurrentUser.UserName)
+                <span class="caret"></span>
+            </a>
+
+            <ul role="menu" class="dropdown-menu animated fadeInDown">
+                @if (!@DomainSessionService.Instance.CurrentUser.UserCannotChangePassword)
+                {
+                <li>
+                    <a href="@Url.Action(MVC.Authentication.Password.Change())">
+                        <i class="fa fa-user-secret"></i> Change Password
+                    </a>
+                </li>
+                }
+
+                <li>
+                    <a href="@Url.Action(MVC.Authentication.Logout.Index())">
+                        <i class="fa fa-sign-out"></i> Log out
+                    </a>
+                </li>
+            </ul>
+        </li>
+    }
+</ul>
