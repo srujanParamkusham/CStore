@@ -506,6 +506,10 @@
     <Content Include="log4net.QA.config">
       <DependentUpon>log4net.config</DependentUpon>
     </Content>
+    <Content Include="Areas\ScrumBan\Views\WebsiteData\Edit.cshtml" />
+    <Content Include="Areas\ScrumBan\Views\WebsiteData\Index.cshtml" />
+    <Content Include="Areas\ScrumBan\Views\web.config" />
+    <Content Include="Areas\ScrumBan\Views\WebsiteData\GetWebSIteData.cshtml" />
     <None Include="Properties\PublishProfiles\SwcCatalystTemplateMVC Azure.pubxml" />
     <None Include="Scripts\jquery-2.2.2.intellisense.js" />
     <Content Include="Scripts\jquery-2.2.2.js" />
@@ -951,6 +955,8 @@
     <Compile Include="Areas\Example\Controllers\ExampleController.cs" />
     <Compile Include="Areas\Reports\Controllers\SecurityUserLoginHistoryReportController.cs" />
     <Compile Include="Areas\Reports\ReportAreaRegistration.cs" />
+    <Compile Include="Areas\ScrumBan\Controllers\WebsiteDataController.cs" />
+    <Compile Include="Areas\ScrumBan\ScrumBanAreaRegistration.cs" />
     <Compile Include="Areas\SelectList\Controllers\SecurityRoleSelectListController.cs" />
     <Compile Include="Areas\SelectList\Controllers\SecurityUserSelectListController.cs" />
     <Compile Include="Areas\SelectList\SelectListAreaRegistration.cs" />
@@ -1007,6 +1013,9 @@
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
     <Compile Include="Reports.SharedController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ScrumBan.WebsiteDataController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
     <Compile Include="SelectList.SecurityRoleSelectListController.generated.cs">

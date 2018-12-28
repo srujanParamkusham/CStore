@@ -1,5 +1,5 @@
 <Dictionary Name="Domain">
-  <Database Name="Template" ConnectionName="DefaultConnection" ConnectionType="SQL Server" ConnectionString="Server=sg-lt-169\SENECA;Database=CStore;Persist Security Info=True;">
+  <Database Name="Template" ConnectionName="DefaultConnection" ConnectionType="SQL Server" ConnectionString="Server=sg-lt-169\SENECA;Database=CStore;Integrated Security=True;" DatabaseType="SQL Server">
     <Area Name="Admin">
       <Tables>
       </Tables>
@@ -21,6 +21,54 @@
       </StoredProcedures>
       <Targets>
         <CatalystMVC EntityBase="" MappingBase="" RequestBase="" ServiceBase="" ControllerBase="" SelectToControllerBase="" EntityDestination="" MappingDestination="" RequestDestination="" ViewModelNamespace="" ServiceModelLocation="CStore.Domain.Domains.General.Models.ServiceModels" ViewModelLocation="CStore.Domain.Domains.General.Models.ViewModels" ServicesLocation="CStore.Domain.Domains.General.Services" Area="CStore.Web.Areas.General" DomainServiceNamespace="" DomainServiceDeleteRequest="" DomainServiceDeleteResponse="" DomainServiceGetRequest="" DomainServiceGetResponse="" DomainServicePagedListRequest="" DomainServicePagedListResponse="" DomainServiceListRequest="" DomainServiceListResponse="" DomainServiceSaveRequest="" DomainServiceSaveResponse="" BaseViewModel="" BaseListViewModel="" BaseSelectToViewModel="">
+        </CatalystMVC>
+      </Targets>
+    </Area>
+    <Area Name="Project">
+      <Tables>
+      </Tables>
+      <Views>
+      </Views>
+      <StoredProcedures>
+      </StoredProcedures>
+      <Targets>
+        <CatalystMVC EntityBase="" MappingBase="" RequestBase="" ServiceBase="" ControllerBase="" SelectToControllerBase="" EntityDestination="" MappingDestination="" RequestDestination="" ViewModelNamespace="" ServiceModelLocation="CStore.Domain.Domains.Project.Models.ServiceModels" ViewModelLocation="CStore.Domain.Domains.Project.Models.ViewModels" ServicesLocation="CStore.Domain.Domains.Project.Services" Area="CStore.Web.Areas.Project" DomainServiceNamespace="" DomainServiceDeleteRequest="" DomainServiceDeleteResponse="" DomainServiceGetRequest="" DomainServiceGetResponse="" DomainServicePagedListRequest="" DomainServicePagedListResponse="" DomainServiceListRequest="" DomainServiceListResponse="" DomainServiceSaveRequest="" DomainServiceSaveResponse="" BaseViewModel="" BaseListViewModel="" BaseSelectToViewModel="">
+        </CatalystMVC>
+      </Targets>
+    </Area>
+    <Area Name="ScrumBan">
+      <Tables>
+        <Table Name="WebsiteData" TableName="WebsiteData" TableSchema="" Notes="">
+          <TableColumns>
+            <TableColumn Name="Title" ColumnName="Title" ColumnType="nvarchar" ColumnSize="100" ReadOnly="False" Identity="False" NullableType="True" PrimaryKey="True" Label="Title" ForceNullableType="False" Required="False" Exclude="False" DisplayFormat="" DataType="" SupportFilterOn="" Notes="">
+            </TableColumn>
+            <TableColumn Name="ImgLink" ColumnName="ImgLink" ColumnType="varchar" ColumnSize="500" ReadOnly="False" Identity="False" NullableType="True" PrimaryKey="False" Label="Img Link">
+            </TableColumn>
+            <TableColumn Name="Description" ColumnName="Description" ColumnType="varchar" ColumnSize="-1" ReadOnly="False" Identity="False" NullableType="True" PrimaryKey="False" Label="Description">
+            </TableColumn>
+            <TableColumn Name="Publishdate" ColumnName="Publishdate" ColumnType="datetime" ColumnSize="0" ReadOnly="False" Identity="False" NullableType="True" PrimaryKey="False" Label="Publishdate">
+            </TableColumn>
+            <TableColumn Name="Active" ColumnName="Active" ColumnType="bit" ColumnSize="0" ReadOnly="False" Identity="False" NullableType="True" PrimaryKey="False" Label="Active">
+            </TableColumn>
+          </TableColumns>
+          <ChildAnnotations>
+          </ChildAnnotations>
+          <Implementations>
+            <Service ServiceName="WebsiteDataEntityService" ServiceModelLocation="" ServicesLocation="" ServiceBase="" ControllerBase="" DomainServiceNamespace="" DomainServiceDeleteRequest="" DomainServiceDeleteResponse="" DomainServiceGetRequest="" DomainServiceGetResponse="" DomainServicePagedListRequest="" DomainServicePagedListResponse="" DomainServiceListRequest="" DomainServiceListResponse="" DomainServiceSaveRequest="" DomainServiceSaveResponse="">
+            </Service>
+            <ListEditContoller ControllerName="WebsiteDataController" AddService="False" ServiceName="WebsiteDataEntityService" ServiceModelLocation="" ServicesLocation="" ServiceBase="" ControllerBase="" DomainServiceNamespace="" DomainServiceDeleteRequest="" DomainServiceDeleteResponse="" DomainServiceGetRequest="" DomainServiceGetResponse="" DomainServicePagedListRequest="" DomainServicePagedListResponse="" DomainServiceListRequest="" DomainServiceListResponse="" DomainServiceSaveRequest="" DomainServiceSaveResponse="" ViewModelLocation="" BaseViewModel="" BaseListViewModel="" Area="">
+            </ListEditContoller>
+          </Implementations>
+          <Relationships>
+          </Relationships>
+        </Table>
+      </Tables>
+      <Views>
+      </Views>
+      <StoredProcedures>
+      </StoredProcedures>
+      <Targets>
+        <CatalystMVC EntityBase="" MappingBase="" RequestBase="" ServiceBase="" ControllerBase="" SelectToControllerBase="" EntityDestination="" MappingDestination="" RequestDestination="" ViewModelNamespace="" ServiceModelLocation="CStore.Domain.Domains.ScrumBan.Models.ServiceModels" ViewModelLocation="CStore.Domain.Domains.ScrumBan.Models.ViewModels" ServicesLocation="CStore.Domain.Domains.ScrumBan.Services" Area="CStore.Web.Areas.ScrumBan" DomainServiceNamespace="" DomainServiceDeleteRequest="" DomainServiceDeleteResponse="" DomainServiceGetRequest="" DomainServiceGetResponse="" DomainServicePagedListRequest="" DomainServicePagedListResponse="" DomainServiceListRequest="" DomainServiceListResponse="" DomainServiceSaveRequest="" DomainServiceSaveResponse="" BaseViewModel="" BaseListViewModel="" BaseSelectToViewModel="">
         </CatalystMVC>
       </Targets>
     </Area>

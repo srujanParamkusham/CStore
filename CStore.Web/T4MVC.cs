@@ -35,6 +35,8 @@ public static partial class MVC
     public static ExampleClass Example { get { return s_Example; } }
     static readonly ReportsClass s_Reports = new ReportsClass();
     public static ReportsClass Reports { get { return s_Reports; } }
+    static readonly ScrumBanClass s_ScrumBan = new ScrumBanClass();
+    public static ScrumBanClass ScrumBan { get { return s_ScrumBan; } }
     static readonly SelectListClass s_SelectList = new SelectListClass();
     public static SelectListClass SelectList { get { return s_SelectList; } }
     public static CStore.Web.Controllers.ErrorController Error = new CStore.Web.Controllers.T4MVC_ErrorController();
@@ -92,6 +94,12 @@ namespace T4MVC
         public T4MVC.Reports.SharedController Shared = new T4MVC.Reports.SharedController();
     }
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+    public class ScrumBanClass
+    {
+        public readonly string Name = "ScrumBan";
+        public CStore.Web.Areas.ScrumBan.Controllers.WebsiteDataController WebsiteData = new CStore.Web.Areas.ScrumBan.Controllers.T4MVC_WebsiteDataController();
+    }
+    [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
     public class SelectListClass
     {
         public readonly string Name = "SelectList";
@@ -114,13 +122,13 @@ namespace T4MVC
 [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
 internal partial class T4MVC_System_Web_Mvc_ActionResult : System.Web.Mvc.ActionResult, IT4MVCActionResult
 {
-    public T4MVC_System_Web_Mvc_ActionResult(string area, string controller, string action, string protocol = null) : base()
+    public T4MVC_System_Web_Mvc_ActionResult(string area, string controller, string action, string protocol = null): base()
     {
         this.InitMVCT4Result(area, controller, action, protocol);
     }
-
+     
     public override void ExecuteResult(System.Web.Mvc.ControllerContext context) { }
-
+    
     public string Controller { get; set; }
     public string Action { get; set; }
     public string Protocol { get; set; }
@@ -132,33 +140,29 @@ internal partial class T4MVC_System_Web_Mvc_ActionResult : System.Web.Mvc.Action
 namespace Links
 {
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-    public static class Scripts
-    {
+    public static class Scripts {
         private const string URLPATH = "~/Scripts";
         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public static class app
-        {
+        public static class app {
             private const string URLPATH = "~/Scripts/app";
             public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
             public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
             public static readonly string inspinia_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/inspinia.min.js") ? Url("inspinia.min.js") : Url("inspinia.js");
             public static readonly string skin_config_min_js = Url("skin.config.min.js");
         }
-
+    
         public static readonly string bootstrap_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/bootstrap.min.js") ? Url("bootstrap.min.js") : Url("bootstrap.js");
         public static readonly string bootstrap_min_js = Url("bootstrap.min.js");
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public static class Catalyst
-        {
+        public static class Catalyst {
             private const string URLPATH = "~/Scripts/Catalyst";
             public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
             public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
             public static readonly string Catalyst_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/Catalyst.min.js") ? Url("Catalyst.min.js") : Url("Catalyst.js");
             [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-            public static class UI
-            {
+            public static class UI {
                 private const string URLPATH = "~/Scripts/Catalyst/UI";
                 public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                 public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
@@ -166,6 +170,7 @@ namespace Links
                 public static readonly string Form_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/Form.min.js") ? Url("Form.min.js") : Url("Form.js");
                 public static readonly string Formatting_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/Formatting.min.js") ? Url("Formatting.min.js") : Url("Formatting.js");
                 public static readonly string FormState_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/FormState.min.js") ? Url("FormState.min.js") : Url("FormState.js");
+                public static readonly string MaskedField_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/MaskedField.min.js") ? Url("MaskedField.min.js") : Url("MaskedField.js");
                 public static readonly string Menu_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/Menu.min.js") ? Url("Menu.min.js") : Url("Menu.js");
                 public static readonly string Message_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/Message.min.js") ? Url("Message.min.js") : Url("Message.js");
                 public static readonly string Modal_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/Modal.min.js") ? Url("Modal.min.js") : Url("Modal.js");
@@ -176,9 +181,9 @@ namespace Links
                 public static readonly string UnsavedFormChanges_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/UnsavedFormChanges.min.js") ? Url("UnsavedFormChanges.min.js") : Url("UnsavedFormChanges.js");
                 public static readonly string Validation_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/Validation.min.js") ? Url("Validation.min.js") : Url("Validation.js");
             }
-
+        
         }
-
+    
         public static readonly string jquery_2_2_2_intellisense_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery-2.2.2.intellisense.min.js") ? Url("jquery-2.2.2.intellisense.min.js") : Url("jquery-2.2.2.intellisense.js");
         public static readonly string jquery_2_2_2_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery-2.2.2.min.js") ? Url("jquery-2.2.2.min.js") : Url("jquery-2.2.2.js");
         public static readonly string jquery_2_2_2_min_js = Url("jquery-2.2.2.min.js");
@@ -195,101 +200,89 @@ namespace Links
         public static readonly string jquery_validate_unobtrusive_min_js = Url("jquery.validate.unobtrusive.min.js");
         public static readonly string modernizr_2_8_3_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/modernizr-2.8.3.min.js") ? Url("modernizr-2.8.3.min.js") : Url("modernizr-2.8.3.js");
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public static class plugins
-        {
+        public static class plugins {
             private const string URLPATH = "~/Scripts/plugins";
             public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
             public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
             [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-            public static class autoNumeric
-            {
+            public static class autoNumeric {
                 private const string URLPATH = "~/Scripts/plugins/autoNumeric";
                 public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                 public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                 public static readonly string autoNumeric_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/autoNumeric.min.js") ? Url("autoNumeric.min.js") : Url("autoNumeric.js");
             }
-
+        
             [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-            public static class blueimp
-            {
+            public static class blueimp {
                 private const string URLPATH = "~/Scripts/plugins/blueimp";
                 public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                 public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                 public static readonly string jquery_blueimp_gallery_min_js = Url("jquery.blueimp-gallery.min.js");
             }
-
+        
             [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-            public static class bootstrap_datepicker
-            {
+            public static class bootstrap_datepicker {
                 private const string URLPATH = "~/Scripts/plugins/bootstrap-datepicker";
                 public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                 public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                 public static readonly string bootstrap_datepicker_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/bootstrap-datepicker.min.js") ? Url("bootstrap-datepicker.min.js") : Url("bootstrap-datepicker.js");
             }
-
+        
             [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-            public static class bootstrap_datetimepicker
-            {
+            public static class bootstrap_datetimepicker {
                 private const string URLPATH = "~/Scripts/plugins/bootstrap-datetimepicker";
                 public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                 public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                 public static readonly string bootstrap_datetimepicker_min_js = Url("bootstrap-datetimepicker.min.js");
             }
-
+        
             [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-            public static class chartJs
-            {
+            public static class chartJs {
                 private const string URLPATH = "~/Scripts/plugins/chartJs";
                 public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                 public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                 public static readonly string Chart_min_js = Url("Chart.min.js");
             }
-
+        
             [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-            public static class chosen
-            {
+            public static class chosen {
                 private const string URLPATH = "~/Scripts/plugins/chosen";
                 public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                 public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                 public static readonly string chosen_jquery_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/chosen.jquery.min.js") ? Url("chosen.jquery.min.js") : Url("chosen.jquery.js");
             }
-
+        
             [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-            public static class codemirror
-            {
+            public static class codemirror {
                 private const string URLPATH = "~/Scripts/plugins/codemirror";
                 public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                 public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                 public static readonly string codemirror_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/codemirror.min.js") ? Url("codemirror.min.js") : Url("codemirror.js");
                 [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                public static class mode
-                {
+                public static class mode {
                     private const string URLPATH = "~/Scripts/plugins/codemirror/mode";
                     public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                     public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                    public static class apl
-                    {
+                    public static class apl {
                         private const string URLPATH = "~/Scripts/plugins/codemirror/mode/apl";
                         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                         public static readonly string apl_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/apl.min.js") ? Url("apl.min.js") : Url("apl.js");
                         public static readonly string index_html = Url("index.html");
                     }
-
+                
                     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                    public static class asterisk
-                    {
+                    public static class asterisk {
                         private const string URLPATH = "~/Scripts/plugins/codemirror/mode/asterisk";
                         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                         public static readonly string asterisk_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/asterisk.min.js") ? Url("asterisk.min.js") : Url("asterisk.js");
                         public static readonly string index_html = Url("index.html");
                     }
-
+                
                     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                    public static class clike
-                    {
+                    public static class clike {
                         private const string URLPATH = "~/Scripts/plugins/codemirror/mode/clike";
                         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
@@ -297,50 +290,45 @@ namespace Links
                         public static readonly string index_html = Url("index.html");
                         public static readonly string scala_html = Url("scala.html");
                     }
-
+                
                     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                    public static class clojure
-                    {
+                    public static class clojure {
                         private const string URLPATH = "~/Scripts/plugins/codemirror/mode/clojure";
                         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                         public static readonly string clojure_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/clojure.min.js") ? Url("clojure.min.js") : Url("clojure.js");
                         public static readonly string index_html = Url("index.html");
                     }
-
+                
                     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                    public static class cobol
-                    {
+                    public static class cobol {
                         private const string URLPATH = "~/Scripts/plugins/codemirror/mode/cobol";
                         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                         public static readonly string cobol_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/cobol.min.js") ? Url("cobol.min.js") : Url("cobol.js");
                         public static readonly string index_html = Url("index.html");
                     }
-
+                
                     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                    public static class coffeescript
-                    {
+                    public static class coffeescript {
                         private const string URLPATH = "~/Scripts/plugins/codemirror/mode/coffeescript";
                         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                         public static readonly string coffeescript_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/coffeescript.min.js") ? Url("coffeescript.min.js") : Url("coffeescript.js");
                         public static readonly string index_html = Url("index.html");
                     }
-
+                
                     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                    public static class commonlisp
-                    {
+                    public static class commonlisp {
                         private const string URLPATH = "~/Scripts/plugins/codemirror/mode/commonlisp";
                         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                         public static readonly string commonlisp_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/commonlisp.min.js") ? Url("commonlisp.min.js") : Url("commonlisp.js");
                         public static readonly string index_html = Url("index.html");
                     }
-
+                
                     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                    public static class css
-                    {
+                    public static class css {
                         private const string URLPATH = "~/Scripts/plugins/codemirror/mode/css";
                         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
@@ -352,120 +340,108 @@ namespace Links
                         public static readonly string scss_test_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/scss_test.min.js") ? Url("scss_test.min.js") : Url("scss_test.js");
                         public static readonly string test_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/test.min.js") ? Url("test.min.js") : Url("test.js");
                     }
-
+                
                     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                    public static class cypher
-                    {
+                    public static class cypher {
                         private const string URLPATH = "~/Scripts/plugins/codemirror/mode/cypher";
                         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                         public static readonly string cypher_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/cypher.min.js") ? Url("cypher.min.js") : Url("cypher.js");
                         public static readonly string index_html = Url("index.html");
                     }
-
+                
                     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                    public static class d
-                    {
+                    public static class d {
                         private const string URLPATH = "~/Scripts/plugins/codemirror/mode/d";
                         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                         public static readonly string d_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/d.min.js") ? Url("d.min.js") : Url("d.js");
                         public static readonly string index_html = Url("index.html");
                     }
-
+                
                     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                    public static class diff
-                    {
+                    public static class diff {
                         private const string URLPATH = "~/Scripts/plugins/codemirror/mode/diff";
                         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                         public static readonly string diff_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/diff.min.js") ? Url("diff.min.js") : Url("diff.js");
                         public static readonly string index_html = Url("index.html");
                     }
-
+                
                     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                    public static class django
-                    {
+                    public static class django {
                         private const string URLPATH = "~/Scripts/plugins/codemirror/mode/django";
                         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                         public static readonly string django_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/django.min.js") ? Url("django.min.js") : Url("django.js");
                         public static readonly string index_html = Url("index.html");
                     }
-
+                
                     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                    public static class dtd
-                    {
+                    public static class dtd {
                         private const string URLPATH = "~/Scripts/plugins/codemirror/mode/dtd";
                         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                         public static readonly string dtd_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/dtd.min.js") ? Url("dtd.min.js") : Url("dtd.js");
                         public static readonly string index_html = Url("index.html");
                     }
-
+                
                     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                    public static class dylan
-                    {
+                    public static class dylan {
                         private const string URLPATH = "~/Scripts/plugins/codemirror/mode/dylan";
                         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                         public static readonly string dylan_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/dylan.min.js") ? Url("dylan.min.js") : Url("dylan.js");
                         public static readonly string index_html = Url("index.html");
                     }
-
+                
                     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                    public static class ecl
-                    {
+                    public static class ecl {
                         private const string URLPATH = "~/Scripts/plugins/codemirror/mode/ecl";
                         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                         public static readonly string ecl_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/ecl.min.js") ? Url("ecl.min.js") : Url("ecl.js");
                         public static readonly string index_html = Url("index.html");
                     }
-
+                
                     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                    public static class eiffel
-                    {
+                    public static class eiffel {
                         private const string URLPATH = "~/Scripts/plugins/codemirror/mode/eiffel";
                         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                         public static readonly string eiffel_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/eiffel.min.js") ? Url("eiffel.min.js") : Url("eiffel.js");
                         public static readonly string index_html = Url("index.html");
                     }
-
+                
                     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                    public static class erlang
-                    {
+                    public static class erlang {
                         private const string URLPATH = "~/Scripts/plugins/codemirror/mode/erlang";
                         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                         public static readonly string erlang_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/erlang.min.js") ? Url("erlang.min.js") : Url("erlang.js");
                         public static readonly string index_html = Url("index.html");
                     }
-
+                
                     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                    public static class fortran
-                    {
+                    public static class fortran {
                         private const string URLPATH = "~/Scripts/plugins/codemirror/mode/fortran";
                         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                         public static readonly string fortran_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/fortran.min.js") ? Url("fortran.min.js") : Url("fortran.js");
                         public static readonly string index_html = Url("index.html");
                     }
-
+                
                     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                    public static class gas
-                    {
+                    public static class gas {
                         private const string URLPATH = "~/Scripts/plugins/codemirror/mode/gas";
                         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                         public static readonly string gas_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/gas.min.js") ? Url("gas.min.js") : Url("gas.js");
                         public static readonly string index_html = Url("index.html");
                     }
-
+                
                     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                    public static class gfm
-                    {
+                    public static class gfm {
                         private const string URLPATH = "~/Scripts/plugins/codemirror/mode/gfm";
                         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
@@ -473,40 +449,36 @@ namespace Links
                         public static readonly string index_html = Url("index.html");
                         public static readonly string test_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/test.min.js") ? Url("test.min.js") : Url("test.js");
                     }
-
+                
                     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                    public static class gherkin
-                    {
+                    public static class gherkin {
                         private const string URLPATH = "~/Scripts/plugins/codemirror/mode/gherkin";
                         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                         public static readonly string gherkin_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/gherkin.min.js") ? Url("gherkin.min.js") : Url("gherkin.js");
                         public static readonly string index_html = Url("index.html");
                     }
-
+                
                     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                    public static class go
-                    {
+                    public static class go {
                         private const string URLPATH = "~/Scripts/plugins/codemirror/mode/go";
                         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                         public static readonly string go_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/go.min.js") ? Url("go.min.js") : Url("go.js");
                         public static readonly string index_html = Url("index.html");
                     }
-
+                
                     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                    public static class groovy
-                    {
+                    public static class groovy {
                         private const string URLPATH = "~/Scripts/plugins/codemirror/mode/groovy";
                         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                         public static readonly string groovy_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/groovy.min.js") ? Url("groovy.min.js") : Url("groovy.js");
                         public static readonly string index_html = Url("index.html");
                     }
-
+                
                     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                    public static class haml
-                    {
+                    public static class haml {
                         private const string URLPATH = "~/Scripts/plugins/codemirror/mode/haml";
                         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
@@ -514,71 +486,64 @@ namespace Links
                         public static readonly string index_html = Url("index.html");
                         public static readonly string test_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/test.min.js") ? Url("test.min.js") : Url("test.js");
                     }
-
+                
                     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                    public static class haskell
-                    {
+                    public static class haskell {
                         private const string URLPATH = "~/Scripts/plugins/codemirror/mode/haskell";
                         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                         public static readonly string haskell_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/haskell.min.js") ? Url("haskell.min.js") : Url("haskell.js");
                         public static readonly string index_html = Url("index.html");
                     }
-
+                
                     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                    public static class haxe
-                    {
+                    public static class haxe {
                         private const string URLPATH = "~/Scripts/plugins/codemirror/mode/haxe";
                         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                         public static readonly string haxe_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/haxe.min.js") ? Url("haxe.min.js") : Url("haxe.js");
                         public static readonly string index_html = Url("index.html");
                     }
-
+                
                     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                    public static class htmlembedded
-                    {
+                    public static class htmlembedded {
                         private const string URLPATH = "~/Scripts/plugins/codemirror/mode/htmlembedded";
                         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                         public static readonly string htmlembedded_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/htmlembedded.min.js") ? Url("htmlembedded.min.js") : Url("htmlembedded.js");
                         public static readonly string index_html = Url("index.html");
                     }
-
+                
                     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                    public static class htmlmixed
-                    {
+                    public static class htmlmixed {
                         private const string URLPATH = "~/Scripts/plugins/codemirror/mode/htmlmixed";
                         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                         public static readonly string htmlmixed_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/htmlmixed.min.js") ? Url("htmlmixed.min.js") : Url("htmlmixed.js");
                         public static readonly string index_html = Url("index.html");
                     }
-
+                
                     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                    public static class http
-                    {
+                    public static class http {
                         private const string URLPATH = "~/Scripts/plugins/codemirror/mode/http";
                         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                         public static readonly string http_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/http.min.js") ? Url("http.min.js") : Url("http.js");
                         public static readonly string index_html = Url("index.html");
                     }
-
+                
                     public static readonly string index_html = Url("index.html");
                     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                    public static class jade
-                    {
+                    public static class jade {
                         private const string URLPATH = "~/Scripts/plugins/codemirror/mode/jade";
                         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                         public static readonly string index_html = Url("index.html");
                         public static readonly string jade_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jade.min.js") ? Url("jade.min.js") : Url("jade.js");
                     }
-
+                
                     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                    public static class javascript
-                    {
+                    public static class javascript {
                         private const string URLPATH = "~/Scripts/plugins/codemirror/mode/javascript";
                         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
@@ -588,60 +553,54 @@ namespace Links
                         public static readonly string test_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/test.min.js") ? Url("test.min.js") : Url("test.js");
                         public static readonly string typescript_html = Url("typescript.html");
                     }
-
+                
                     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                    public static class jinja2
-                    {
+                    public static class jinja2 {
                         private const string URLPATH = "~/Scripts/plugins/codemirror/mode/jinja2";
                         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                         public static readonly string index_html = Url("index.html");
                         public static readonly string jinja2_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jinja2.min.js") ? Url("jinja2.min.js") : Url("jinja2.js");
                     }
-
+                
                     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                    public static class julia
-                    {
+                    public static class julia {
                         private const string URLPATH = "~/Scripts/plugins/codemirror/mode/julia";
                         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                         public static readonly string index_html = Url("index.html");
                         public static readonly string julia_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/julia.min.js") ? Url("julia.min.js") : Url("julia.js");
                     }
-
+                
                     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                    public static class kotlin
-                    {
+                    public static class kotlin {
                         private const string URLPATH = "~/Scripts/plugins/codemirror/mode/kotlin";
                         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                         public static readonly string index_html = Url("index.html");
                         public static readonly string kotlin_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/kotlin.min.js") ? Url("kotlin.min.js") : Url("kotlin.js");
                     }
-
+                
                     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                    public static class livescript
-                    {
+                    public static class livescript {
                         private const string URLPATH = "~/Scripts/plugins/codemirror/mode/livescript";
                         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                         public static readonly string index_html = Url("index.html");
                         public static readonly string livescript_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/livescript.min.js") ? Url("livescript.min.js") : Url("livescript.js");
                     }
-
+                
                     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                    public static class lua
-                    {
+                    public static class lua {
                         private const string URLPATH = "~/Scripts/plugins/codemirror/mode/lua";
                         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                         public static readonly string index_html = Url("index.html");
                         public static readonly string lua_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/lua.min.js") ? Url("lua.min.js") : Url("lua.js");
                     }
-
+                
                     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                    public static class markdown
-                    {
+                    public static class markdown {
                         private const string URLPATH = "~/Scripts/plugins/codemirror/mode/markdown";
                         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
@@ -649,101 +608,91 @@ namespace Links
                         public static readonly string markdown_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/markdown.min.js") ? Url("markdown.min.js") : Url("markdown.js");
                         public static readonly string test_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/test.min.js") ? Url("test.min.js") : Url("test.js");
                     }
-
+                
                     public static readonly string meta_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/meta.min.js") ? Url("meta.min.js") : Url("meta.js");
                     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                    public static class mirc
-                    {
+                    public static class mirc {
                         private const string URLPATH = "~/Scripts/plugins/codemirror/mode/mirc";
                         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                         public static readonly string index_html = Url("index.html");
                         public static readonly string mirc_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/mirc.min.js") ? Url("mirc.min.js") : Url("mirc.js");
                     }
-
+                
                     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                    public static class mllike
-                    {
+                    public static class mllike {
                         private const string URLPATH = "~/Scripts/plugins/codemirror/mode/mllike";
                         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                         public static readonly string index_html = Url("index.html");
                         public static readonly string mllike_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/mllike.min.js") ? Url("mllike.min.js") : Url("mllike.js");
                     }
-
+                
                     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                    public static class modelica
-                    {
+                    public static class modelica {
                         private const string URLPATH = "~/Scripts/plugins/codemirror/mode/modelica";
                         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                         public static readonly string index_html = Url("index.html");
                         public static readonly string modelica_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/modelica.min.js") ? Url("modelica.min.js") : Url("modelica.js");
                     }
-
+                
                     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                    public static class nginx
-                    {
+                    public static class nginx {
                         private const string URLPATH = "~/Scripts/plugins/codemirror/mode/nginx";
                         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                         public static readonly string index_html = Url("index.html");
                         public static readonly string nginx_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/nginx.min.js") ? Url("nginx.min.js") : Url("nginx.js");
                     }
-
+                
                     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                    public static class ntriples
-                    {
+                    public static class ntriples {
                         private const string URLPATH = "~/Scripts/plugins/codemirror/mode/ntriples";
                         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                         public static readonly string index_html = Url("index.html");
                         public static readonly string ntriples_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/ntriples.min.js") ? Url("ntriples.min.js") : Url("ntriples.js");
                     }
-
+                
                     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                    public static class octave
-                    {
+                    public static class octave {
                         private const string URLPATH = "~/Scripts/plugins/codemirror/mode/octave";
                         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                         public static readonly string index_html = Url("index.html");
                         public static readonly string octave_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/octave.min.js") ? Url("octave.min.js") : Url("octave.js");
                     }
-
+                
                     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                    public static class pascal
-                    {
+                    public static class pascal {
                         private const string URLPATH = "~/Scripts/plugins/codemirror/mode/pascal";
                         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                         public static readonly string index_html = Url("index.html");
                         public static readonly string pascal_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/pascal.min.js") ? Url("pascal.min.js") : Url("pascal.js");
                     }
-
+                
                     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                    public static class pegjs
-                    {
+                    public static class pegjs {
                         private const string URLPATH = "~/Scripts/plugins/codemirror/mode/pegjs";
                         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                         public static readonly string index_html = Url("index.html");
                         public static readonly string pegjs_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/pegjs.min.js") ? Url("pegjs.min.js") : Url("pegjs.js");
                     }
-
+                
                     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                    public static class perl
-                    {
+                    public static class perl {
                         private const string URLPATH = "~/Scripts/plugins/codemirror/mode/perl";
                         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                         public static readonly string index_html = Url("index.html");
                         public static readonly string perl_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/perl.min.js") ? Url("perl.min.js") : Url("perl.js");
                     }
-
+                
                     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                    public static class php
-                    {
+                    public static class php {
                         private const string URLPATH = "~/Scripts/plugins/codemirror/mode/php";
                         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
@@ -751,99 +700,89 @@ namespace Links
                         public static readonly string php_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/php.min.js") ? Url("php.min.js") : Url("php.js");
                         public static readonly string test_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/test.min.js") ? Url("test.min.js") : Url("test.js");
                     }
-
+                
                     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                    public static class pig
-                    {
+                    public static class pig {
                         private const string URLPATH = "~/Scripts/plugins/codemirror/mode/pig";
                         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                         public static readonly string index_html = Url("index.html");
                         public static readonly string pig_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/pig.min.js") ? Url("pig.min.js") : Url("pig.js");
                     }
-
+                
                     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                    public static class properties
-                    {
+                    public static class properties {
                         private const string URLPATH = "~/Scripts/plugins/codemirror/mode/properties";
                         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                         public static readonly string index_html = Url("index.html");
                         public static readonly string properties_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/properties.min.js") ? Url("properties.min.js") : Url("properties.js");
                     }
-
+                
                     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                    public static class puppet
-                    {
+                    public static class puppet {
                         private const string URLPATH = "~/Scripts/plugins/codemirror/mode/puppet";
                         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                         public static readonly string index_html = Url("index.html");
                         public static readonly string puppet_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/puppet.min.js") ? Url("puppet.min.js") : Url("puppet.js");
                     }
-
+                
                     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                    public static class python
-                    {
+                    public static class python {
                         private const string URLPATH = "~/Scripts/plugins/codemirror/mode/python";
                         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                         public static readonly string index_html = Url("index.html");
                         public static readonly string python_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/python.min.js") ? Url("python.min.js") : Url("python.js");
                     }
-
+                
                     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                    public static class q
-                    {
+                    public static class q {
                         private const string URLPATH = "~/Scripts/plugins/codemirror/mode/q";
                         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                         public static readonly string index_html = Url("index.html");
                         public static readonly string q_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/q.min.js") ? Url("q.min.js") : Url("q.js");
                     }
-
+                
                     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                    public static class r
-                    {
+                    public static class r {
                         private const string URLPATH = "~/Scripts/plugins/codemirror/mode/r";
                         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                         public static readonly string index_html = Url("index.html");
                         public static readonly string r_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/r.min.js") ? Url("r.min.js") : Url("r.js");
                     }
-
+                
                     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                    public static class rpm
-                    {
+                    public static class rpm {
                         private const string URLPATH = "~/Scripts/plugins/codemirror/mode/rpm";
                         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                        public static class changes
-                        {
+                        public static class changes {
                             private const string URLPATH = "~/Scripts/plugins/codemirror/mode/rpm/changes";
                             public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                             public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                             public static readonly string index_html = Url("index.html");
                         }
-
+                    
                         public static readonly string index_html = Url("index.html");
                         public static readonly string rpm_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/rpm.min.js") ? Url("rpm.min.js") : Url("rpm.js");
                     }
-
+                
                     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                    public static class rst
-                    {
+                    public static class rst {
                         private const string URLPATH = "~/Scripts/plugins/codemirror/mode/rst";
                         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                         public static readonly string index_html = Url("index.html");
                         public static readonly string rst_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/rst.min.js") ? Url("rst.min.js") : Url("rst.js");
                     }
-
+                
                     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                    public static class ruby
-                    {
+                    public static class ruby {
                         private const string URLPATH = "~/Scripts/plugins/codemirror/mode/ruby";
                         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
@@ -851,40 +790,36 @@ namespace Links
                         public static readonly string ruby_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/ruby.min.js") ? Url("ruby.min.js") : Url("ruby.js");
                         public static readonly string test_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/test.min.js") ? Url("test.min.js") : Url("test.js");
                     }
-
+                
                     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                    public static class rust
-                    {
+                    public static class rust {
                         private const string URLPATH = "~/Scripts/plugins/codemirror/mode/rust";
                         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                         public static readonly string index_html = Url("index.html");
                         public static readonly string rust_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/rust.min.js") ? Url("rust.min.js") : Url("rust.js");
                     }
-
+                
                     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                    public static class sass
-                    {
+                    public static class sass {
                         private const string URLPATH = "~/Scripts/plugins/codemirror/mode/sass";
                         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                         public static readonly string index_html = Url("index.html");
                         public static readonly string sass_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/sass.min.js") ? Url("sass.min.js") : Url("sass.js");
                     }
-
+                
                     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                    public static class scheme
-                    {
+                    public static class scheme {
                         private const string URLPATH = "~/Scripts/plugins/codemirror/mode/scheme";
                         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                         public static readonly string index_html = Url("index.html");
                         public static readonly string scheme_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/scheme.min.js") ? Url("scheme.min.js") : Url("scheme.js");
                     }
-
+                
                     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                    public static class shell
-                    {
+                    public static class shell {
                         private const string URLPATH = "~/Scripts/plugins/codemirror/mode/shell";
                         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
@@ -892,20 +827,18 @@ namespace Links
                         public static readonly string shell_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/shell.min.js") ? Url("shell.min.js") : Url("shell.js");
                         public static readonly string test_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/test.min.js") ? Url("test.min.js") : Url("test.js");
                     }
-
+                
                     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                    public static class sieve
-                    {
+                    public static class sieve {
                         private const string URLPATH = "~/Scripts/plugins/codemirror/mode/sieve";
                         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                         public static readonly string index_html = Url("index.html");
                         public static readonly string sieve_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/sieve.min.js") ? Url("sieve.min.js") : Url("sieve.js");
                     }
-
+                
                     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                    public static class slim
-                    {
+                    public static class slim {
                         private const string URLPATH = "~/Scripts/plugins/codemirror/mode/slim";
                         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
@@ -913,70 +846,63 @@ namespace Links
                         public static readonly string slim_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/slim.min.js") ? Url("slim.min.js") : Url("slim.js");
                         public static readonly string test_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/test.min.js") ? Url("test.min.js") : Url("test.js");
                     }
-
+                
                     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                    public static class smalltalk
-                    {
+                    public static class smalltalk {
                         private const string URLPATH = "~/Scripts/plugins/codemirror/mode/smalltalk";
                         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                         public static readonly string index_html = Url("index.html");
                         public static readonly string smalltalk_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/smalltalk.min.js") ? Url("smalltalk.min.js") : Url("smalltalk.js");
                     }
-
+                
                     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                    public static class smarty
-                    {
+                    public static class smarty {
                         private const string URLPATH = "~/Scripts/plugins/codemirror/mode/smarty";
                         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                         public static readonly string index_html = Url("index.html");
                         public static readonly string smarty_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/smarty.min.js") ? Url("smarty.min.js") : Url("smarty.js");
                     }
-
+                
                     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                    public static class smartymixed
-                    {
+                    public static class smartymixed {
                         private const string URLPATH = "~/Scripts/plugins/codemirror/mode/smartymixed";
                         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                         public static readonly string index_html = Url("index.html");
                         public static readonly string smartymixed_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/smartymixed.min.js") ? Url("smartymixed.min.js") : Url("smartymixed.js");
                     }
-
+                
                     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                    public static class solr
-                    {
+                    public static class solr {
                         private const string URLPATH = "~/Scripts/plugins/codemirror/mode/solr";
                         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                         public static readonly string index_html = Url("index.html");
                         public static readonly string solr_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/solr.min.js") ? Url("solr.min.js") : Url("solr.js");
                     }
-
+                
                     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                    public static class sparql
-                    {
+                    public static class sparql {
                         private const string URLPATH = "~/Scripts/plugins/codemirror/mode/sparql";
                         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                         public static readonly string index_html = Url("index.html");
                         public static readonly string sparql_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/sparql.min.js") ? Url("sparql.min.js") : Url("sparql.js");
                     }
-
+                
                     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                    public static class sql
-                    {
+                    public static class sql {
                         private const string URLPATH = "~/Scripts/plugins/codemirror/mode/sql";
                         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                         public static readonly string index_html = Url("index.html");
                         public static readonly string sql_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/sql.min.js") ? Url("sql.min.js") : Url("sql.js");
                     }
-
+                
                     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                    public static class stex
-                    {
+                    public static class stex {
                         private const string URLPATH = "~/Scripts/plugins/codemirror/mode/stex";
                         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
@@ -984,20 +910,18 @@ namespace Links
                         public static readonly string stex_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/stex.min.js") ? Url("stex.min.js") : Url("stex.js");
                         public static readonly string test_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/test.min.js") ? Url("test.min.js") : Url("test.js");
                     }
-
+                
                     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                    public static class tcl
-                    {
+                    public static class tcl {
                         private const string URLPATH = "~/Scripts/plugins/codemirror/mode/tcl";
                         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                         public static readonly string index_html = Url("index.html");
                         public static readonly string tcl_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/tcl.min.js") ? Url("tcl.min.js") : Url("tcl.js");
                     }
-
+                
                     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                    public static class textile
-                    {
+                    public static class textile {
                         private const string URLPATH = "~/Scripts/plugins/codemirror/mode/textile";
                         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
@@ -1005,10 +929,9 @@ namespace Links
                         public static readonly string test_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/test.min.js") ? Url("test.min.js") : Url("test.js");
                         public static readonly string textile_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/textile.min.js") ? Url("textile.min.js") : Url("textile.js");
                     }
-
+                
                     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                    public static class tiddlywiki
-                    {
+                    public static class tiddlywiki {
                         private const string URLPATH = "~/Scripts/plugins/codemirror/mode/tiddlywiki";
                         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
@@ -1016,10 +939,9 @@ namespace Links
                         public static readonly string tiddlywiki_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/tiddlywiki.min.css") ? Url("tiddlywiki.min.css") : Url("tiddlywiki.css");
                         public static readonly string tiddlywiki_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/tiddlywiki.min.js") ? Url("tiddlywiki.min.js") : Url("tiddlywiki.js");
                     }
-
+                
                     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                    public static class tiki
-                    {
+                    public static class tiki {
                         private const string URLPATH = "~/Scripts/plugins/codemirror/mode/tiki";
                         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
@@ -1027,70 +949,63 @@ namespace Links
                         public static readonly string tiki_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/tiki.min.css") ? Url("tiki.min.css") : Url("tiki.css");
                         public static readonly string tiki_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/tiki.min.js") ? Url("tiki.min.js") : Url("tiki.js");
                     }
-
+                
                     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                    public static class toml
-                    {
+                    public static class toml {
                         private const string URLPATH = "~/Scripts/plugins/codemirror/mode/toml";
                         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                         public static readonly string index_html = Url("index.html");
                         public static readonly string toml_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/toml.min.js") ? Url("toml.min.js") : Url("toml.js");
                     }
-
+                
                     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                    public static class tornado
-                    {
+                    public static class tornado {
                         private const string URLPATH = "~/Scripts/plugins/codemirror/mode/tornado";
                         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                         public static readonly string index_html = Url("index.html");
                         public static readonly string tornado_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/tornado.min.js") ? Url("tornado.min.js") : Url("tornado.js");
                     }
-
+                
                     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                    public static class turtle
-                    {
+                    public static class turtle {
                         private const string URLPATH = "~/Scripts/plugins/codemirror/mode/turtle";
                         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                         public static readonly string index_html = Url("index.html");
                         public static readonly string turtle_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/turtle.min.js") ? Url("turtle.min.js") : Url("turtle.js");
                     }
-
+                
                     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                    public static class vb
-                    {
+                    public static class vb {
                         private const string URLPATH = "~/Scripts/plugins/codemirror/mode/vb";
                         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                         public static readonly string index_html = Url("index.html");
                         public static readonly string vb_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/vb.min.js") ? Url("vb.min.js") : Url("vb.js");
                     }
-
+                
                     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                    public static class vbscript
-                    {
+                    public static class vbscript {
                         private const string URLPATH = "~/Scripts/plugins/codemirror/mode/vbscript";
                         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                         public static readonly string index_html = Url("index.html");
                         public static readonly string vbscript_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/vbscript.min.js") ? Url("vbscript.min.js") : Url("vbscript.js");
                     }
-
+                
                     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                    public static class velocity
-                    {
+                    public static class velocity {
                         private const string URLPATH = "~/Scripts/plugins/codemirror/mode/velocity";
                         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                         public static readonly string index_html = Url("index.html");
                         public static readonly string velocity_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/velocity.min.js") ? Url("velocity.min.js") : Url("velocity.js");
                     }
-
+                
                     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                    public static class verilog
-                    {
+                    public static class verilog {
                         private const string URLPATH = "~/Scripts/plugins/codemirror/mode/verilog";
                         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
@@ -1098,10 +1013,9 @@ namespace Links
                         public static readonly string test_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/test.min.js") ? Url("test.min.js") : Url("test.js");
                         public static readonly string verilog_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/verilog.min.js") ? Url("verilog.min.js") : Url("verilog.js");
                     }
-
+                
                     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                    public static class xml
-                    {
+                    public static class xml {
                         private const string URLPATH = "~/Scripts/plugins/codemirror/mode/xml";
                         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
@@ -1109,10 +1023,9 @@ namespace Links
                         public static readonly string test_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/test.min.js") ? Url("test.min.js") : Url("test.js");
                         public static readonly string xml_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/xml.min.js") ? Url("xml.min.js") : Url("xml.js");
                     }
-
+                
                     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                    public static class xquery
-                    {
+                    public static class xquery {
                         private const string URLPATH = "~/Scripts/plugins/codemirror/mode/xquery";
                         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
@@ -1120,52 +1033,47 @@ namespace Links
                         public static readonly string test_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/test.min.js") ? Url("test.min.js") : Url("test.js");
                         public static readonly string xquery_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/xquery.min.js") ? Url("xquery.min.js") : Url("xquery.js");
                     }
-
+                
                     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                    public static class yaml
-                    {
+                    public static class yaml {
                         private const string URLPATH = "~/Scripts/plugins/codemirror/mode/yaml";
                         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                         public static readonly string index_html = Url("index.html");
                         public static readonly string yaml_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/yaml.min.js") ? Url("yaml.min.js") : Url("yaml.js");
                     }
-
+                
                     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                    public static class z80
-                    {
+                    public static class z80 {
                         private const string URLPATH = "~/Scripts/plugins/codemirror/mode/z80";
                         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                         public static readonly string index_html = Url("index.html");
                         public static readonly string z80_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/z80.min.js") ? Url("z80.min.js") : Url("z80.js");
                     }
-
+                
                 }
-
+            
             }
-
+        
             [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-            public static class colorpicker
-            {
+            public static class colorpicker {
                 private const string URLPATH = "~/Scripts/plugins/colorpicker";
                 public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                 public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                 public static readonly string bootstrap_colorpicker_min_js = Url("bootstrap-colorpicker.min.js");
             }
-
+        
             [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-            public static class cropper
-            {
+            public static class cropper {
                 private const string URLPATH = "~/Scripts/plugins/cropper";
                 public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                 public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                 public static readonly string cropper_min_js = Url("cropper.min.js");
             }
-
+        
             [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-            public static class dataTables
-            {
+            public static class dataTables {
                 private const string URLPATH = "~/Scripts/plugins/dataTables";
                 public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                 public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
@@ -1176,58 +1084,52 @@ namespace Links
                 public static readonly string dataTables_select_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/dataTables.select.min.js") ? Url("dataTables.select.min.js") : Url("dataTables.select.js");
                 public static readonly string jquery_dataTables_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.dataTables.min.js") ? Url("jquery.dataTables.min.js") : Url("jquery.dataTables.js");
                 [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                public static class swf
-                {
+                public static class swf {
                     private const string URLPATH = "~/Scripts/plugins/dataTables/swf";
                     public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                     public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                     public static readonly string copy_csv_xls_swf = Url("copy_csv_xls.swf");
                     public static readonly string copy_csv_xls_pdf_swf = Url("copy_csv_xls_pdf.swf");
                 }
-
+            
             }
-
+        
             [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-            public static class diff_match_patch
-            {
+            public static class diff_match_patch {
                 private const string URLPATH = "~/Scripts/plugins/diff_match_patch";
                 public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                 public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                 public static readonly string COPYING = Url("COPYING");
                 [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                public static class javascript
-                {
+                public static class javascript {
                     private const string URLPATH = "~/Scripts/plugins/diff_match_patch/javascript";
                     public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                     public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                     public static readonly string diff_match_patch_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/diff_match_patch.min.js") ? Url("diff_match_patch.min.js") : Url("diff_match_patch.js");
                 }
-
+            
                 public static readonly string README_txt = Url("README.txt");
             }
-
+        
             [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-            public static class dropzone
-            {
+            public static class dropzone {
                 private const string URLPATH = "~/Scripts/plugins/dropzone";
                 public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                 public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                 public static readonly string dropzone_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/dropzone.min.js") ? Url("dropzone.min.js") : Url("dropzone.js");
             }
-
+        
             [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-            public static class easypiechart
-            {
+            public static class easypiechart {
                 private const string URLPATH = "~/Scripts/plugins/easypiechart";
                 public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                 public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                 public static readonly string easypiechart_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/easypiechart.min.js") ? Url("easypiechart.min.js") : Url("easypiechart.js");
                 public static readonly string jquery_easypiechart_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.easypiechart.min.js") ? Url("jquery.easypiechart.min.js") : Url("jquery.easypiechart.js");
             }
-
+        
             [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-            public static class flot
-            {
+            public static class flot {
                 private const string URLPATH = "~/Scripts/plugins/flot";
                 public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                 public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
@@ -1241,25 +1143,22 @@ namespace Links
                 public static readonly string jquery_flot_time_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.flot.time.min.js") ? Url("jquery.flot.time.min.js") : Url("jquery.flot.time.js");
                 public static readonly string jquery_flot_tooltip_min_js = Url("jquery.flot.tooltip.min.js");
             }
-
+        
             [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-            public static class fullcalendar
-            {
+            public static class fullcalendar {
                 private const string URLPATH = "~/Scripts/plugins/fullcalendar";
                 public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                 public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                 public static readonly string fullcalendar_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/fullcalendar.min.js") ? Url("fullcalendar.min.js") : Url("fullcalendar.js");
             }
-
+        
             [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-            public static class gritter
-            {
+            public static class gritter {
                 private const string URLPATH = "~/Scripts/plugins/gritter";
                 public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                 public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                 [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                public static class images
-                {
+                public static class images {
                     private const string URLPATH = "~/Scripts/plugins/gritter/images";
                     public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                     public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
@@ -1268,74 +1167,66 @@ namespace Links
                     public static readonly string gritter_png = Url("gritter.png");
                     public static readonly string ie_spacer_gif = Url("ie-spacer.gif");
                 }
-
+            
                 public static readonly string jquery_gritter_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.gritter.min.css") ? Url("jquery.gritter.min.css") : Url("jquery.gritter.css");
                 public static readonly string jquery_gritter_min_js = Url("jquery.gritter.min.js");
             }
-
+        
             [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-            public static class html5_placeholder_shim
-            {
+            public static class html5_placeholder_shim {
                 private const string URLPATH = "~/Scripts/plugins/html5-placeholder-shim";
                 public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                 public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                 public static readonly string html5_placeholder_shim_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/html5-placeholder-shim.min.js") ? Url("html5-placeholder-shim.min.js") : Url("html5-placeholder-shim.js");
             }
-
+        
             [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-            public static class iCheck
-            {
+            public static class iCheck {
                 private const string URLPATH = "~/Scripts/plugins/iCheck";
                 public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                 public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                 public static readonly string icheck_min_js = Url("icheck.min.js");
             }
-
+        
             [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-            public static class idle_timer
-            {
+            public static class idle_timer {
                 private const string URLPATH = "~/Scripts/plugins/idle-timer";
                 public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                 public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                 public static readonly string idle_timer_min_js = Url("idle-timer.min.js");
             }
-
+        
             [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-            public static class ionRangeSlider
-            {
+            public static class ionRangeSlider {
                 private const string URLPATH = "~/Scripts/plugins/ionRangeSlider";
                 public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                 public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                 public static readonly string ion_rangeSlider_min_js = Url("ion.rangeSlider.min.js");
             }
-
+        
             [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-            public static class jasny
-            {
+            public static class jasny {
                 private const string URLPATH = "~/Scripts/plugins/jasny";
                 public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                 public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                 public static readonly string jasny_bootstrap_min_js = Url("jasny-bootstrap.min.js");
             }
-
+        
             [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-            public static class jeditable
-            {
+            public static class jeditable {
                 private const string URLPATH = "~/Scripts/plugins/jeditable";
                 public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                 public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                 public static readonly string jquery_jeditable_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.jeditable.min.js") ? Url("jquery.jeditable.min.js") : Url("jquery.jeditable.js");
             }
-
+        
             [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-            public static class jquery_ui
-            {
+            public static class jquery_ui {
                 private const string URLPATH = "~/Scripts/plugins/jquery-ui";
                 public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                 public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                 [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                public static class images
-                {
+                public static class images {
                     private const string URLPATH = "~/Scripts/plugins/jquery-ui/images";
                     public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                     public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
@@ -1352,50 +1243,53 @@ namespace Links
                     public static readonly string ui_icons_888888_256x240_png = Url("ui-icons_888888_256x240.png");
                     public static readonly string ui_icons_cd0a0a_256x240_png = Url("ui-icons_cd0a0a_256x240.png");
                 }
-
+            
                 public static readonly string jquery_ui_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery-ui.min.css") ? Url("jquery-ui.min.css") : Url("jquery-ui.css");
                 public static readonly string jquery_ui_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery-ui.min.js") ? Url("jquery-ui.min.js") : Url("jquery-ui.js");
             }
-
+        
             [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-            public static class js_cookie
-            {
+            public static class jquery_maskedinput {
+                private const string URLPATH = "~/Scripts/plugins/jquery.maskedinput";
+                public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
+                public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+                public static readonly string jquery_maskedinput_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.maskedinput.min.js") ? Url("jquery.maskedinput.min.js") : Url("jquery.maskedinput.js");
+            }
+        
+            [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+            public static class js_cookie {
                 private const string URLPATH = "~/Scripts/plugins/js-cookie";
                 public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                 public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                 public static readonly string js_cookie_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/js.cookie.min.js") ? Url("js.cookie.min.js") : Url("js.cookie.js");
             }
-
+        
             [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-            public static class jsKnob
-            {
+            public static class jsKnob {
                 private const string URLPATH = "~/Scripts/plugins/jsKnob";
                 public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                 public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                 public static readonly string jquery_knob_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.knob.min.js") ? Url("jquery.knob.min.js") : Url("jquery.knob.js");
             }
-
+        
             [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-            public static class jsTimezoneDetect
-            {
+            public static class jsTimezoneDetect {
                 private const string URLPATH = "~/Scripts/plugins/jsTimezoneDetect";
                 public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                 public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                 public static readonly string jstz_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jstz.min.js") ? Url("jstz.min.js") : Url("jstz.js");
             }
-
+        
             [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-            public static class jsTree
-            {
+            public static class jsTree {
                 private const string URLPATH = "~/Scripts/plugins/jsTree";
                 public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                 public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                 public static readonly string jstree_min_js = Url("jstree.min.js");
             }
-
+        
             [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-            public static class justified_gallery
-            {
+            public static class justified_gallery {
                 private const string URLPATH = "~/Scripts/plugins/justified-gallery";
                 public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                 public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
@@ -1406,117 +1300,104 @@ namespace Links
                 public static readonly string loading_gif = Url("loading.gif");
                 public static readonly string README_md = Url("README.md");
             }
-
+        
             [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-            public static class jvectormap
-            {
+            public static class jvectormap {
                 private const string URLPATH = "~/Scripts/plugins/jvectormap";
                 public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                 public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                 public static readonly string jquery_jvectormap_1_2_2_min_js = Url("jquery-jvectormap-1.2.2.min.js");
                 public static readonly string jquery_jvectormap_world_mill_en_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery-jvectormap-world-mill-en.min.js") ? Url("jquery-jvectormap-world-mill-en.min.js") : Url("jquery-jvectormap-world-mill-en.js");
             }
-
+        
             [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-            public static class metisMenu
-            {
+            public static class metisMenu {
                 private const string URLPATH = "~/Scripts/plugins/metisMenu";
                 public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                 public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                 public static readonly string metisMenu_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/metisMenu.min.js") ? Url("metisMenu.min.js") : Url("metisMenu.js");
             }
-
+        
             [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-            public static class moment
-            {
+            public static class moment {
                 private const string URLPATH = "~/Scripts/plugins/moment";
                 public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                 public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                 public static readonly string moment_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/moment.min.js") ? Url("moment.min.js") : Url("moment.js");
             }
-
+        
             [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-            public static class morris
-            {
+            public static class morris {
                 private const string URLPATH = "~/Scripts/plugins/morris";
                 public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                 public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                 public static readonly string morris_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/morris.min.js") ? Url("morris.min.js") : Url("morris.js");
                 public static readonly string raphael_2_1_0_min_js = Url("raphael-2.1.0.min.js");
             }
-
+        
             [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-            public static class nestable
-            {
+            public static class nestable {
                 private const string URLPATH = "~/Scripts/plugins/nestable";
                 public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                 public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                 public static readonly string jquery_nestable_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.nestable.min.js") ? Url("jquery.nestable.min.js") : Url("jquery.nestable.js");
             }
-
+        
             [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-            public static class nouslider
-            {
+            public static class nouslider {
                 private const string URLPATH = "~/Scripts/plugins/nouslider";
                 public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                 public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                 public static readonly string jquery_nouislider_min_js = Url("jquery.nouislider.min.js");
             }
-
+        
             [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-            public static class pace
-            {
+            public static class pace {
                 private const string URLPATH = "~/Scripts/plugins/pace";
                 public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                 public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                 public static readonly string pace_min_js = Url("pace.min.js");
             }
-
+        
             [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-            public static class peity
-            {
+            public static class peity {
                 private const string URLPATH = "~/Scripts/plugins/peity";
                 public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                 public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                 public static readonly string jquery_peity_min_js = Url("jquery.peity.min.js");
             }
-
+        
             [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-            public static class preetyTextDiff
-            {
+            public static class preetyTextDiff {
                 private const string URLPATH = "~/Scripts/plugins/preetyTextDiff";
                 public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                 public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                 public static readonly string jquery_pretty_text_diff_min_js = Url("jquery.pretty-text-diff.min.js");
             }
-
+        
             [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-            public static class rickshaw
-            {
+            public static class rickshaw {
                 private const string URLPATH = "~/Scripts/plugins/rickshaw";
                 public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                 public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                 public static readonly string rickshaw_min_js = Url("rickshaw.min.js");
                 [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                public static class vendor
-                {
+                public static class vendor {
                     private const string URLPATH = "~/Scripts/plugins/rickshaw/vendor";
                     public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                     public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                     public static readonly string d3_v3_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/d3.v3.min.js") ? Url("d3.v3.min.js") : Url("d3.v3.js");
                 }
-
+            
             }
-
+        
             [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-            public static class select2
-            {
+            public static class select2 {
                 private const string URLPATH = "~/Scripts/plugins/select2";
                 public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                 public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                 [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-                public static class i18n
-                {
+                public static class i18n {
                     private const string URLPATH = "~/Scripts/plugins/select2/i18n";
                     public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                     public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
@@ -1566,99 +1447,89 @@ namespace Links
                     public static readonly string zh_CN_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/zh-CN.min.js") ? Url("zh-CN.min.js") : Url("zh-CN.js");
                     public static readonly string zh_TW_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/zh-TW.min.js") ? Url("zh-TW.min.js") : Url("zh-TW.js");
                 }
-
+            
                 public static readonly string select2_full_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/select2.full.min.js") ? Url("select2.full.min.js") : Url("select2.full.js");
             }
-
+        
             [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-            public static class slimscroll
-            {
+            public static class slimscroll {
                 private const string URLPATH = "~/Scripts/plugins/slimscroll";
                 public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                 public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                 public static readonly string jquery_slimscroll_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.slimscroll.min.js") ? Url("jquery.slimscroll.min.js") : Url("jquery.slimscroll.js");
             }
-
+        
             [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-            public static class sparkline
-            {
+            public static class sparkline {
                 private const string URLPATH = "~/Scripts/plugins/sparkline";
                 public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                 public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                 public static readonly string jquery_sparkline_min_js = Url("jquery.sparkline.min.js");
             }
-
+        
             [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-            public static class steps
-            {
+            public static class steps {
                 private const string URLPATH = "~/Scripts/plugins/steps";
                 public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                 public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                 public static readonly string jquery_steps_min_js = Url("jquery.steps.min.js");
             }
-
+        
             [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-            public static class summernote
-            {
+            public static class summernote {
                 private const string URLPATH = "~/Scripts/plugins/summernote";
                 public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                 public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                 public static readonly string summernote_min_js = Url("summernote.min.js");
             }
-
+        
             [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-            public static class switchery
-            {
+            public static class switchery {
                 private const string URLPATH = "~/Scripts/plugins/switchery";
                 public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                 public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                 public static readonly string switchery_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/switchery.min.js") ? Url("switchery.min.js") : Url("switchery.js");
             }
-
+        
             [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-            public static class tinycon
-            {
+            public static class tinycon {
                 private const string URLPATH = "~/Scripts/plugins/tinycon";
                 public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                 public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                 public static readonly string tinycon_min_js = Url("tinycon.min.js");
             }
-
+        
             [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-            public static class toastr
-            {
+            public static class toastr {
                 private const string URLPATH = "~/Scripts/plugins/toastr";
                 public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                 public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                 public static readonly string toastr_min_js = Url("toastr.min.js");
             }
-
+        
             [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-            public static class velocity
-            {
+            public static class velocity {
                 private const string URLPATH = "~/Scripts/plugins/velocity";
                 public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                 public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                 public static readonly string velocity_min_js = Url("velocity.min.js");
                 public static readonly string velocity_ui_min_js = Url("velocity.ui.min.js");
             }
-
+        
             [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-            public static class video
-            {
+            public static class video {
                 private const string URLPATH = "~/Scripts/plugins/video";
                 public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                 public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                 public static readonly string responsible_video_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/responsible-video.min.js") ? Url("responsible-video.min.js") : Url("responsible-video.js");
             }
-
+        
         }
-
+    
     }
 
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-    public static class Content
-    {
+    public static class Content {
         private const string URLPATH = "~/Content";
         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
@@ -1671,14 +1542,12 @@ namespace Links
         public static readonly string bootstrap_min_css = Url("bootstrap.min.css");
         public static readonly string bootstrap_min_css_map = Url("bootstrap.min.css.map");
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public static class Images
-        {
+        public static class Images {
             private const string URLPATH = "~/Content/Images";
             public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
             public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
             [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-            public static class DataTables
-            {
+            public static class DataTables {
                 private const string URLPATH = "~/Content/Images/DataTables";
                 public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                 public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
@@ -1689,12 +1558,11 @@ namespace Links
                 public static readonly string shadow_left_png = Url("shadow_left.png");
                 public static readonly string shadow_right_png = Url("shadow_right.png");
             }
-
+        
         }
-
+    
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public static class patterns
-        {
+        public static class patterns {
             private const string URLPATH = "~/Content/patterns";
             public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
             public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
@@ -1707,479 +1575,480 @@ namespace Links
             public static readonly string shattered_png = Url("shattered.png");
             public static readonly string triangular_png = Url("triangular.png");
         }
-
+    
     }
 
-
+    
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
     public static partial class Bundles
     {
-        public static partial class Scripts
+        public static partial class Scripts 
         {
-            public static partial class app
+            public static partial class app 
             {
                 public static class Assets
                 {
-                    public const string inspinia_js = "~/Scripts/app/inspinia.js";
-                    public const string skin_config_min_js = "~/Scripts/app/skin.config.min.js";
+                    public const string inspinia_js = "~/Scripts/app/inspinia.js"; 
+                    public const string skin_config_min_js = "~/Scripts/app/skin.config.min.js"; 
                 }
             }
-            public static partial class Catalyst
+            public static partial class Catalyst 
             {
-                public static partial class UI
+                public static partial class UI 
                 {
                     public static class Assets
                     {
-                        public const string DatePicker_js = "~/Scripts/Catalyst/UI/DatePicker.js";
-                        public const string Form_js = "~/Scripts/Catalyst/UI/Form.js";
-                        public const string Formatting_js = "~/Scripts/Catalyst/UI/Formatting.js";
-                        public const string FormState_js = "~/Scripts/Catalyst/UI/FormState.js";
-                        public const string Menu_js = "~/Scripts/Catalyst/UI/Menu.js";
-                        public const string Message_js = "~/Scripts/Catalyst/UI/Message.js";
-                        public const string Modal_js = "~/Scripts/Catalyst/UI/Modal.js";
-                        public const string NumericField_js = "~/Scripts/Catalyst/UI/NumericField.js";
-                        public const string Spinner_js = "~/Scripts/Catalyst/UI/Spinner.js";
-                        public const string TimeZone_js = "~/Scripts/Catalyst/UI/TimeZone.js";
-                        public const string ToastMessage_js = "~/Scripts/Catalyst/UI/ToastMessage.js";
-                        public const string UnsavedFormChanges_js = "~/Scripts/Catalyst/UI/UnsavedFormChanges.js";
-                        public const string Validation_js = "~/Scripts/Catalyst/UI/Validation.js";
+                        public const string DatePicker_js = "~/Scripts/Catalyst/UI/DatePicker.js"; 
+                        public const string Form_js = "~/Scripts/Catalyst/UI/Form.js"; 
+                        public const string Formatting_js = "~/Scripts/Catalyst/UI/Formatting.js"; 
+                        public const string FormState_js = "~/Scripts/Catalyst/UI/FormState.js"; 
+                        public const string MaskedField_js = "~/Scripts/Catalyst/UI/MaskedField.js"; 
+                        public const string Menu_js = "~/Scripts/Catalyst/UI/Menu.js"; 
+                        public const string Message_js = "~/Scripts/Catalyst/UI/Message.js"; 
+                        public const string Modal_js = "~/Scripts/Catalyst/UI/Modal.js"; 
+                        public const string NumericField_js = "~/Scripts/Catalyst/UI/NumericField.js"; 
+                        public const string Spinner_js = "~/Scripts/Catalyst/UI/Spinner.js"; 
+                        public const string TimeZone_js = "~/Scripts/Catalyst/UI/TimeZone.js"; 
+                        public const string ToastMessage_js = "~/Scripts/Catalyst/UI/ToastMessage.js"; 
+                        public const string UnsavedFormChanges_js = "~/Scripts/Catalyst/UI/UnsavedFormChanges.js"; 
+                        public const string Validation_js = "~/Scripts/Catalyst/UI/Validation.js"; 
                     }
                 }
                 public static class Assets
                 {
-                    public const string Catalyst_js = "~/Scripts/Catalyst/Catalyst.js";
+                    public const string Catalyst_js = "~/Scripts/Catalyst/Catalyst.js"; 
                 }
             }
-            public static partial class plugins
+            public static partial class plugins 
             {
-                public static partial class autoNumeric
+                public static partial class autoNumeric 
                 {
                     public static class Assets
                     {
-                        public const string autoNumeric_js = "~/Scripts/plugins/autoNumeric/autoNumeric.js";
+                        public const string autoNumeric_js = "~/Scripts/plugins/autoNumeric/autoNumeric.js"; 
                     }
                 }
-                public static partial class blueimp
+                public static partial class blueimp 
                 {
                     public static class Assets
                     {
-                        public const string jquery_blueimp_gallery_min_js = "~/Scripts/plugins/blueimp/jquery.blueimp-gallery.min.js";
+                        public const string jquery_blueimp_gallery_min_js = "~/Scripts/plugins/blueimp/jquery.blueimp-gallery.min.js"; 
                     }
                 }
-                public static partial class bootstrap_datepicker
+                public static partial class bootstrap_datepicker 
                 {
                     public static class Assets
                     {
-                        public const string bootstrap_datepicker_js = "~/Scripts/plugins/bootstrap-datepicker/bootstrap-datepicker.js";
+                        public const string bootstrap_datepicker_js = "~/Scripts/plugins/bootstrap-datepicker/bootstrap-datepicker.js"; 
                     }
                 }
-                public static partial class bootstrap_datetimepicker
+                public static partial class bootstrap_datetimepicker 
                 {
                     public static class Assets
                     {
-                        public const string bootstrap_datetimepicker_min_js = "~/Scripts/plugins/bootstrap-datetimepicker/bootstrap-datetimepicker.min.js";
+                        public const string bootstrap_datetimepicker_min_js = "~/Scripts/plugins/bootstrap-datetimepicker/bootstrap-datetimepicker.min.js"; 
                     }
                 }
-                public static partial class chartJs
+                public static partial class chartJs 
                 {
                     public static class Assets
                     {
-                        public const string Chart_min_js = "~/Scripts/plugins/chartJs/Chart.min.js";
+                        public const string Chart_min_js = "~/Scripts/plugins/chartJs/Chart.min.js"; 
                     }
                 }
-                public static partial class chosen
+                public static partial class chosen 
                 {
                     public static class Assets
                     {
-                        public const string chosen_jquery_js = "~/Scripts/plugins/chosen/chosen.jquery.js";
+                        public const string chosen_jquery_js = "~/Scripts/plugins/chosen/chosen.jquery.js"; 
                     }
                 }
-                public static partial class codemirror
+                public static partial class codemirror 
                 {
-                    public static partial class mode
+                    public static partial class mode 
                     {
-                        public static partial class apl
+                        public static partial class apl 
                         {
                             public static class Assets
                             {
-                                public const string apl_js = "~/Scripts/plugins/codemirror/mode/apl/apl.js";
+                                public const string apl_js = "~/Scripts/plugins/codemirror/mode/apl/apl.js"; 
                             }
                         }
-                        public static partial class asterisk
+                        public static partial class asterisk 
                         {
                             public static class Assets
                             {
-                                public const string asterisk_js = "~/Scripts/plugins/codemirror/mode/asterisk/asterisk.js";
+                                public const string asterisk_js = "~/Scripts/plugins/codemirror/mode/asterisk/asterisk.js"; 
                             }
                         }
-                        public static partial class clike
+                        public static partial class clike 
                         {
                             public static class Assets
                             {
-                                public const string clike_js = "~/Scripts/plugins/codemirror/mode/clike/clike.js";
+                                public const string clike_js = "~/Scripts/plugins/codemirror/mode/clike/clike.js"; 
                             }
                         }
-                        public static partial class clojure
+                        public static partial class clojure 
                         {
                             public static class Assets
                             {
-                                public const string clojure_js = "~/Scripts/plugins/codemirror/mode/clojure/clojure.js";
+                                public const string clojure_js = "~/Scripts/plugins/codemirror/mode/clojure/clojure.js"; 
                             }
                         }
-                        public static partial class cobol
+                        public static partial class cobol 
                         {
                             public static class Assets
                             {
-                                public const string cobol_js = "~/Scripts/plugins/codemirror/mode/cobol/cobol.js";
+                                public const string cobol_js = "~/Scripts/plugins/codemirror/mode/cobol/cobol.js"; 
                             }
                         }
-                        public static partial class coffeescript
+                        public static partial class coffeescript 
                         {
                             public static class Assets
                             {
-                                public const string coffeescript_js = "~/Scripts/plugins/codemirror/mode/coffeescript/coffeescript.js";
+                                public const string coffeescript_js = "~/Scripts/plugins/codemirror/mode/coffeescript/coffeescript.js"; 
                             }
                         }
-                        public static partial class commonlisp
+                        public static partial class commonlisp 
                         {
                             public static class Assets
                             {
-                                public const string commonlisp_js = "~/Scripts/plugins/codemirror/mode/commonlisp/commonlisp.js";
+                                public const string commonlisp_js = "~/Scripts/plugins/codemirror/mode/commonlisp/commonlisp.js"; 
                             }
                         }
-                        public static partial class css
+                        public static partial class css 
                         {
                             public static class Assets
                             {
-                                public const string css_js = "~/Scripts/plugins/codemirror/mode/css/css.js";
-                                public const string less_test_js = "~/Scripts/plugins/codemirror/mode/css/less_test.js";
-                                public const string scss_test_js = "~/Scripts/plugins/codemirror/mode/css/scss_test.js";
-                                public const string test_js = "~/Scripts/plugins/codemirror/mode/css/test.js";
+                                public const string css_js = "~/Scripts/plugins/codemirror/mode/css/css.js"; 
+                                public const string less_test_js = "~/Scripts/plugins/codemirror/mode/css/less_test.js"; 
+                                public const string scss_test_js = "~/Scripts/plugins/codemirror/mode/css/scss_test.js"; 
+                                public const string test_js = "~/Scripts/plugins/codemirror/mode/css/test.js"; 
                             }
                         }
-                        public static partial class cypher
+                        public static partial class cypher 
                         {
                             public static class Assets
                             {
-                                public const string cypher_js = "~/Scripts/plugins/codemirror/mode/cypher/cypher.js";
+                                public const string cypher_js = "~/Scripts/plugins/codemirror/mode/cypher/cypher.js"; 
                             }
                         }
-                        public static partial class d
+                        public static partial class d 
                         {
                             public static class Assets
                             {
-                                public const string d_js = "~/Scripts/plugins/codemirror/mode/d/d.js";
+                                public const string d_js = "~/Scripts/plugins/codemirror/mode/d/d.js"; 
                             }
                         }
-                        public static partial class diff
+                        public static partial class diff 
                         {
                             public static class Assets
                             {
-                                public const string diff_js = "~/Scripts/plugins/codemirror/mode/diff/diff.js";
+                                public const string diff_js = "~/Scripts/plugins/codemirror/mode/diff/diff.js"; 
                             }
                         }
-                        public static partial class django
+                        public static partial class django 
                         {
                             public static class Assets
                             {
-                                public const string django_js = "~/Scripts/plugins/codemirror/mode/django/django.js";
+                                public const string django_js = "~/Scripts/plugins/codemirror/mode/django/django.js"; 
                             }
                         }
-                        public static partial class dtd
+                        public static partial class dtd 
                         {
                             public static class Assets
                             {
-                                public const string dtd_js = "~/Scripts/plugins/codemirror/mode/dtd/dtd.js";
+                                public const string dtd_js = "~/Scripts/plugins/codemirror/mode/dtd/dtd.js"; 
                             }
                         }
-                        public static partial class dylan
+                        public static partial class dylan 
                         {
                             public static class Assets
                             {
-                                public const string dylan_js = "~/Scripts/plugins/codemirror/mode/dylan/dylan.js";
+                                public const string dylan_js = "~/Scripts/plugins/codemirror/mode/dylan/dylan.js"; 
                             }
                         }
-                        public static partial class ecl
+                        public static partial class ecl 
                         {
                             public static class Assets
                             {
-                                public const string ecl_js = "~/Scripts/plugins/codemirror/mode/ecl/ecl.js";
+                                public const string ecl_js = "~/Scripts/plugins/codemirror/mode/ecl/ecl.js"; 
                             }
                         }
-                        public static partial class eiffel
+                        public static partial class eiffel 
                         {
                             public static class Assets
                             {
-                                public const string eiffel_js = "~/Scripts/plugins/codemirror/mode/eiffel/eiffel.js";
+                                public const string eiffel_js = "~/Scripts/plugins/codemirror/mode/eiffel/eiffel.js"; 
                             }
                         }
-                        public static partial class erlang
+                        public static partial class erlang 
                         {
                             public static class Assets
                             {
-                                public const string erlang_js = "~/Scripts/plugins/codemirror/mode/erlang/erlang.js";
+                                public const string erlang_js = "~/Scripts/plugins/codemirror/mode/erlang/erlang.js"; 
                             }
                         }
-                        public static partial class fortran
+                        public static partial class fortran 
                         {
                             public static class Assets
                             {
-                                public const string fortran_js = "~/Scripts/plugins/codemirror/mode/fortran/fortran.js";
+                                public const string fortran_js = "~/Scripts/plugins/codemirror/mode/fortran/fortran.js"; 
                             }
                         }
-                        public static partial class gas
+                        public static partial class gas 
                         {
                             public static class Assets
                             {
-                                public const string gas_js = "~/Scripts/plugins/codemirror/mode/gas/gas.js";
+                                public const string gas_js = "~/Scripts/plugins/codemirror/mode/gas/gas.js"; 
                             }
                         }
-                        public static partial class gfm
+                        public static partial class gfm 
                         {
                             public static class Assets
                             {
-                                public const string gfm_js = "~/Scripts/plugins/codemirror/mode/gfm/gfm.js";
-                                public const string test_js = "~/Scripts/plugins/codemirror/mode/gfm/test.js";
+                                public const string gfm_js = "~/Scripts/plugins/codemirror/mode/gfm/gfm.js"; 
+                                public const string test_js = "~/Scripts/plugins/codemirror/mode/gfm/test.js"; 
                             }
                         }
-                        public static partial class gherkin
+                        public static partial class gherkin 
                         {
                             public static class Assets
                             {
-                                public const string gherkin_js = "~/Scripts/plugins/codemirror/mode/gherkin/gherkin.js";
+                                public const string gherkin_js = "~/Scripts/plugins/codemirror/mode/gherkin/gherkin.js"; 
                             }
                         }
-                        public static partial class go
+                        public static partial class go 
                         {
                             public static class Assets
                             {
-                                public const string go_js = "~/Scripts/plugins/codemirror/mode/go/go.js";
+                                public const string go_js = "~/Scripts/plugins/codemirror/mode/go/go.js"; 
                             }
                         }
-                        public static partial class groovy
+                        public static partial class groovy 
                         {
                             public static class Assets
                             {
-                                public const string groovy_js = "~/Scripts/plugins/codemirror/mode/groovy/groovy.js";
+                                public const string groovy_js = "~/Scripts/plugins/codemirror/mode/groovy/groovy.js"; 
                             }
                         }
-                        public static partial class haml
+                        public static partial class haml 
                         {
                             public static class Assets
                             {
-                                public const string haml_js = "~/Scripts/plugins/codemirror/mode/haml/haml.js";
-                                public const string test_js = "~/Scripts/plugins/codemirror/mode/haml/test.js";
+                                public const string haml_js = "~/Scripts/plugins/codemirror/mode/haml/haml.js"; 
+                                public const string test_js = "~/Scripts/plugins/codemirror/mode/haml/test.js"; 
                             }
                         }
-                        public static partial class haskell
+                        public static partial class haskell 
                         {
                             public static class Assets
                             {
-                                public const string haskell_js = "~/Scripts/plugins/codemirror/mode/haskell/haskell.js";
+                                public const string haskell_js = "~/Scripts/plugins/codemirror/mode/haskell/haskell.js"; 
                             }
                         }
-                        public static partial class haxe
+                        public static partial class haxe 
                         {
                             public static class Assets
                             {
-                                public const string haxe_js = "~/Scripts/plugins/codemirror/mode/haxe/haxe.js";
+                                public const string haxe_js = "~/Scripts/plugins/codemirror/mode/haxe/haxe.js"; 
                             }
                         }
-                        public static partial class htmlembedded
+                        public static partial class htmlembedded 
                         {
                             public static class Assets
                             {
-                                public const string htmlembedded_js = "~/Scripts/plugins/codemirror/mode/htmlembedded/htmlembedded.js";
+                                public const string htmlembedded_js = "~/Scripts/plugins/codemirror/mode/htmlembedded/htmlembedded.js"; 
                             }
                         }
-                        public static partial class htmlmixed
+                        public static partial class htmlmixed 
                         {
                             public static class Assets
                             {
-                                public const string htmlmixed_js = "~/Scripts/plugins/codemirror/mode/htmlmixed/htmlmixed.js";
+                                public const string htmlmixed_js = "~/Scripts/plugins/codemirror/mode/htmlmixed/htmlmixed.js"; 
                             }
                         }
-                        public static partial class http
+                        public static partial class http 
                         {
                             public static class Assets
                             {
-                                public const string http_js = "~/Scripts/plugins/codemirror/mode/http/http.js";
+                                public const string http_js = "~/Scripts/plugins/codemirror/mode/http/http.js"; 
                             }
                         }
-                        public static partial class jade
+                        public static partial class jade 
                         {
                             public static class Assets
                             {
-                                public const string jade_js = "~/Scripts/plugins/codemirror/mode/jade/jade.js";
+                                public const string jade_js = "~/Scripts/plugins/codemirror/mode/jade/jade.js"; 
                             }
                         }
-                        public static partial class javascript
+                        public static partial class javascript 
                         {
                             public static class Assets
                             {
-                                public const string javascript_js = "~/Scripts/plugins/codemirror/mode/javascript/javascript.js";
-                                public const string test_js = "~/Scripts/plugins/codemirror/mode/javascript/test.js";
+                                public const string javascript_js = "~/Scripts/plugins/codemirror/mode/javascript/javascript.js"; 
+                                public const string test_js = "~/Scripts/plugins/codemirror/mode/javascript/test.js"; 
                             }
                         }
-                        public static partial class jinja2
+                        public static partial class jinja2 
                         {
                             public static class Assets
                             {
-                                public const string jinja2_js = "~/Scripts/plugins/codemirror/mode/jinja2/jinja2.js";
+                                public const string jinja2_js = "~/Scripts/plugins/codemirror/mode/jinja2/jinja2.js"; 
                             }
                         }
-                        public static partial class julia
+                        public static partial class julia 
                         {
                             public static class Assets
                             {
-                                public const string julia_js = "~/Scripts/plugins/codemirror/mode/julia/julia.js";
+                                public const string julia_js = "~/Scripts/plugins/codemirror/mode/julia/julia.js"; 
                             }
                         }
-                        public static partial class kotlin
+                        public static partial class kotlin 
                         {
                             public static class Assets
                             {
-                                public const string kotlin_js = "~/Scripts/plugins/codemirror/mode/kotlin/kotlin.js";
+                                public const string kotlin_js = "~/Scripts/plugins/codemirror/mode/kotlin/kotlin.js"; 
                             }
                         }
-                        public static partial class livescript
+                        public static partial class livescript 
                         {
                             public static class Assets
                             {
-                                public const string livescript_js = "~/Scripts/plugins/codemirror/mode/livescript/livescript.js";
+                                public const string livescript_js = "~/Scripts/plugins/codemirror/mode/livescript/livescript.js"; 
                             }
                         }
-                        public static partial class lua
+                        public static partial class lua 
                         {
                             public static class Assets
                             {
-                                public const string lua_js = "~/Scripts/plugins/codemirror/mode/lua/lua.js";
+                                public const string lua_js = "~/Scripts/plugins/codemirror/mode/lua/lua.js"; 
                             }
                         }
-                        public static partial class markdown
+                        public static partial class markdown 
                         {
                             public static class Assets
                             {
-                                public const string markdown_js = "~/Scripts/plugins/codemirror/mode/markdown/markdown.js";
-                                public const string test_js = "~/Scripts/plugins/codemirror/mode/markdown/test.js";
+                                public const string markdown_js = "~/Scripts/plugins/codemirror/mode/markdown/markdown.js"; 
+                                public const string test_js = "~/Scripts/plugins/codemirror/mode/markdown/test.js"; 
                             }
                         }
-                        public static partial class mirc
+                        public static partial class mirc 
                         {
                             public static class Assets
                             {
-                                public const string mirc_js = "~/Scripts/plugins/codemirror/mode/mirc/mirc.js";
+                                public const string mirc_js = "~/Scripts/plugins/codemirror/mode/mirc/mirc.js"; 
                             }
                         }
-                        public static partial class mllike
+                        public static partial class mllike 
                         {
                             public static class Assets
                             {
-                                public const string mllike_js = "~/Scripts/plugins/codemirror/mode/mllike/mllike.js";
+                                public const string mllike_js = "~/Scripts/plugins/codemirror/mode/mllike/mllike.js"; 
                             }
                         }
-                        public static partial class modelica
+                        public static partial class modelica 
                         {
                             public static class Assets
                             {
-                                public const string modelica_js = "~/Scripts/plugins/codemirror/mode/modelica/modelica.js";
+                                public const string modelica_js = "~/Scripts/plugins/codemirror/mode/modelica/modelica.js"; 
                             }
                         }
-                        public static partial class nginx
+                        public static partial class nginx 
                         {
                             public static class Assets
                             {
-                                public const string nginx_js = "~/Scripts/plugins/codemirror/mode/nginx/nginx.js";
+                                public const string nginx_js = "~/Scripts/plugins/codemirror/mode/nginx/nginx.js"; 
                             }
                         }
-                        public static partial class ntriples
+                        public static partial class ntriples 
                         {
                             public static class Assets
                             {
-                                public const string ntriples_js = "~/Scripts/plugins/codemirror/mode/ntriples/ntriples.js";
+                                public const string ntriples_js = "~/Scripts/plugins/codemirror/mode/ntriples/ntriples.js"; 
                             }
                         }
-                        public static partial class octave
+                        public static partial class octave 
                         {
                             public static class Assets
                             {
-                                public const string octave_js = "~/Scripts/plugins/codemirror/mode/octave/octave.js";
+                                public const string octave_js = "~/Scripts/plugins/codemirror/mode/octave/octave.js"; 
                             }
                         }
-                        public static partial class pascal
+                        public static partial class pascal 
                         {
                             public static class Assets
                             {
-                                public const string pascal_js = "~/Scripts/plugins/codemirror/mode/pascal/pascal.js";
+                                public const string pascal_js = "~/Scripts/plugins/codemirror/mode/pascal/pascal.js"; 
                             }
                         }
-                        public static partial class pegjs
+                        public static partial class pegjs 
                         {
                             public static class Assets
                             {
-                                public const string pegjs_js = "~/Scripts/plugins/codemirror/mode/pegjs/pegjs.js";
+                                public const string pegjs_js = "~/Scripts/plugins/codemirror/mode/pegjs/pegjs.js"; 
                             }
                         }
-                        public static partial class perl
+                        public static partial class perl 
                         {
                             public static class Assets
                             {
-                                public const string perl_js = "~/Scripts/plugins/codemirror/mode/perl/perl.js";
+                                public const string perl_js = "~/Scripts/plugins/codemirror/mode/perl/perl.js"; 
                             }
                         }
-                        public static partial class php
+                        public static partial class php 
                         {
                             public static class Assets
                             {
-                                public const string php_js = "~/Scripts/plugins/codemirror/mode/php/php.js";
-                                public const string test_js = "~/Scripts/plugins/codemirror/mode/php/test.js";
+                                public const string php_js = "~/Scripts/plugins/codemirror/mode/php/php.js"; 
+                                public const string test_js = "~/Scripts/plugins/codemirror/mode/php/test.js"; 
                             }
                         }
-                        public static partial class pig
+                        public static partial class pig 
                         {
                             public static class Assets
                             {
-                                public const string pig_js = "~/Scripts/plugins/codemirror/mode/pig/pig.js";
+                                public const string pig_js = "~/Scripts/plugins/codemirror/mode/pig/pig.js"; 
                             }
                         }
-                        public static partial class properties
+                        public static partial class properties 
                         {
                             public static class Assets
                             {
-                                public const string properties_js = "~/Scripts/plugins/codemirror/mode/properties/properties.js";
+                                public const string properties_js = "~/Scripts/plugins/codemirror/mode/properties/properties.js"; 
                             }
                         }
-                        public static partial class puppet
+                        public static partial class puppet 
                         {
                             public static class Assets
                             {
-                                public const string puppet_js = "~/Scripts/plugins/codemirror/mode/puppet/puppet.js";
+                                public const string puppet_js = "~/Scripts/plugins/codemirror/mode/puppet/puppet.js"; 
                             }
                         }
-                        public static partial class python
+                        public static partial class python 
                         {
                             public static class Assets
                             {
-                                public const string python_js = "~/Scripts/plugins/codemirror/mode/python/python.js";
+                                public const string python_js = "~/Scripts/plugins/codemirror/mode/python/python.js"; 
                             }
                         }
-                        public static partial class q
+                        public static partial class q 
                         {
                             public static class Assets
                             {
-                                public const string q_js = "~/Scripts/plugins/codemirror/mode/q/q.js";
+                                public const string q_js = "~/Scripts/plugins/codemirror/mode/q/q.js"; 
                             }
                         }
-                        public static partial class r
+                        public static partial class r 
                         {
                             public static class Assets
                             {
-                                public const string r_js = "~/Scripts/plugins/codemirror/mode/r/r.js";
+                                public const string r_js = "~/Scripts/plugins/codemirror/mode/r/r.js"; 
                             }
                         }
-                        public static partial class rpm
+                        public static partial class rpm 
                         {
-                            public static partial class changes
+                            public static partial class changes 
                             {
                                 public static class Assets
                                 {
@@ -2187,256 +2056,256 @@ namespace Links
                             }
                             public static class Assets
                             {
-                                public const string rpm_js = "~/Scripts/plugins/codemirror/mode/rpm/rpm.js";
+                                public const string rpm_js = "~/Scripts/plugins/codemirror/mode/rpm/rpm.js"; 
                             }
                         }
-                        public static partial class rst
+                        public static partial class rst 
                         {
                             public static class Assets
                             {
-                                public const string rst_js = "~/Scripts/plugins/codemirror/mode/rst/rst.js";
+                                public const string rst_js = "~/Scripts/plugins/codemirror/mode/rst/rst.js"; 
                             }
                         }
-                        public static partial class ruby
+                        public static partial class ruby 
                         {
                             public static class Assets
                             {
-                                public const string ruby_js = "~/Scripts/plugins/codemirror/mode/ruby/ruby.js";
-                                public const string test_js = "~/Scripts/plugins/codemirror/mode/ruby/test.js";
+                                public const string ruby_js = "~/Scripts/plugins/codemirror/mode/ruby/ruby.js"; 
+                                public const string test_js = "~/Scripts/plugins/codemirror/mode/ruby/test.js"; 
                             }
                         }
-                        public static partial class rust
+                        public static partial class rust 
                         {
                             public static class Assets
                             {
-                                public const string rust_js = "~/Scripts/plugins/codemirror/mode/rust/rust.js";
+                                public const string rust_js = "~/Scripts/plugins/codemirror/mode/rust/rust.js"; 
                             }
                         }
-                        public static partial class sass
+                        public static partial class sass 
                         {
                             public static class Assets
                             {
-                                public const string sass_js = "~/Scripts/plugins/codemirror/mode/sass/sass.js";
+                                public const string sass_js = "~/Scripts/plugins/codemirror/mode/sass/sass.js"; 
                             }
                         }
-                        public static partial class scheme
+                        public static partial class scheme 
                         {
                             public static class Assets
                             {
-                                public const string scheme_js = "~/Scripts/plugins/codemirror/mode/scheme/scheme.js";
+                                public const string scheme_js = "~/Scripts/plugins/codemirror/mode/scheme/scheme.js"; 
                             }
                         }
-                        public static partial class shell
+                        public static partial class shell 
                         {
                             public static class Assets
                             {
-                                public const string shell_js = "~/Scripts/plugins/codemirror/mode/shell/shell.js";
-                                public const string test_js = "~/Scripts/plugins/codemirror/mode/shell/test.js";
+                                public const string shell_js = "~/Scripts/plugins/codemirror/mode/shell/shell.js"; 
+                                public const string test_js = "~/Scripts/plugins/codemirror/mode/shell/test.js"; 
                             }
                         }
-                        public static partial class sieve
+                        public static partial class sieve 
                         {
                             public static class Assets
                             {
-                                public const string sieve_js = "~/Scripts/plugins/codemirror/mode/sieve/sieve.js";
+                                public const string sieve_js = "~/Scripts/plugins/codemirror/mode/sieve/sieve.js"; 
                             }
                         }
-                        public static partial class slim
+                        public static partial class slim 
                         {
                             public static class Assets
                             {
-                                public const string slim_js = "~/Scripts/plugins/codemirror/mode/slim/slim.js";
-                                public const string test_js = "~/Scripts/plugins/codemirror/mode/slim/test.js";
+                                public const string slim_js = "~/Scripts/plugins/codemirror/mode/slim/slim.js"; 
+                                public const string test_js = "~/Scripts/plugins/codemirror/mode/slim/test.js"; 
                             }
                         }
-                        public static partial class smalltalk
+                        public static partial class smalltalk 
                         {
                             public static class Assets
                             {
-                                public const string smalltalk_js = "~/Scripts/plugins/codemirror/mode/smalltalk/smalltalk.js";
+                                public const string smalltalk_js = "~/Scripts/plugins/codemirror/mode/smalltalk/smalltalk.js"; 
                             }
                         }
-                        public static partial class smarty
+                        public static partial class smarty 
                         {
                             public static class Assets
                             {
-                                public const string smarty_js = "~/Scripts/plugins/codemirror/mode/smarty/smarty.js";
+                                public const string smarty_js = "~/Scripts/plugins/codemirror/mode/smarty/smarty.js"; 
                             }
                         }
-                        public static partial class smartymixed
+                        public static partial class smartymixed 
                         {
                             public static class Assets
                             {
-                                public const string smartymixed_js = "~/Scripts/plugins/codemirror/mode/smartymixed/smartymixed.js";
+                                public const string smartymixed_js = "~/Scripts/plugins/codemirror/mode/smartymixed/smartymixed.js"; 
                             }
                         }
-                        public static partial class solr
+                        public static partial class solr 
                         {
                             public static class Assets
                             {
-                                public const string solr_js = "~/Scripts/plugins/codemirror/mode/solr/solr.js";
+                                public const string solr_js = "~/Scripts/plugins/codemirror/mode/solr/solr.js"; 
                             }
                         }
-                        public static partial class sparql
+                        public static partial class sparql 
                         {
                             public static class Assets
                             {
-                                public const string sparql_js = "~/Scripts/plugins/codemirror/mode/sparql/sparql.js";
+                                public const string sparql_js = "~/Scripts/plugins/codemirror/mode/sparql/sparql.js"; 
                             }
                         }
-                        public static partial class sql
+                        public static partial class sql 
                         {
                             public static class Assets
                             {
-                                public const string sql_js = "~/Scripts/plugins/codemirror/mode/sql/sql.js";
+                                public const string sql_js = "~/Scripts/plugins/codemirror/mode/sql/sql.js"; 
                             }
                         }
-                        public static partial class stex
+                        public static partial class stex 
                         {
                             public static class Assets
                             {
-                                public const string stex_js = "~/Scripts/plugins/codemirror/mode/stex/stex.js";
-                                public const string test_js = "~/Scripts/plugins/codemirror/mode/stex/test.js";
+                                public const string stex_js = "~/Scripts/plugins/codemirror/mode/stex/stex.js"; 
+                                public const string test_js = "~/Scripts/plugins/codemirror/mode/stex/test.js"; 
                             }
                         }
-                        public static partial class tcl
+                        public static partial class tcl 
                         {
                             public static class Assets
                             {
-                                public const string tcl_js = "~/Scripts/plugins/codemirror/mode/tcl/tcl.js";
+                                public const string tcl_js = "~/Scripts/plugins/codemirror/mode/tcl/tcl.js"; 
                             }
                         }
-                        public static partial class textile
+                        public static partial class textile 
                         {
                             public static class Assets
                             {
-                                public const string test_js = "~/Scripts/plugins/codemirror/mode/textile/test.js";
-                                public const string textile_js = "~/Scripts/plugins/codemirror/mode/textile/textile.js";
+                                public const string test_js = "~/Scripts/plugins/codemirror/mode/textile/test.js"; 
+                                public const string textile_js = "~/Scripts/plugins/codemirror/mode/textile/textile.js"; 
                             }
                         }
-                        public static partial class tiddlywiki
+                        public static partial class tiddlywiki 
                         {
                             public static class Assets
                             {
                                 public const string tiddlywiki_css = "~/Scripts/plugins/codemirror/mode/tiddlywiki/tiddlywiki.css";
-                                public const string tiddlywiki_js = "~/Scripts/plugins/codemirror/mode/tiddlywiki/tiddlywiki.js";
+                                public const string tiddlywiki_js = "~/Scripts/plugins/codemirror/mode/tiddlywiki/tiddlywiki.js"; 
                             }
                         }
-                        public static partial class tiki
+                        public static partial class tiki 
                         {
                             public static class Assets
                             {
                                 public const string tiki_css = "~/Scripts/plugins/codemirror/mode/tiki/tiki.css";
-                                public const string tiki_js = "~/Scripts/plugins/codemirror/mode/tiki/tiki.js";
+                                public const string tiki_js = "~/Scripts/plugins/codemirror/mode/tiki/tiki.js"; 
                             }
                         }
-                        public static partial class toml
+                        public static partial class toml 
                         {
                             public static class Assets
                             {
-                                public const string toml_js = "~/Scripts/plugins/codemirror/mode/toml/toml.js";
+                                public const string toml_js = "~/Scripts/plugins/codemirror/mode/toml/toml.js"; 
                             }
                         }
-                        public static partial class tornado
+                        public static partial class tornado 
                         {
                             public static class Assets
                             {
-                                public const string tornado_js = "~/Scripts/plugins/codemirror/mode/tornado/tornado.js";
+                                public const string tornado_js = "~/Scripts/plugins/codemirror/mode/tornado/tornado.js"; 
                             }
                         }
-                        public static partial class turtle
+                        public static partial class turtle 
                         {
                             public static class Assets
                             {
-                                public const string turtle_js = "~/Scripts/plugins/codemirror/mode/turtle/turtle.js";
+                                public const string turtle_js = "~/Scripts/plugins/codemirror/mode/turtle/turtle.js"; 
                             }
                         }
-                        public static partial class vb
+                        public static partial class vb 
                         {
                             public static class Assets
                             {
-                                public const string vb_js = "~/Scripts/plugins/codemirror/mode/vb/vb.js";
+                                public const string vb_js = "~/Scripts/plugins/codemirror/mode/vb/vb.js"; 
                             }
                         }
-                        public static partial class vbscript
+                        public static partial class vbscript 
                         {
                             public static class Assets
                             {
-                                public const string vbscript_js = "~/Scripts/plugins/codemirror/mode/vbscript/vbscript.js";
+                                public const string vbscript_js = "~/Scripts/plugins/codemirror/mode/vbscript/vbscript.js"; 
                             }
                         }
-                        public static partial class velocity
+                        public static partial class velocity 
                         {
                             public static class Assets
                             {
-                                public const string velocity_js = "~/Scripts/plugins/codemirror/mode/velocity/velocity.js";
+                                public const string velocity_js = "~/Scripts/plugins/codemirror/mode/velocity/velocity.js"; 
                             }
                         }
-                        public static partial class verilog
+                        public static partial class verilog 
                         {
                             public static class Assets
                             {
-                                public const string test_js = "~/Scripts/plugins/codemirror/mode/verilog/test.js";
-                                public const string verilog_js = "~/Scripts/plugins/codemirror/mode/verilog/verilog.js";
+                                public const string test_js = "~/Scripts/plugins/codemirror/mode/verilog/test.js"; 
+                                public const string verilog_js = "~/Scripts/plugins/codemirror/mode/verilog/verilog.js"; 
                             }
                         }
-                        public static partial class xml
+                        public static partial class xml 
                         {
                             public static class Assets
                             {
-                                public const string test_js = "~/Scripts/plugins/codemirror/mode/xml/test.js";
-                                public const string xml_js = "~/Scripts/plugins/codemirror/mode/xml/xml.js";
+                                public const string test_js = "~/Scripts/plugins/codemirror/mode/xml/test.js"; 
+                                public const string xml_js = "~/Scripts/plugins/codemirror/mode/xml/xml.js"; 
                             }
                         }
-                        public static partial class xquery
+                        public static partial class xquery 
                         {
                             public static class Assets
                             {
-                                public const string test_js = "~/Scripts/plugins/codemirror/mode/xquery/test.js";
-                                public const string xquery_js = "~/Scripts/plugins/codemirror/mode/xquery/xquery.js";
+                                public const string test_js = "~/Scripts/plugins/codemirror/mode/xquery/test.js"; 
+                                public const string xquery_js = "~/Scripts/plugins/codemirror/mode/xquery/xquery.js"; 
                             }
                         }
-                        public static partial class yaml
+                        public static partial class yaml 
                         {
                             public static class Assets
                             {
-                                public const string yaml_js = "~/Scripts/plugins/codemirror/mode/yaml/yaml.js";
+                                public const string yaml_js = "~/Scripts/plugins/codemirror/mode/yaml/yaml.js"; 
                             }
                         }
-                        public static partial class z80
+                        public static partial class z80 
                         {
                             public static class Assets
                             {
-                                public const string z80_js = "~/Scripts/plugins/codemirror/mode/z80/z80.js";
+                                public const string z80_js = "~/Scripts/plugins/codemirror/mode/z80/z80.js"; 
                             }
                         }
                         public static class Assets
                         {
-                            public const string meta_js = "~/Scripts/plugins/codemirror/mode/meta.js";
+                            public const string meta_js = "~/Scripts/plugins/codemirror/mode/meta.js"; 
                         }
                     }
                     public static class Assets
                     {
-                        public const string codemirror_js = "~/Scripts/plugins/codemirror/codemirror.js";
+                        public const string codemirror_js = "~/Scripts/plugins/codemirror/codemirror.js"; 
                     }
                 }
-                public static partial class colorpicker
+                public static partial class colorpicker 
                 {
                     public static class Assets
                     {
-                        public const string bootstrap_colorpicker_min_js = "~/Scripts/plugins/colorpicker/bootstrap-colorpicker.min.js";
+                        public const string bootstrap_colorpicker_min_js = "~/Scripts/plugins/colorpicker/bootstrap-colorpicker.min.js"; 
                     }
                 }
-                public static partial class cropper
+                public static partial class cropper 
                 {
                     public static class Assets
                     {
-                        public const string cropper_min_js = "~/Scripts/plugins/cropper/cropper.min.js";
+                        public const string cropper_min_js = "~/Scripts/plugins/cropper/cropper.min.js"; 
                     }
                 }
-                public static partial class dataTables
+                public static partial class dataTables 
                 {
-                    public static partial class swf
+                    public static partial class swf 
                     {
                         public static class Assets
                         {
@@ -2444,67 +2313,67 @@ namespace Links
                     }
                     public static class Assets
                     {
-                        public const string buttons_bootstrap_js = "~/Scripts/plugins/dataTables/buttons.bootstrap.js";
-                        public const string dataTables_bootstrap_js = "~/Scripts/plugins/dataTables/dataTables.bootstrap.js";
-                        public const string dataTables_buttons_js = "~/Scripts/plugins/dataTables/dataTables.buttons.js";
-                        public const string dataTables_responsive_js = "~/Scripts/plugins/dataTables/dataTables.responsive.js";
-                        public const string dataTables_select_js = "~/Scripts/plugins/dataTables/dataTables.select.js";
-                        public const string jquery_dataTables_js = "~/Scripts/plugins/dataTables/jquery.dataTables.js";
+                        public const string buttons_bootstrap_js = "~/Scripts/plugins/dataTables/buttons.bootstrap.js"; 
+                        public const string dataTables_bootstrap_js = "~/Scripts/plugins/dataTables/dataTables.bootstrap.js"; 
+                        public const string dataTables_buttons_js = "~/Scripts/plugins/dataTables/dataTables.buttons.js"; 
+                        public const string dataTables_responsive_js = "~/Scripts/plugins/dataTables/dataTables.responsive.js"; 
+                        public const string dataTables_select_js = "~/Scripts/plugins/dataTables/dataTables.select.js"; 
+                        public const string jquery_dataTables_js = "~/Scripts/plugins/dataTables/jquery.dataTables.js"; 
                     }
                 }
-                public static partial class diff_match_patch
+                public static partial class diff_match_patch 
                 {
-                    public static partial class javascript
+                    public static partial class javascript 
                     {
                         public static class Assets
                         {
-                            public const string diff_match_patch_js = "~/Scripts/plugins/diff_match_patch/javascript/diff_match_patch.js";
+                            public const string diff_match_patch_js = "~/Scripts/plugins/diff_match_patch/javascript/diff_match_patch.js"; 
                         }
                     }
                     public static class Assets
                     {
                     }
                 }
-                public static partial class dropzone
+                public static partial class dropzone 
                 {
                     public static class Assets
                     {
-                        public const string dropzone_js = "~/Scripts/plugins/dropzone/dropzone.js";
+                        public const string dropzone_js = "~/Scripts/plugins/dropzone/dropzone.js"; 
                     }
                 }
-                public static partial class easypiechart
+                public static partial class easypiechart 
                 {
                     public static class Assets
                     {
-                        public const string easypiechart_js = "~/Scripts/plugins/easypiechart/easypiechart.js";
-                        public const string jquery_easypiechart_js = "~/Scripts/plugins/easypiechart/jquery.easypiechart.js";
+                        public const string easypiechart_js = "~/Scripts/plugins/easypiechart/easypiechart.js"; 
+                        public const string jquery_easypiechart_js = "~/Scripts/plugins/easypiechart/jquery.easypiechart.js"; 
                     }
                 }
-                public static partial class flot
+                public static partial class flot 
                 {
                     public static class Assets
                     {
-                        public const string curvedLines_js = "~/Scripts/plugins/flot/curvedLines.js";
-                        public const string excanvas_min_js = "~/Scripts/plugins/flot/excanvas.min.js";
-                        public const string jquery_flot_js = "~/Scripts/plugins/flot/jquery.flot.js";
-                        public const string jquery_flot_pie_js = "~/Scripts/plugins/flot/jquery.flot.pie.js";
-                        public const string jquery_flot_resize_js = "~/Scripts/plugins/flot/jquery.flot.resize.js";
-                        public const string jquery_flot_spline_js = "~/Scripts/plugins/flot/jquery.flot.spline.js";
-                        public const string jquery_flot_symbol_js = "~/Scripts/plugins/flot/jquery.flot.symbol.js";
-                        public const string jquery_flot_time_js = "~/Scripts/plugins/flot/jquery.flot.time.js";
-                        public const string jquery_flot_tooltip_min_js = "~/Scripts/plugins/flot/jquery.flot.tooltip.min.js";
+                        public const string curvedLines_js = "~/Scripts/plugins/flot/curvedLines.js"; 
+                        public const string excanvas_min_js = "~/Scripts/plugins/flot/excanvas.min.js"; 
+                        public const string jquery_flot_js = "~/Scripts/plugins/flot/jquery.flot.js"; 
+                        public const string jquery_flot_pie_js = "~/Scripts/plugins/flot/jquery.flot.pie.js"; 
+                        public const string jquery_flot_resize_js = "~/Scripts/plugins/flot/jquery.flot.resize.js"; 
+                        public const string jquery_flot_spline_js = "~/Scripts/plugins/flot/jquery.flot.spline.js"; 
+                        public const string jquery_flot_symbol_js = "~/Scripts/plugins/flot/jquery.flot.symbol.js"; 
+                        public const string jquery_flot_time_js = "~/Scripts/plugins/flot/jquery.flot.time.js"; 
+                        public const string jquery_flot_tooltip_min_js = "~/Scripts/plugins/flot/jquery.flot.tooltip.min.js"; 
                     }
                 }
-                public static partial class fullcalendar
+                public static partial class fullcalendar 
                 {
                     public static class Assets
                     {
-                        public const string fullcalendar_js = "~/Scripts/plugins/fullcalendar/fullcalendar.js";
+                        public const string fullcalendar_js = "~/Scripts/plugins/fullcalendar/fullcalendar.js"; 
                     }
                 }
-                public static partial class gritter
+                public static partial class gritter 
                 {
-                    public static partial class images
+                    public static partial class images 
                     {
                         public static class Assets
                         {
@@ -2513,54 +2382,54 @@ namespace Links
                     public static class Assets
                     {
                         public const string jquery_gritter_css = "~/Scripts/plugins/gritter/jquery.gritter.css";
-                        public const string jquery_gritter_min_js = "~/Scripts/plugins/gritter/jquery.gritter.min.js";
+                        public const string jquery_gritter_min_js = "~/Scripts/plugins/gritter/jquery.gritter.min.js"; 
                     }
                 }
-                public static partial class html5_placeholder_shim
+                public static partial class html5_placeholder_shim 
                 {
                     public static class Assets
                     {
-                        public const string html5_placeholder_shim_js = "~/Scripts/plugins/html5-placeholder-shim/html5-placeholder-shim.js";
+                        public const string html5_placeholder_shim_js = "~/Scripts/plugins/html5-placeholder-shim/html5-placeholder-shim.js"; 
                     }
                 }
-                public static partial class iCheck
+                public static partial class iCheck 
                 {
                     public static class Assets
                     {
-                        public const string icheck_min_js = "~/Scripts/plugins/iCheck/icheck.min.js";
+                        public const string icheck_min_js = "~/Scripts/plugins/iCheck/icheck.min.js"; 
                     }
                 }
-                public static partial class idle_timer
+                public static partial class idle_timer 
                 {
                     public static class Assets
                     {
-                        public const string idle_timer_min_js = "~/Scripts/plugins/idle-timer/idle-timer.min.js";
+                        public const string idle_timer_min_js = "~/Scripts/plugins/idle-timer/idle-timer.min.js"; 
                     }
                 }
-                public static partial class ionRangeSlider
+                public static partial class ionRangeSlider 
                 {
                     public static class Assets
                     {
-                        public const string ion_rangeSlider_min_js = "~/Scripts/plugins/ionRangeSlider/ion.rangeSlider.min.js";
+                        public const string ion_rangeSlider_min_js = "~/Scripts/plugins/ionRangeSlider/ion.rangeSlider.min.js"; 
                     }
                 }
-                public static partial class jasny
+                public static partial class jasny 
                 {
                     public static class Assets
                     {
-                        public const string jasny_bootstrap_min_js = "~/Scripts/plugins/jasny/jasny-bootstrap.min.js";
+                        public const string jasny_bootstrap_min_js = "~/Scripts/plugins/jasny/jasny-bootstrap.min.js"; 
                     }
                 }
-                public static partial class jeditable
+                public static partial class jeditable 
                 {
                     public static class Assets
                     {
-                        public const string jquery_jeditable_js = "~/Scripts/plugins/jeditable/jquery.jeditable.js";
+                        public const string jquery_jeditable_js = "~/Scripts/plugins/jeditable/jquery.jeditable.js"; 
                     }
                 }
-                public static partial class jquery_ui
+                public static partial class jquery_ui 
                 {
-                    public static partial class images
+                    public static partial class images 
                     {
                         public static class Assets
                         {
@@ -2569,246 +2438,253 @@ namespace Links
                     public static class Assets
                     {
                         public const string jquery_ui_css = "~/Scripts/plugins/jquery-ui/jquery-ui.css";
-                        public const string jquery_ui_js = "~/Scripts/plugins/jquery-ui/jquery-ui.js";
+                        public const string jquery_ui_js = "~/Scripts/plugins/jquery-ui/jquery-ui.js"; 
                     }
                 }
-                public static partial class js_cookie
+                public static partial class jquery_maskedinput 
                 {
                     public static class Assets
                     {
-                        public const string js_cookie_js = "~/Scripts/plugins/js-cookie/js.cookie.js";
+                        public const string jquery_maskedinput_js = "~/Scripts/plugins/jquery.maskedinput/jquery.maskedinput.js"; 
                     }
                 }
-                public static partial class jsKnob
+                public static partial class js_cookie 
                 {
                     public static class Assets
                     {
-                        public const string jquery_knob_js = "~/Scripts/plugins/jsKnob/jquery.knob.js";
+                        public const string js_cookie_js = "~/Scripts/plugins/js-cookie/js.cookie.js"; 
                     }
                 }
-                public static partial class jsTimezoneDetect
+                public static partial class jsKnob 
                 {
                     public static class Assets
                     {
-                        public const string jstz_js = "~/Scripts/plugins/jsTimezoneDetect/jstz.js";
+                        public const string jquery_knob_js = "~/Scripts/plugins/jsKnob/jquery.knob.js"; 
                     }
                 }
-                public static partial class jsTree
+                public static partial class jsTimezoneDetect 
                 {
                     public static class Assets
                     {
-                        public const string jstree_min_js = "~/Scripts/plugins/jsTree/jstree.min.js";
+                        public const string jstz_js = "~/Scripts/plugins/jsTimezoneDetect/jstz.js"; 
                     }
                 }
-                public static partial class justified_gallery
+                public static partial class jsTree 
+                {
+                    public static class Assets
+                    {
+                        public const string jstree_min_js = "~/Scripts/plugins/jsTree/jstree.min.js"; 
+                    }
+                }
+                public static partial class justified_gallery 
                 {
                     public static class Assets
                     {
                         public const string jquery_justifiedgallery_css = "~/Scripts/plugins/justified-gallery/jquery.justifiedgallery.css";
-                        public const string jquery_justifiedgallery_js = "~/Scripts/plugins/justified-gallery/jquery.justifiedgallery.js";
+                        public const string jquery_justifiedgallery_js = "~/Scripts/plugins/justified-gallery/jquery.justifiedgallery.js"; 
                         public const string jquery_justifiedgallery_min_css = "~/Scripts/plugins/justified-gallery/jquery.justifiedgallery.min.css";
-                        public const string jquery_justifiedgallery_min_js = "~/Scripts/plugins/justified-gallery/jquery.justifiedgallery.min.js";
+                        public const string jquery_justifiedgallery_min_js = "~/Scripts/plugins/justified-gallery/jquery.justifiedgallery.min.js"; 
                     }
                 }
-                public static partial class jvectormap
+                public static partial class jvectormap 
                 {
                     public static class Assets
                     {
-                        public const string jquery_jvectormap_1_2_2_min_js = "~/Scripts/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js";
-                        public const string jquery_jvectormap_world_mill_en_js = "~/Scripts/plugins/jvectormap/jquery-jvectormap-world-mill-en.js";
+                        public const string jquery_jvectormap_1_2_2_min_js = "~/Scripts/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"; 
+                        public const string jquery_jvectormap_world_mill_en_js = "~/Scripts/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"; 
                     }
                 }
-                public static partial class metisMenu
+                public static partial class metisMenu 
                 {
                     public static class Assets
                     {
-                        public const string metisMenu_js = "~/Scripts/plugins/metisMenu/metisMenu.js";
+                        public const string metisMenu_js = "~/Scripts/plugins/metisMenu/metisMenu.js"; 
                     }
                 }
-                public static partial class moment
+                public static partial class moment 
                 {
                     public static class Assets
                     {
-                        public const string moment_js = "~/Scripts/plugins/moment/moment.js";
+                        public const string moment_js = "~/Scripts/plugins/moment/moment.js"; 
                     }
                 }
-                public static partial class morris
+                public static partial class morris 
                 {
                     public static class Assets
                     {
-                        public const string morris_js = "~/Scripts/plugins/morris/morris.js";
-                        public const string raphael_2_1_0_min_js = "~/Scripts/plugins/morris/raphael-2.1.0.min.js";
+                        public const string morris_js = "~/Scripts/plugins/morris/morris.js"; 
+                        public const string raphael_2_1_0_min_js = "~/Scripts/plugins/morris/raphael-2.1.0.min.js"; 
                     }
                 }
-                public static partial class nestable
+                public static partial class nestable 
                 {
                     public static class Assets
                     {
-                        public const string jquery_nestable_js = "~/Scripts/plugins/nestable/jquery.nestable.js";
+                        public const string jquery_nestable_js = "~/Scripts/plugins/nestable/jquery.nestable.js"; 
                     }
                 }
-                public static partial class nouslider
+                public static partial class nouslider 
                 {
                     public static class Assets
                     {
-                        public const string jquery_nouislider_min_js = "~/Scripts/plugins/nouslider/jquery.nouislider.min.js";
+                        public const string jquery_nouislider_min_js = "~/Scripts/plugins/nouslider/jquery.nouislider.min.js"; 
                     }
                 }
-                public static partial class pace
+                public static partial class pace 
                 {
                     public static class Assets
                     {
-                        public const string pace_min_js = "~/Scripts/plugins/pace/pace.min.js";
+                        public const string pace_min_js = "~/Scripts/plugins/pace/pace.min.js"; 
                     }
                 }
-                public static partial class peity
+                public static partial class peity 
                 {
                     public static class Assets
                     {
-                        public const string jquery_peity_min_js = "~/Scripts/plugins/peity/jquery.peity.min.js";
+                        public const string jquery_peity_min_js = "~/Scripts/plugins/peity/jquery.peity.min.js"; 
                     }
                 }
-                public static partial class preetyTextDiff
+                public static partial class preetyTextDiff 
                 {
                     public static class Assets
                     {
-                        public const string jquery_pretty_text_diff_min_js = "~/Scripts/plugins/preetyTextDiff/jquery.pretty-text-diff.min.js";
+                        public const string jquery_pretty_text_diff_min_js = "~/Scripts/plugins/preetyTextDiff/jquery.pretty-text-diff.min.js"; 
                     }
                 }
-                public static partial class rickshaw
+                public static partial class rickshaw 
                 {
-                    public static partial class vendor
+                    public static partial class vendor 
                     {
                         public static class Assets
                         {
-                            public const string d3_v3_js = "~/Scripts/plugins/rickshaw/vendor/d3.v3.js";
+                            public const string d3_v3_js = "~/Scripts/plugins/rickshaw/vendor/d3.v3.js"; 
                         }
                     }
                     public static class Assets
                     {
-                        public const string rickshaw_min_js = "~/Scripts/plugins/rickshaw/rickshaw.min.js";
+                        public const string rickshaw_min_js = "~/Scripts/plugins/rickshaw/rickshaw.min.js"; 
                     }
                 }
-                public static partial class select2
+                public static partial class select2 
                 {
-                    public static partial class i18n
+                    public static partial class i18n 
                     {
                         public static class Assets
                         {
-                            public const string ar_js = "~/Scripts/plugins/select2/i18n/ar.js";
-                            public const string az_js = "~/Scripts/plugins/select2/i18n/az.js";
-                            public const string bg_js = "~/Scripts/plugins/select2/i18n/bg.js";
-                            public const string ca_js = "~/Scripts/plugins/select2/i18n/ca.js";
-                            public const string cs_js = "~/Scripts/plugins/select2/i18n/cs.js";
-                            public const string da_js = "~/Scripts/plugins/select2/i18n/da.js";
-                            public const string de_js = "~/Scripts/plugins/select2/i18n/de.js";
-                            public const string en_js = "~/Scripts/plugins/select2/i18n/en.js";
-                            public const string es_js = "~/Scripts/plugins/select2/i18n/es.js";
-                            public const string et_js = "~/Scripts/plugins/select2/i18n/et.js";
-                            public const string eu_js = "~/Scripts/plugins/select2/i18n/eu.js";
-                            public const string fa_js = "~/Scripts/plugins/select2/i18n/fa.js";
-                            public const string fi_js = "~/Scripts/plugins/select2/i18n/fi.js";
-                            public const string fr_js = "~/Scripts/plugins/select2/i18n/fr.js";
-                            public const string gl_js = "~/Scripts/plugins/select2/i18n/gl.js";
-                            public const string he_js = "~/Scripts/plugins/select2/i18n/he.js";
-                            public const string hi_js = "~/Scripts/plugins/select2/i18n/hi.js";
-                            public const string hr_js = "~/Scripts/plugins/select2/i18n/hr.js";
-                            public const string hu_js = "~/Scripts/plugins/select2/i18n/hu.js";
-                            public const string id_js = "~/Scripts/plugins/select2/i18n/id.js";
-                            public const string is_js = "~/Scripts/plugins/select2/i18n/is.js";
-                            public const string it_js = "~/Scripts/plugins/select2/i18n/it.js";
-                            public const string ja_js = "~/Scripts/plugins/select2/i18n/ja.js";
-                            public const string ko_js = "~/Scripts/plugins/select2/i18n/ko.js";
-                            public const string lt_js = "~/Scripts/plugins/select2/i18n/lt.js";
-                            public const string lv_js = "~/Scripts/plugins/select2/i18n/lv.js";
-                            public const string mk_js = "~/Scripts/plugins/select2/i18n/mk.js";
-                            public const string ms_js = "~/Scripts/plugins/select2/i18n/ms.js";
-                            public const string nb_js = "~/Scripts/plugins/select2/i18n/nb.js";
-                            public const string nl_js = "~/Scripts/plugins/select2/i18n/nl.js";
-                            public const string pl_js = "~/Scripts/plugins/select2/i18n/pl.js";
-                            public const string pt_BR_js = "~/Scripts/plugins/select2/i18n/pt-BR.js";
-                            public const string pt_js = "~/Scripts/plugins/select2/i18n/pt.js";
-                            public const string ro_js = "~/Scripts/plugins/select2/i18n/ro.js";
-                            public const string ru_js = "~/Scripts/plugins/select2/i18n/ru.js";
-                            public const string sk_js = "~/Scripts/plugins/select2/i18n/sk.js";
-                            public const string sr_Cyrl_js = "~/Scripts/plugins/select2/i18n/sr-Cyrl.js";
-                            public const string sr_js = "~/Scripts/plugins/select2/i18n/sr.js";
-                            public const string sv_js = "~/Scripts/plugins/select2/i18n/sv.js";
-                            public const string th_js = "~/Scripts/plugins/select2/i18n/th.js";
-                            public const string tr_js = "~/Scripts/plugins/select2/i18n/tr.js";
-                            public const string uk_js = "~/Scripts/plugins/select2/i18n/uk.js";
-                            public const string vi_js = "~/Scripts/plugins/select2/i18n/vi.js";
-                            public const string zh_CN_js = "~/Scripts/plugins/select2/i18n/zh-CN.js";
-                            public const string zh_TW_js = "~/Scripts/plugins/select2/i18n/zh-TW.js";
+                            public const string ar_js = "~/Scripts/plugins/select2/i18n/ar.js"; 
+                            public const string az_js = "~/Scripts/plugins/select2/i18n/az.js"; 
+                            public const string bg_js = "~/Scripts/plugins/select2/i18n/bg.js"; 
+                            public const string ca_js = "~/Scripts/plugins/select2/i18n/ca.js"; 
+                            public const string cs_js = "~/Scripts/plugins/select2/i18n/cs.js"; 
+                            public const string da_js = "~/Scripts/plugins/select2/i18n/da.js"; 
+                            public const string de_js = "~/Scripts/plugins/select2/i18n/de.js"; 
+                            public const string en_js = "~/Scripts/plugins/select2/i18n/en.js"; 
+                            public const string es_js = "~/Scripts/plugins/select2/i18n/es.js"; 
+                            public const string et_js = "~/Scripts/plugins/select2/i18n/et.js"; 
+                            public const string eu_js = "~/Scripts/plugins/select2/i18n/eu.js"; 
+                            public const string fa_js = "~/Scripts/plugins/select2/i18n/fa.js"; 
+                            public const string fi_js = "~/Scripts/plugins/select2/i18n/fi.js"; 
+                            public const string fr_js = "~/Scripts/plugins/select2/i18n/fr.js"; 
+                            public const string gl_js = "~/Scripts/plugins/select2/i18n/gl.js"; 
+                            public const string he_js = "~/Scripts/plugins/select2/i18n/he.js"; 
+                            public const string hi_js = "~/Scripts/plugins/select2/i18n/hi.js"; 
+                            public const string hr_js = "~/Scripts/plugins/select2/i18n/hr.js"; 
+                            public const string hu_js = "~/Scripts/plugins/select2/i18n/hu.js"; 
+                            public const string id_js = "~/Scripts/plugins/select2/i18n/id.js"; 
+                            public const string is_js = "~/Scripts/plugins/select2/i18n/is.js"; 
+                            public const string it_js = "~/Scripts/plugins/select2/i18n/it.js"; 
+                            public const string ja_js = "~/Scripts/plugins/select2/i18n/ja.js"; 
+                            public const string ko_js = "~/Scripts/plugins/select2/i18n/ko.js"; 
+                            public const string lt_js = "~/Scripts/plugins/select2/i18n/lt.js"; 
+                            public const string lv_js = "~/Scripts/plugins/select2/i18n/lv.js"; 
+                            public const string mk_js = "~/Scripts/plugins/select2/i18n/mk.js"; 
+                            public const string ms_js = "~/Scripts/plugins/select2/i18n/ms.js"; 
+                            public const string nb_js = "~/Scripts/plugins/select2/i18n/nb.js"; 
+                            public const string nl_js = "~/Scripts/plugins/select2/i18n/nl.js"; 
+                            public const string pl_js = "~/Scripts/plugins/select2/i18n/pl.js"; 
+                            public const string pt_BR_js = "~/Scripts/plugins/select2/i18n/pt-BR.js"; 
+                            public const string pt_js = "~/Scripts/plugins/select2/i18n/pt.js"; 
+                            public const string ro_js = "~/Scripts/plugins/select2/i18n/ro.js"; 
+                            public const string ru_js = "~/Scripts/plugins/select2/i18n/ru.js"; 
+                            public const string sk_js = "~/Scripts/plugins/select2/i18n/sk.js"; 
+                            public const string sr_Cyrl_js = "~/Scripts/plugins/select2/i18n/sr-Cyrl.js"; 
+                            public const string sr_js = "~/Scripts/plugins/select2/i18n/sr.js"; 
+                            public const string sv_js = "~/Scripts/plugins/select2/i18n/sv.js"; 
+                            public const string th_js = "~/Scripts/plugins/select2/i18n/th.js"; 
+                            public const string tr_js = "~/Scripts/plugins/select2/i18n/tr.js"; 
+                            public const string uk_js = "~/Scripts/plugins/select2/i18n/uk.js"; 
+                            public const string vi_js = "~/Scripts/plugins/select2/i18n/vi.js"; 
+                            public const string zh_CN_js = "~/Scripts/plugins/select2/i18n/zh-CN.js"; 
+                            public const string zh_TW_js = "~/Scripts/plugins/select2/i18n/zh-TW.js"; 
                         }
                     }
                     public static class Assets
                     {
-                        public const string select2_full_js = "~/Scripts/plugins/select2/select2.full.js";
+                        public const string select2_full_js = "~/Scripts/plugins/select2/select2.full.js"; 
                     }
                 }
-                public static partial class slimscroll
+                public static partial class slimscroll 
                 {
                     public static class Assets
                     {
-                        public const string jquery_slimscroll_js = "~/Scripts/plugins/slimscroll/jquery.slimscroll.js";
+                        public const string jquery_slimscroll_js = "~/Scripts/plugins/slimscroll/jquery.slimscroll.js"; 
                     }
                 }
-                public static partial class sparkline
+                public static partial class sparkline 
                 {
                     public static class Assets
                     {
-                        public const string jquery_sparkline_min_js = "~/Scripts/plugins/sparkline/jquery.sparkline.min.js";
+                        public const string jquery_sparkline_min_js = "~/Scripts/plugins/sparkline/jquery.sparkline.min.js"; 
                     }
                 }
-                public static partial class steps
+                public static partial class steps 
                 {
                     public static class Assets
                     {
-                        public const string jquery_steps_min_js = "~/Scripts/plugins/steps/jquery.steps.min.js";
+                        public const string jquery_steps_min_js = "~/Scripts/plugins/steps/jquery.steps.min.js"; 
                     }
                 }
-                public static partial class summernote
+                public static partial class summernote 
                 {
                     public static class Assets
                     {
-                        public const string summernote_min_js = "~/Scripts/plugins/summernote/summernote.min.js";
+                        public const string summernote_min_js = "~/Scripts/plugins/summernote/summernote.min.js"; 
                     }
                 }
-                public static partial class switchery
+                public static partial class switchery 
                 {
                     public static class Assets
                     {
-                        public const string switchery_js = "~/Scripts/plugins/switchery/switchery.js";
+                        public const string switchery_js = "~/Scripts/plugins/switchery/switchery.js"; 
                     }
                 }
-                public static partial class tinycon
+                public static partial class tinycon 
                 {
                     public static class Assets
                     {
-                        public const string tinycon_min_js = "~/Scripts/plugins/tinycon/tinycon.min.js";
+                        public const string tinycon_min_js = "~/Scripts/plugins/tinycon/tinycon.min.js"; 
                     }
                 }
-                public static partial class toastr
+                public static partial class toastr 
                 {
                     public static class Assets
                     {
-                        public const string toastr_min_js = "~/Scripts/plugins/toastr/toastr.min.js";
+                        public const string toastr_min_js = "~/Scripts/plugins/toastr/toastr.min.js"; 
                     }
                 }
-                public static partial class velocity
+                public static partial class velocity 
                 {
                     public static class Assets
                     {
-                        public const string velocity_min_js = "~/Scripts/plugins/velocity/velocity.min.js";
-                        public const string velocity_ui_min_js = "~/Scripts/plugins/velocity/velocity.ui.min.js";
+                        public const string velocity_min_js = "~/Scripts/plugins/velocity/velocity.min.js"; 
+                        public const string velocity_ui_min_js = "~/Scripts/plugins/velocity/velocity.ui.min.js"; 
                     }
                 }
-                public static partial class video
+                public static partial class video 
                 {
                     public static class Assets
                     {
-                        public const string responsible_video_js = "~/Scripts/plugins/video/responsible-video.js";
+                        public const string responsible_video_js = "~/Scripts/plugins/video/responsible-video.js"; 
                     }
                 }
                 public static class Assets
@@ -2817,27 +2693,27 @@ namespace Links
             }
             public static class Assets
             {
-                public const string bootstrap_js = "~/Scripts/bootstrap.js";
-                public const string bootstrap_min_js = "~/Scripts/bootstrap.min.js";
-                public const string jquery_2_2_2_intellisense_js = "~/Scripts/jquery-2.2.2.intellisense.js";
-                public const string jquery_2_2_2_js = "~/Scripts/jquery-2.2.2.js";
-                public const string jquery_2_2_2_min_js = "~/Scripts/jquery-2.2.2.min.js";
-                public const string jquery_unobtrusive_ajax_js = "~/Scripts/jquery.unobtrusive-ajax.js";
-                public const string jquery_unobtrusive_ajax_min_js = "~/Scripts/jquery.unobtrusive-ajax.min.js";
-                public const string jquery_validate_js = "~/Scripts/jquery.validate.js";
-                public const string jquery_validate_min_js = "~/Scripts/jquery.validate.min.js";
-                public const string jquery_validate_unobtrusive_bootstrap_js = "~/Scripts/jquery.validate.unobtrusive.bootstrap.js";
-                public const string jquery_validate_unobtrusive_bootstrap_min_js = "~/Scripts/jquery.validate.unobtrusive.bootstrap.min.js";
-                public const string jquery_validate_unobtrusive_js = "~/Scripts/jquery.validate.unobtrusive.js";
-                public const string jquery_validate_unobtrusive_min_js = "~/Scripts/jquery.validate.unobtrusive.min.js";
-                public const string modernizr_2_8_3_js = "~/Scripts/modernizr-2.8.3.js";
+                public const string bootstrap_js = "~/Scripts/bootstrap.js"; 
+                public const string bootstrap_min_js = "~/Scripts/bootstrap.min.js"; 
+                public const string jquery_2_2_2_intellisense_js = "~/Scripts/jquery-2.2.2.intellisense.js"; 
+                public const string jquery_2_2_2_js = "~/Scripts/jquery-2.2.2.js"; 
+                public const string jquery_2_2_2_min_js = "~/Scripts/jquery-2.2.2.min.js"; 
+                public const string jquery_unobtrusive_ajax_js = "~/Scripts/jquery.unobtrusive-ajax.js"; 
+                public const string jquery_unobtrusive_ajax_min_js = "~/Scripts/jquery.unobtrusive-ajax.min.js"; 
+                public const string jquery_validate_js = "~/Scripts/jquery.validate.js"; 
+                public const string jquery_validate_min_js = "~/Scripts/jquery.validate.min.js"; 
+                public const string jquery_validate_unobtrusive_bootstrap_js = "~/Scripts/jquery.validate.unobtrusive.bootstrap.js"; 
+                public const string jquery_validate_unobtrusive_bootstrap_min_js = "~/Scripts/jquery.validate.unobtrusive.bootstrap.min.js"; 
+                public const string jquery_validate_unobtrusive_js = "~/Scripts/jquery.validate.unobtrusive.js"; 
+                public const string jquery_validate_unobtrusive_min_js = "~/Scripts/jquery.validate.unobtrusive.min.js"; 
+                public const string modernizr_2_8_3_js = "~/Scripts/modernizr-2.8.3.js"; 
             }
         }
-        public static partial class Content
+        public static partial class Content 
         {
-            public static partial class Images
+            public static partial class Images 
             {
-                public static partial class DataTables
+                public static partial class DataTables 
                 {
                     public static class Assets
                     {
@@ -2847,7 +2723,7 @@ namespace Links
                 {
                 }
             }
-            public static partial class patterns
+            public static partial class patterns 
             {
                 public static class Assets
                 {
@@ -2865,16 +2741,14 @@ namespace Links
 }
 
 [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-internal static class T4MVCHelpers
-{
+internal static class T4MVCHelpers {
     // You can change the ProcessVirtualPath method to modify the path that gets returned to the client.
     // e.g. you can prepend a domain, or append a query string:
     //      return "http://localhost" + path + "?foo=bar";
-    private static string ProcessVirtualPathDefault(string virtualPath)
-    {
+    private static string ProcessVirtualPathDefault(string virtualPath) {
         // The path that comes in starts with ~/ and must first be made absolute
         string path = VirtualPathUtility.ToAbsolute(virtualPath);
-
+        
         // Add your own modifications here before returning the path
         return path;
     }
@@ -2886,9 +2760,8 @@ internal static class T4MVCHelpers
     public static Func<string, string> TimestampString = System.Web.Mvc.T4Extensions.TimestampString;
 
     // Logic to determine if the app is running in production or dev environment
-    public static bool IsProduction()
-    {
-        return (HttpContext.Current != null && !HttpContext.Current.IsDebuggingEnabled);
+    public static bool IsProduction() { 
+        return (HttpContext.Current != null && !HttpContext.Current.IsDebuggingEnabled); 
     }
 }
 

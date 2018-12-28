@@ -13,8 +13,8 @@ namespace CStore.Web.App_Start
 
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
-            filters.Add(new HttpsAttribute());
-            filters.Add(new SecuredAttribute());
+            //filters.Add(new HttpsAttribute());
+          //  filters.Add(new SecuredAttribute());
         }
 
     }
